@@ -4,20 +4,28 @@
  * and open the template in the editor.
  */
 package thesis;
+ 
 
 import java.util.ArrayList;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
  *
  * @author horvathpatricia
  */
+
+
 public class UserService {
+    DB db = new DB();
     
-    
-/*    public ArrayList<User> userService(){
-        DB.getAllUser();
-        return users;
-    }*/
+    public final ObservableList<User> result = FXCollections.observableArrayList();
+
+    public ArrayList<User> userService(){
         
+        result = db.getAllUsers();
+        return result;
+    }
+    
+     
 }
