@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="secondAnchorPane" prefHeight="650.0" prefWidth="650.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thesis.FXMLController_Topics">
+    <stylesheets>
+        <URL value="@main.css" />
+    </stylesheets>
+   <children>
+      <Pane prefHeight="650.0" prefWidth="650.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffae2133" height="650.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="95.0" layoutX="54.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" width="547.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#3896d9b9" />
+                  <Stop color="#55bcd9ba" offset="0.32028551107498476" />
+                  <Stop color="#55bcd9ba" offset="0.6925675675675675" />
+                  <Stop color="#3896d9b9" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <Label layoutX="183.0" layoutY="74.0" prefHeight="85.0" prefWidth="284.0" text="Választható témák">
+         <font>
+            <Font size="36.0" />
+         </font></Label>
+      <Button layoutX="91.0" layoutY="211.0" mnemonicParsing="false" onAction="#loadThird" style="-fx-background-color: #F8B9DE; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Egészség">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button layoutX="92.0" layoutY="293.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="130.0" style="-fx-background-color: #ACFBD5; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Utazás">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="dataOut" layoutX="91.0" layoutY="438.0" mnemonicParsing="false" onAction="#dataOutAction" text="Button" />
+   </children>
+</AnchorPane>

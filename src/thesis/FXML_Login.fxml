@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="650.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thesis.FXMLDocumentController_Login">
+    <children>
+      <Pane prefHeight="650.0" prefWidth="650.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffae2133" height="650.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="95.0" layoutX="54.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" width="547.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="0.5192307692307692" startY="0.5288461538461539">
+               <stops>
+                  <Stop color="#3794dbbb" />
+                  <Stop color="#53bcdab8" offset="0.3188376346271082" />
+                  <Stop color="#53bcdab8" offset="0.700848404795773" />
+                  <Stop color="#3794dbba" offset="0.9966216216216216" />
+                  <Stop color="#3692ddba" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <Label layoutX="140.0" layoutY="95.0" text="Nyelvprogram időseknek">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+        <Label fx:id="label" layoutX="83.0" layoutY="241.0" minHeight="16" minWidth="69" text="Adja meg a felhasználónevét:">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label layoutX="83.0" layoutY="348.0" text="Adja meg az életkorát:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="83.0" layoutY="296.0" text="Adja meg a nemét:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="83.0" layoutY="397.0" prefHeight="37.0" prefWidth="270.0" text="Adja meg a telefonszámát:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="inputUsername" layoutX="406.0" layoutY="242.0" />
+      <ChoiceBox fx:id="genericBox" layoutX="406.0" layoutY="297.0" prefHeight="21.0" prefWidth="161.0" />
+      <TextField fx:id="inputAge" layoutX="406.0" layoutY="349.0" />
+      <TextField fx:id="inputId" layoutX="406.0" layoutY="402.0" />
+        <Button fx:id="button" layoutX="406.0" layoutY="454.0" onAction="#loadSecond" prefHeight="37.0" prefWidth="161.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Tovább">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+    </children>
+</AnchorPane>

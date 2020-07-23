@@ -1,0 +1,12 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.button{
+    -fx-background-color: #87BAD7;
+    -fx-background-radius: 5;
+    -fx-border-color: #000000;
+    -fx-border-width: 1 1 1 1;
+    -fx-background-insets: 0;
+    -fx-border-radius: 4;
+}

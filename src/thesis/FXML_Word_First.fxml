@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="650.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thesis.FXMLController_Word_Health">
+    <stylesheets>
+        <URL value="@fxml3.css" />
+    </stylesheets>
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffaa2134" height="650.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
+      <BorderPane fx:id="thirdMainPane" prefHeight="650.0" prefWidth="650.0">
+         <left>
+            <VBox alignment="TOP_CENTER" prefHeight="450.0" prefWidth="140.0" BorderPane.alignment="TOP_CENTER">
+               <children>
+                  <Button fx:id="firstButton" onAction="#firstWordAction" prefHeight="39.0" prefWidth="120.0" text="egészség">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="secondButton" onAction="#secondWordAction" prefHeight="39.0" prefWidth="120.0" text="zöldség">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="thirdButton" onAction="#thirdWordAction" prefHeight="39.0" prefWidth="120.0" text="gyümölcs">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="fourthButton" onAction="#fourtWordAction" prefHeight="39.0" prefWidth="120.0" text="boldog">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="fifthButton" onAction="#fifthWordAction" prefHeight="39.0" prefWidth="120.0" text="erős">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="sixthButton" mnemonicParsing="false" onAction="#sixthWordAction" prefHeight="39.0" prefWidth="120.0" text="sportol">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="seventhButton" mnemonicParsing="false" onAction="#seventhWordAction" prefHeight="39.0" prefWidth="120.0" text="diétázik">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="eighthButton" mnemonicParsing="false" onAction="#eightWordAction" prefHeight="39.0" prefWidth="120.0" text="otthon">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="ninthButton" mnemonicParsing="false" onAction="#ninthWordAction" prefHeight="39.0" prefWidth="120.0" text="család">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="tenthButton" mnemonicParsing="false" onAction="#tenthWordAction" prefHeight="39.0" prefWidth="120.0" text="szeretet">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </left>
+         <bottom>
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="172.0" text="Tovább a tesztre" BorderPane.alignment="BASELINE_RIGHT">
+               <BorderPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </bottom>
+         <top>
+            <Label prefHeight="45.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
+         </top>
+         <center>
+            <Label prefHeight="17.0" prefWidth="15.0" BorderPane.alignment="CENTER_LEFT" />
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
