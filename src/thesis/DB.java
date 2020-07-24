@@ -52,17 +52,31 @@ public class DB {
             System.out.println("Valami nem jó az adatbázis létrehozásakor.");
             System.out.println(""+ex);
         }
-        
+        //User tábla létrehozása
         try {
             ResultSet rs = dbmb.getTables(null, "APP", "USERS", null);
             if (!rs.next()) {
-                createStatement.execute("create table users (username varchar(20), gender varchar(5), age int, id int, excercisesNumber int, userResult int)");
+                createStatement.execute("create table users (username varchar(20), gender varchar(5), age int, id int primary key, excercisesNumber int, userResult int)");
                 System.out.println("A tábla létrejött");
             }
         } catch (SQLException ex) {
             System.out.println("Valami nem jó az adattáblák létrehozásánál");
             System.out.println(""+ex);
         }
+        
+        
+        //Excercises tábla létrehozása
+        /*try {
+            ResultSet rs = dbmb.getTables(null, "APP", "EXERCISES", null);
+            if (!rs.next()) {
+                createStatement.execute("create table exercises (id int primary key, topic varchar(20), number_of_words int, pictures boolean, voice boolean, difficulty int)");
+                System.out.println("Az excercises tábla létrejött");
+            }
+        } catch (SQLException ex) {
+            System.out.println("Valami nem jó az excercises adattábla létrehozásánál");
+            System.out.println(""+ex);
+        }*/
+        
     }   
     
     public void addUser(User user){
@@ -79,6 +93,7 @@ public class DB {
             preparedStatement.setInt(5, user.getExcercisesNumber());
             preparedStatement.setInt(6, user.getUserResult());
             preparedStatement.execute(); //ezt irtam
+            System.out.println("User hozzaadva.");
         } catch (SQLException ex) {
             System.out.println("Valami gond van a userek hozzáadásakor.");
             System.out.println(""+ex);
@@ -101,7 +116,9 @@ public class DB {
             }
             
             while(rs.next()){
-                System.out.println(rs.getString("username"));
+                System.out.println(rs.getString("username") + ", " + rs.getString("gender") + ", " + rs.getInt("age") + ", " + rs.getInt("id")+ ", " + rs.getInt("excercisesNumber")+ ", " + rs.getInt("userResult"));
+                
+               
                 System.out.println("while");
             }
         } catch (SQLException ex) {

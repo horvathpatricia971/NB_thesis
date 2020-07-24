@@ -61,9 +61,9 @@ public class FXMLDocumentController_Login implements Initializable {
         
   //      genericBox.setItems(list);
       genericBox.getItems().add("nő");
-      genericBox.getItems().add("férfi");
-        
+      genericBox.getItems().add("férfi");  
     }   
+    
     @FXML
     private void loadSecond(ActionEvent event) throws IOException {
        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Topics.fxml"));
@@ -81,17 +81,20 @@ public class FXMLDocumentController_Login implements Initializable {
        inputUsername.clear();
        inputAge.clear();
        inputId.clear();
+       db.getAllUsers();
     }
-    
     
     public ObservableList<User> getPersonData() {
 		return data;
 	}
+    
+    
    /* public void showContent() {
     try {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(MainApp.class.getResource("thesis/FXML_Leader_BoardController.fxml"));
         Pane content = (Pane) loader.load();
     }*/
+    
     
 }

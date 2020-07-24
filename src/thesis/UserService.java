@@ -9,7 +9,6 @@ package thesis;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 /**
  *
  * @author horvathpatricia
@@ -19,13 +18,17 @@ import javafx.collections.ObservableList;
 public class UserService {
     DB db = new DB();
     
-    public final ObservableList<User> result = FXCollections.observableArrayList();
-
-    public ArrayList<User> userService(){
-        
-        result = db.getAllUsers();
+   
+    public ObservableList<User> userService(){
+        ObservableList<User> result = FXCollections.observableArrayList();
+        result = (ObservableList<User>) db.getAllUsers();
         return result;
     }
     
-     
+    public ObservableList<User> getUserList(){
+        
+        ObservableList<User> result = FXCollections.observableArrayList(db.getAllUsers());
+    //    result = db.getAllUsers();
+        return result;
+    }
 }

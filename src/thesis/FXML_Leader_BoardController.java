@@ -6,6 +6,9 @@
 package thesis;
 
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,16 +28,22 @@ public class FXML_Leader_BoardController implements Initializable {
 
     @FXML
     private TableView table;
-    
+    @FXML
     private User hierUser;
-    
+    @FXML
     private FXMLDocumentController_Login DocContLog;
+    
+    DB db = new DB();
+    
+    public final ObservableList<User> data = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
      */
     @Override
     
+    
+     
     
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -69,10 +78,24 @@ public class FXML_Leader_BoardController implements Initializable {
         userResult.setCellValueFactory(new PropertyValueFactory<User, Integer>("userResult"));
         
         table.getColumns().addAll(userName, gender, age, id, excercisesNumber, userResult);
-    //    table.setItems(DocContLog.getPersonData());
-    }    
+       
+        UserService us = new UserService();
+        us.getUserList();
+        table.setItems(us.getUserList());
+    }
+   
+/*public static ArrayList<User> searchUsers() throws SQLException, ClassNotFoundException {
+        String selectUser = "SELECT * FROM users";
+        ArrayList<User> users = null;
+        ResultSet rsUsers = DB().createStatement.executeQuery(selectUser);
+        users = new ArrayList();
+         table.setItems((ObservableList) users);
+         return users;
+        
+    }*/
+    
     public void SetDocControl(FXMLDocumentController_Login DocContLog){
         this.SetDocControl(DocContLog);
-        table.setItems(DocContLog.getPersonData());
+        table.setItems(DocContLog.getPersonData());  
     }
 }
