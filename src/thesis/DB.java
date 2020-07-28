@@ -69,7 +69,7 @@ public class DB {
         /*try {
             ResultSet rs = dbmb.getTables(null, "APP", "EXERCISES", null);
             if (!rs.next()) {
-                createStatement.execute("create table exercises (id int primary key, topic varchar(20), number_of_words int, pictures boolean, voice boolean, difficulty int)");
+                createStatement.execute("create table exercises (id int primary key, topic varchar(20), number_of_words int, pictures boolean, sound boolean, difficulty int)");
                 System.out.println("Az excercises tábla létrejött");
             }
         } catch (SQLException ex) {

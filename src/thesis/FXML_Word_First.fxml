@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
@@ -15,110 +16,490 @@
         <URL value="@fxml3.css" />
     </stylesheets>
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffaa2134" height="650.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-      <BorderPane fx:id="thirdMainPane" prefHeight="650.0" prefWidth="650.0">
-         <left>
-            <VBox alignment="TOP_CENTER" prefHeight="450.0" prefWidth="140.0" BorderPane.alignment="TOP_CENTER">
-               <children>
-                  <Button fx:id="firstButton" onAction="#firstWordAction" prefHeight="39.0" prefWidth="120.0" text="egészség">
-                     <VBox.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="secondButton" onAction="#secondWordAction" prefHeight="39.0" prefWidth="120.0" text="zöldség">
-                     <VBox.margin>
-                        <Insets left="5.0" right="5.0" top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="thirdButton" onAction="#thirdWordAction" prefHeight="39.0" prefWidth="120.0" text="gyümölcs">
-                     <VBox.margin>
-                        <Insets left="5.0" right="5.0" top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="fourthButton" onAction="#fourtWordAction" prefHeight="39.0" prefWidth="120.0" text="boldog">
-                     <VBox.margin>
-                        <Insets left="5.0" right="5.0" top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="fifthButton" onAction="#fifthWordAction" prefHeight="39.0" prefWidth="120.0" text="erős">
-                     <VBox.margin>
-                        <Insets left="5.0" right="5.0" top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="sixthButton" mnemonicParsing="false" onAction="#sixthWordAction" prefHeight="39.0" prefWidth="120.0" text="sportol">
-                     <VBox.margin>
-                        <Insets left="5.0" right="5.0" top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="seventhButton" mnemonicParsing="false" onAction="#seventhWordAction" prefHeight="39.0" prefWidth="120.0" text="diétázik">
-                     <VBox.margin>
-                        <Insets left="5.0" right="5.0" top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="eighthButton" mnemonicParsing="false" onAction="#eightWordAction" prefHeight="39.0" prefWidth="120.0" text="otthon">
-                     <VBox.margin>
-                        <Insets left="5.0" right="5.0" top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="ninthButton" mnemonicParsing="false" onAction="#ninthWordAction" prefHeight="39.0" prefWidth="120.0" text="család">
-                     <VBox.margin>
-                        <Insets left="5.0" right="5.0" top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="tenthButton" mnemonicParsing="false" onAction="#tenthWordAction" prefHeight="39.0" prefWidth="120.0" text="szeretet">
-                     <VBox.margin>
-                        <Insets left="5.0" right="5.0" top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-               </children>
-            </VBox>
-         </left>
-         <bottom>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="172.0" text="Tovább a tesztre" BorderPane.alignment="BASELINE_RIGHT">
-               <BorderPane.margin>
-                  <Insets left="20.0" right="20.0" />
-               </BorderPane.margin>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffaa2133" height="650.0" stroke="#00000033" strokeType="INSIDE" width="650.0" />
+      <VBox alignment="TOP_CENTER" layoutY="41.0" prefHeight="450.0" prefWidth="140.0">
+         <children>
+            <Button fx:id="firstButton" onAction="#firstWordAction" prefHeight="39.0" prefWidth="120.0" text="egészség">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-         </bottom>
-         <top>
-            <Label prefHeight="45.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
-         </top>
-         <center>
-            <Label prefHeight="17.0" prefWidth="15.0" BorderPane.alignment="CENTER_LEFT" />
-         </center>
-      </BorderPane>
+            <Button fx:id="secondButton" onAction="#secondWordAction" prefHeight="39.0" prefWidth="120.0" text="zöldség">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="thirdButton" onAction="#thirdWordAction" prefHeight="39.0" prefWidth="120.0" text="gyümölcs">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="fourthButton" onAction="#fourtWordAction" prefHeight="39.0" prefWidth="120.0" text="boldog">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="fifthButton" onAction="#fifthWordAction" prefHeight="39.0" prefWidth="120.0" text="erős">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="sixthButton" mnemonicParsing="false" onAction="#sixthWordAction" prefHeight="39.0" prefWidth="120.0" text="sportol">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="seventhButton" mnemonicParsing="false" onAction="#seventhWordAction" prefHeight="39.0" prefWidth="120.0" text="diétázik">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="eighthButton" mnemonicParsing="false" onAction="#eightWordAction" prefHeight="39.0" prefWidth="120.0" text="otthon">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="ninthButton" mnemonicParsing="false" onAction="#ninthWordAction" prefHeight="39.0" prefWidth="120.0" text="család">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="tenthButton" mnemonicParsing="false" onAction="#tenthWordAction" prefHeight="39.0" prefWidth="120.0" text="szeretet">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <Pane fx:id="firstPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
+            <Label layoutX="117.0" layoutY="31.0" text="egészség - health">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="22.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+            <Image url="@egeszseg.jpeg" />
+         </image></ImageView>
+         <Button layoutX="269.0" layoutY="155.0" mnemonicParsing="false" style="-fx-background-color: #87BAD7; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="hang lejátszása">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Label layoutX="22.0" layoutY="275.0" prefHeight="31.0" prefWidth="246.0" text="Az egészség kincs. -">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="142.0" layoutY="323.0" text="Health is a treasure.">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="22.0" layoutY="373.0" prefHeight="31.0" prefWidth="307.0" text="Vigyázz az egészségedre! -">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="147.0" layoutY="419.0" text="Take care of your health!">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="secondPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
+            <Label layoutX="117.0" layoutY="31.0" text="zöldség - vegetable">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="22.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@vegetables.jpeg" />
+               </image>
+            </ImageView>
+            <Button layoutX="269.0" layoutY="155.0" mnemonicParsing="false" style="-fx-background-color: #87BAD7; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="hang lejátszása">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Label layoutX="22.0" layoutY="275.0" prefHeight="31.0" prefWidth="269.0" text="A paprika egy zöldség. -">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="142.0" layoutY="323.0" text="Paprika is a vegetable.">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="373.0" prefHeight="31.0" prefWidth="307.0" text="Szeretem a zöldségeket. -">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="147.0" layoutY="419.0" text="I like vegetables.">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="thirdPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
+            <Label layoutX="117.0" layoutY="31.0" text="gyümölcs - fruit">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="22.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@fruits.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="269.0" layoutY="155.0" mnemonicParsing="false" style="-fx-background-color: #87BAD7; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="hang lejátszása">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Label layoutX="22.0" layoutY="275.0" prefHeight="31.0" prefWidth="279.0" text="A banán egy gyümölcs. -">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="142.0" layoutY="323.0" text="Banana is a fruit.">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="373.0" prefHeight="31.0" prefWidth="307.0" text="A legtöbb gyümölcs édes. -">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="147.0" layoutY="419.0" text="Most fruits are sweet.">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="fourthPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
+            <Label layoutX="117.0" layoutY="31.0" text="gyümölcs - fruit">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="22.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@happy.jpg" />
+               </image>
+            </ImageView>
+            <Button layoutX="269.0" layoutY="155.0" mnemonicParsing="false" style="-fx-background-color: #87BAD7; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="hang lejátszása">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Label layoutX="22.0" layoutY="275.0" prefHeight="31.0" prefWidth="279.0" text="Boldog vagy? -">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="142.0" layoutY="323.0" text="Are you happy?">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="373.0" prefHeight="31.0" prefWidth="307.0" text="Igen, boldog vagyok. - ">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="147.0" layoutY="419.0" text="Yes, I am happy.">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="fifthPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
+            <Label layoutX="155.0" layoutY="32.0" text="erős - strong">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="22.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@strong.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="269.0" layoutY="155.0" mnemonicParsing="false" style="-fx-background-color: #87BAD7; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="hang lejátszása">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Label layoutX="22.0" layoutY="275.0" prefHeight="31.0" prefWidth="279.0" text="Erős vagyok. -">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="142.0" layoutY="323.0" text="I am strong.">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="373.0" prefHeight="31.0" prefWidth="307.0" text="Fontos az erős memória. -">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="147.0" layoutY="419.0" text="Strong memory is important.">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="sixthPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
+            <Label layoutX="111.0" layoutY="36.0" text="edz – to do excercise">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="22.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@exercise.gif" />
+               </image>
+            </ImageView>
+            <Button layoutX="269.0" layoutY="155.0" mnemonicParsing="false" style="-fx-background-color: #87BAD7; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="hang lejátszása">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Label layoutX="22.0" layoutY="275.0" prefHeight="31.0" prefWidth="279.0" text="Milyen gyakran edzel? -">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="142.0" layoutY="323.0" text="How often do you do exercise?">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="373.0" prefHeight="31.0" prefWidth="307.0" text="Minden héten edzek. -">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="147.0" layoutY="419.0" text="I do exercise every week.">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="seventhPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
+            <Label layoutX="117.0" layoutY="31.0" text="diétázik – to be on a diet">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="22.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@diet.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="269.0" layoutY="155.0" mnemonicParsing="false" style="-fx-background-color: #87BAD7; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="hang lejátszása">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Label layoutX="22.0" layoutY="275.0" prefHeight="31.0" prefWidth="279.0" text="Diétán van ő (fiú)? -">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="142.0" layoutY="323.0" text="Is he on a diet?">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="373.0" prefHeight="31.0" prefWidth="334.0" text="Igen, diétáznia kell neki (fiú). -">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="147.0" layoutY="419.0" text="Yes, he has to diet.">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="eightPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
+            <Label layoutX="117.0" layoutY="31.0" text="otthon - home">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="22.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@home.jpg" />
+               </image>
+            </ImageView>
+            <Button layoutX="269.0" layoutY="155.0" mnemonicParsing="false" style="-fx-background-color: #87BAD7; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="hang lejátszása">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Label layoutX="22.0" layoutY="275.0" prefHeight="31.0" prefWidth="279.0" text="Haza megyek. -">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="142.0" layoutY="323.0" text="I go home.">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="373.0" prefHeight="31.0" prefWidth="307.0" text="Hívj otthon! -">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="147.0" layoutY="419.0" text="Call me at home!">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="ninthPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
+            <Label layoutX="117.0" layoutY="31.0" text="család - family">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="22.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@family.jpg" />
+               </image>
+            </ImageView>
+            <Button layoutX="269.0" layoutY="155.0" mnemonicParsing="false" style="-fx-background-color: #87BAD7; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="hang lejátszása">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Label layoutX="22.0" layoutY="275.0" prefHeight="31.0" prefWidth="279.0" text="Nagy a családom. -">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="142.0" layoutY="323.0" text="My family is big.">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="373.0" prefHeight="31.0" prefWidth="433.0" text="Mindenkinek szüksége van családra. -">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="147.0" layoutY="419.0" text="Everybody needs a family.">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="tenthPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
+            <Label layoutX="117.0" layoutY="31.0" text="szeretet - love">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="22.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@love.jpeg" />
+               </image>
+            </ImageView>
+            <Button layoutX="269.0" layoutY="155.0" mnemonicParsing="false" style="-fx-background-color: #87BAD7; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="hang lejátszása">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Label layoutX="22.0" layoutY="275.0" prefHeight="31.0" prefWidth="279.0" text="Szeretjük egymást. -">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="142.0" layoutY="323.0" text="We love each other.">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="373.0" prefHeight="31.0" prefWidth="433.0" text="A szeretet mindenek felett. -">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="147.0" layoutY="419.0" text="Love all above.">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      
    </children>
 </AnchorPane>

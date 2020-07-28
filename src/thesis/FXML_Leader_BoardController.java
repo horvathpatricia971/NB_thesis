@@ -47,6 +47,8 @@ public class FXML_Leader_BoardController implements Initializable {
     
     public void initialize(URL url, ResourceBundle rb) {
         
+        UserService us = new UserService();
+   //     table.setItems(us.getUserList());
         TableColumn userName = new TableColumn("Felhasználónév");
         userName.setMinWidth(100);
         userName.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -78,10 +80,11 @@ public class FXML_Leader_BoardController implements Initializable {
         userResult.setCellValueFactory(new PropertyValueFactory<User, Integer>("userResult"));
         
         table.getColumns().addAll(userName, gender, age, id, excercisesNumber, userResult);
-       
-        UserService us = new UserService();
-        us.getUserList();
-        table.setItems(us.getUserList());
+        FXMLDocumentController_Login cl = new FXMLDocumentController_Login();
+        /*for(User user: us.getUserList()){
+            table.getItems().add(user);
+        }*/
+        // table.getItems(cl.data);
     }
    
 /*public static ArrayList<User> searchUsers() throws SQLException, ClassNotFoundException {
