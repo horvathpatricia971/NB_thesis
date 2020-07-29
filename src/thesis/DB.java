@@ -69,11 +69,50 @@ public class DB {
         /*try {
             ResultSet rs = dbmb.getTables(null, "APP", "EXERCISES", null);
             if (!rs.next()) {
-                createStatement.execute("create table exercises (id int primary key, topic varchar(20), number_of_words int, pictures boolean, sound boolean, difficulty int)");
+                createStatement.execute("create table exercises (exercises_id int primary key, topic varchar(20), number_of_words int, pictures boolean, sound boolean, difficulty int)");
                 System.out.println("Az excercises tábla létrejött");
             }
         } catch (SQLException ex) {
             System.out.println("Valami nem jó az excercises adattábla létrehozásánál");
+            System.out.println(""+ex);
+        }*/
+        
+        //A Words tábla létrehozása
+        
+        /*try {
+            ResultSet rs = dbmb.getTables(null, "APP", "WORDS", null);
+            if (!rs.next()) {
+                createStatement.execute("create table words (serial_number int primary key, word varchar(20), word_class varchar(20), exercises_id int references exercises(exercises_id))");
+                System.out.println("Az excercises tábla létrejött");
+            }
+        } catch (SQLException ex) {
+            System.out.println("Valami nem jó az excercises adattábla létrehozásánál");
+            System.out.println(""+ex);
+        }*/
+        
+        
+        //A Tests tábla létrehozása
+       /* try {
+            ResultSet rs = dbmb.getTables(null, "APP", "TESTS", null);
+            if (!rs.next()) {
+                createStatement.execute("create table tests (test_id int primary key, phone_number int references users(id), exercise_id int references exercises(exercises_id), result int, start_time time, end_time time)");
+                System.out.println("A tábla létrejött");
+            }
+        } catch (SQLException ex) {
+            System.out.println("Valami nem jó az adattáblák létrehozásánál");
+            System.out.println(""+ex);
+        }*/
+       
+       
+       //Az Answers tábla létrehozása
+       /*try {
+            ResultSet rs = dbmb.getTables(null, "APP", "ANSWERS", null);
+            if (!rs.next()) {
+                createStatement.execute("create table answers (test_id int references tests(test_id), answer_number int primary key, answer varchar(20), right boolean)");
+                System.out.println("A tábla létrejött");
+            }
+        } catch (SQLException ex) {
+            System.out.println("Valami nem jó az adattáblák létrehozásánál");
             System.out.println(""+ex);
         }*/
         
