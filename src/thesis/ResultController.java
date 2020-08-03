@@ -48,7 +48,7 @@ public class ResultController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         UserService us = new UserService();
-   //     table.setItems(us.getUserList());
+        //table.setItems(us.getUserList());
         TableColumn userName = new TableColumn("Felhasználónév");
         userName.setMinWidth(100);
         userName.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -80,7 +80,14 @@ public class ResultController implements Initializable {
         userResult.setCellValueFactory(new PropertyValueFactory<User, Integer>("userResult"));
         
         table.getColumns().addAll(userName, gender, age, id, excercisesNumber, userResult);
-        LoginController cl = new LoginController();
+        //LoginController cl = new LoginController();
+        try{
+        ArrayList<User> newList = us.getList();
+        table.getItems();
+        table.setItems(us.getUserList(newList));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         /*for(User user: us.getUserList()){
             table.getItems().add(user);
         }*/

@@ -15,10 +15,10 @@ import javafx.beans.property.SimpleStringProperty;
 public class User {
     private final SimpleStringProperty username;
     private final SimpleStringProperty gender; 
-    private final SimpleIntegerProperty age;
-    private final SimpleIntegerProperty id;
-    private final SimpleIntegerProperty excercisesNumber;
-    private final SimpleIntegerProperty userResult;
+    private final SimpleStringProperty age;
+    private final SimpleStringProperty id;
+    private final SimpleStringProperty excercisesNumber;
+    private final SimpleStringProperty userResult;
     
     //result-float
     //number of excercises
@@ -26,19 +26,19 @@ public class User {
     public User(){
         this.username = new SimpleStringProperty("");
         this.gender = new SimpleStringProperty("");
-        this.age = new SimpleIntegerProperty(0);
-        this.id = new SimpleIntegerProperty(0);
-        this.excercisesNumber = new SimpleIntegerProperty(0);
-        this.userResult = new SimpleIntegerProperty(0);
+        this.age = new SimpleStringProperty(String.valueOf(0));
+        this.id = new SimpleStringProperty(String.valueOf(0));
+        this.excercisesNumber = new SimpleStringProperty(String.valueOf(0));
+        this.userResult = new SimpleStringProperty(String.valueOf(0));
     }
     
     public User(String uName, String gend, int ages, int identity, int excercises, int eredmeny){
         this.username = new SimpleStringProperty(uName);
         this.gender = new SimpleStringProperty(gend);
-        this.age = new SimpleIntegerProperty(ages);
-        this.id = new SimpleIntegerProperty(identity);
-        this.excercisesNumber = new SimpleIntegerProperty(excercises);
-        this.userResult = new SimpleIntegerProperty(eredmeny);
+        this.age = new SimpleStringProperty(String.valueOf(ages));
+        this.id = new SimpleStringProperty(String.valueOf(identity));
+        this.excercisesNumber = new SimpleStringProperty(String.valueOf(excercises));
+        this.userResult = new SimpleStringProperty(String.valueOf(eredmeny));
     }
     
     public String getUsername(){
@@ -57,35 +57,35 @@ public class User {
         gender.set(gend);
     }
     
-    public int getAge(){
+    public String getAge(){
         return age.get();
     }
     
-    public void setAge(int ages){
+    public void setAge(String ages){
         age.set(ages);
     }
     
-    public int getId(){
+    public String getId(){
         return id.get();
     }
     
-    public void setId(int identity){
+    public void setId(String identity){
         id.set(identity);
     }
     
-    public int getExcercisesNumber(){
+    public String getExcercisesNumber(){
         return excercisesNumber.get();
     }
     
-    public void setExcercisesNumber(int excercises){
+    public void setExcercisesNumber(String excercises){
         id.set(excercises);
     }
     
-    public int getUserResult(){
+    public String getUserResult(){
         return userResult.get();
     }
     
-    public void setUserResult(int userresult){
+    public void setUserResult(String userresult){
         userResult.set(userresult);
     }
 }

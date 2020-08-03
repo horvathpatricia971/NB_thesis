@@ -19,7 +19,7 @@ public class UserService {
     DB db = new DB();
     
    
-    public ObservableList<User> userService(){
+    /*public ObservableList<User> userService(){
         ObservableList<User> result = FXCollections.observableArrayList();
         result = (ObservableList<User>) db.getAllUsers();
         return result;
@@ -29,5 +29,18 @@ public class UserService {
         
         ObservableList<User> result = FXCollections.observableArrayList(db.getAllUsers());
         return result;
+    }*/
+    
+    public ObservableList<User> userService(){
+        return this.getUserList(getList());
     }
+    
+    public ArrayList<User> getList(){
+        return db.getAllUsers();
+    }
+    
+    public ObservableList<User> getUserList(ArrayList<User> list){
+        return FXCollections.observableArrayList(list);
+    }
+    
 }

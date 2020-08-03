@@ -124,18 +124,17 @@ public class DB {
             PreparedStatement preparedStatement = conn.prepareCall(sql);
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getGender());
-            preparedStatement.setInt(3, user.getAge());
-            preparedStatement.setInt(4, user.getId());
+            preparedStatement.setInt(3, Integer.valueOf(user.getAge()));
+            preparedStatement.setInt(4, Integer.valueOf(user.getId()));
         //    preparedStatement.setInt(5, (int) user.getResult());
-            preparedStatement.setInt(5, user.getExcercisesNumber());
-            preparedStatement.setInt(6, user.getUserResult());
+            preparedStatement.setInt(5, Integer.valueOf(user.getExcercisesNumber()));
+            preparedStatement.setInt(6, Integer.valueOf(user.getUserResult()));
             preparedStatement.execute(); //ezt irtam
             System.out.println("User hozzaadva.");
         } catch (SQLException ex) {
             System.out.println("Valami gond van a userek hozzáadásakor.");
             System.out.println(""+ex);
         }
-        
     }
     
     public ArrayList<User> getAllUsers(){
@@ -143,7 +142,7 @@ public class DB {
         ArrayList<User> users = null;
         int i = 0;
         try {
-            ResultSet rs = createStatement.executeQuery(sql);
+            /*ResultSet rs = createStatement.executeQuery(sql);
             users = new ArrayList<>();
             if (!rs.next()) {
                 User actualUser = new User(rs.getString("username"), rs.getString("gender"), rs.getInt("age"), rs.getInt("id"),rs.getInt("excercisesNumber"),rs.getInt("userResult"));
@@ -156,6 +155,18 @@ public class DB {
                 i++;
                
                 System.out.println(i + ".");
+            }*/
+            ResultSet rs = createStatement.executeQuery(sql);
+            users = new ArrayList<>();
+            while(rs.next()){
+                users.add(
+                        new User(
+                        rs.getString("username"),
+                        rs.getString("gender"),
+                        rs.getInt("age"),
+                        rs.getInt("id"),
+                        rs.getInt("exercisesNumber"),
+                        rs.getInt("userResult")));          
             }
         } catch (SQLException ex) {
             System.out.println("Valami gond van a userek kiolvasásakor.");
