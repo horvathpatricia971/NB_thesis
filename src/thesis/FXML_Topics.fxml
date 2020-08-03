@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="secondAnchorPane" prefHeight="650.0" prefWidth="650.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thesis.FXMLController_Topics">
+<AnchorPane id="AnchorPane" fx:id="secondAnchorPane" prefHeight="650.0" prefWidth="650.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thesis.TopicsController">
     <stylesheets>
         <URL value="@main.css" />
     </stylesheets>
@@ -41,6 +41,9 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="dataOut" layoutX="91.0" layoutY="438.0" mnemonicParsing="false" onAction="#dataOutAction" text="Button" />
+      <Button fx:id="dataOut" layoutX="242.0" layoutY="591.0" mnemonicParsing="false" onAction="#dataOutAction" style="-fx-background-color: #D7A5F1; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Eredményeim">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
    </children>
 </AnchorPane>

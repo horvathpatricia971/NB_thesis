@@ -28,7 +28,6 @@ public class UserService {
     public ObservableList<User> getUserList(){
         
         ObservableList<User> result = FXCollections.observableArrayList(db.getAllUsers());
-    //    result = db.getAllUsers();
         return result;
     }
 }

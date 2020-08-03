@@ -20,7 +20,7 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author horvathpatricia
  */
-public class FXMLController_Topics implements Initializable {
+public class TopicsController implements Initializable {
 
     @FXML
     private AnchorPane secondAnchorPane;

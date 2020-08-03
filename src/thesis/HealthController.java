@@ -5,22 +5,23 @@
  */
 package thesis;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.layout.Pane;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
  *
  * @author horvathpatricia
  */
-public class FXMLController_Word_Health implements Initializable {
+public class HealthController implements Initializable {
     
     
     @FXML
@@ -72,6 +73,11 @@ public class FXMLController_Word_Health implements Initializable {
     private Pane ninthPane;
     @FXML
     private Pane tenthPane;
+    @FXML
+    private Button testClick;
+    
+    @FXML
+    private AnchorPane healthAnchorPane;
     
     @FXML
     private void firstWordAction(ActionEvent Event){
@@ -276,6 +282,12 @@ public class FXMLController_Word_Health implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }   
+
+    @FXML
+    private void testClickAction(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Test_Health.fxml"));
+        healthAnchorPane.getChildren().setAll(pane);
+    }
     
    
     

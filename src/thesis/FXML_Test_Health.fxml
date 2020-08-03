@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="testAnchor" prefHeight="650.0" prefWidth="650.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thesis.TestHealthController">
+    <stylesheets>
+        <URL value="@tests.css" />
+    </stylesheets>
+   <children>
+      <Pane prefHeight="650.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffae2133" height="650.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
+      <Label layoutX="91.0" layoutY="24.0" text="Teszt az egészség témakörben">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Button layoutX="244.0" layoutY="290.0" mnemonicParsing="false" onAction="#beginAction" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Kezdés">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+      <Pane fx:id="firstPane" layoutX="76.0" layoutY="99.0" prefHeight="534.0" prefWidth="500.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fce3b8" height="534.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" width="500.0" />
+            <Label layoutX="88.0" layoutY="83.0" text="Melyik a hiányzó szó?">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="154.0" prefHeight="44.0" prefWidth="314.0" text="Az                      fontos.">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="61.0" layoutY="154.0" text="egészség" textFill="#ff4f38">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="41.0" layoutY="198.0" text=" is important.">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Button layoutX="191.0" layoutY="259.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="119.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="mouse">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="191.0" layoutY="327.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="119.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="health">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="191.0" layoutY="396.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="119.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="brown">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Label layoutX="14.0" layoutY="198.0" text="..." textFill="#ff4f38">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Button layoutX="348.0" layoutY="473.0" mnemonicParsing="false" onAction="#firstButtonAction" prefHeight="47.0" prefWidth="138.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="következő">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Label layoutX="183.0" layoutY="26.0" text="1. kérdés">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="13.0" layoutY="488.0" text="1/10">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="secondPane" layoutX="76.0" layoutY="99.0" prefHeight="500.0" prefWidth="500.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fce3b8" height="500.0" stroke="BLACK" strokeType="INSIDE" width="500.0" />
+            <Label layoutX="86.0" layoutY="29.0" text="Melyik a hiányzó szó?">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="19.0" layoutY="104.0" prefHeight="44.0" prefWidth="173.0" text="Szereted a ">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="189.0" layoutY="104.0" text="zöldséget?" textFill="#ff4f38">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="19.0" layoutY="148.0" text="Do you like">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Button layoutX="171.0" layoutY="227.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="138.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="vegetable">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="170.0" layoutY="294.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="138.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="paradise">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="171.0" layoutY="360.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="138.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="chrisps">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Label layoutX="189.0" layoutY="148.0" text="...?" textFill="#ff4f38">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Button layoutX="348.0" layoutY="439.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="138.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="következő">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

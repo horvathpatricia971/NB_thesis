@@ -9,8 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 
@@ -69,7 +67,7 @@ public class DB {
         /*try {
             ResultSet rs = dbmb.getTables(null, "APP", "EXERCISES", null);
             if (!rs.next()) {
-                createStatement.execute("create table exercises (exercises_id int primary key, topic varchar(20), number_of_words int, pictures boolean, sound boolean, difficulty int)");
+                createStatement.execute("create table exercises (exerciseId int primary key, topic varchar(20), numberOfWords int, pictures boolean, sound boolean, difficulty int)");
                 System.out.println("Az excercises tábla létrejött");
             }
         } catch (SQLException ex) {
@@ -82,7 +80,7 @@ public class DB {
         /*try {
             ResultSet rs = dbmb.getTables(null, "APP", "WORDS", null);
             if (!rs.next()) {
-                createStatement.execute("create table words (serial_number int primary key, word varchar(20), word_class varchar(20), exercises_id int references exercises(exercises_id))");
+                createStatement.execute("create table words (serialNumber int primary key, word varchar(20), wordClass varchar(20), exerciseId int references exercises(exerciseId))");
                 System.out.println("Az excercises tábla létrejött");
             }
         } catch (SQLException ex) {
@@ -95,7 +93,7 @@ public class DB {
        /* try {
             ResultSet rs = dbmb.getTables(null, "APP", "TESTS", null);
             if (!rs.next()) {
-                createStatement.execute("create table tests (test_id int primary key, phone_number int references users(id), exercise_id int references exercises(exercises_id), result int, start_time time, end_time time)");
+                createStatement.execute("create table tests (testId int primary key, userId int references users(id), exerciseId int references exercises(exerciseId), testResult int, startTime time, endTime time)");
                 System.out.println("A tábla létrejött");
             }
         } catch (SQLException ex) {
@@ -108,7 +106,7 @@ public class DB {
        /*try {
             ResultSet rs = dbmb.getTables(null, "APP", "ANSWERS", null);
             if (!rs.next()) {
-                createStatement.execute("create table answers (test_id int references tests(test_id), answer_number int primary key, answer varchar(20), right boolean)");
+                createStatement.execute("create table answers (testId int references tests(testId), answerNumber int primary key, answer varchar(20), right boolean)");
                 System.out.println("A tábla létrejött");
             }
         } catch (SQLException ex) {
@@ -143,11 +141,10 @@ public class DB {
     public ArrayList<User> getAllUsers(){
         String sql = "select * from users";
         ArrayList<User> users = null;
-        System.out.println("SELECT");
+        int i = 0;
         try {
             ResultSet rs = createStatement.executeQuery(sql);
             users = new ArrayList<>();
-            System.out.println("create");
             if (!rs.next()) {
                 User actualUser = new User(rs.getString("username"), rs.getString("gender"), rs.getInt("age"), rs.getInt("id"),rs.getInt("excercisesNumber"),rs.getInt("userResult"));
                 users.add(actualUser);
@@ -156,9 +153,9 @@ public class DB {
             
             while(rs.next()){
                 System.out.println(rs.getString("username") + ", " + rs.getString("gender") + ", " + rs.getInt("age") + ", " + rs.getInt("id")+ ", " + rs.getInt("excercisesNumber")+ ", " + rs.getInt("userResult"));
-                
+                i++;
                
-                System.out.println("while");
+                System.out.println(i + ".");
             }
         } catch (SQLException ex) {
             System.out.println("Valami gond van a userek kiolvasásakor.");

@@ -24,14 +24,14 @@ import javafx.scene.control.cell.TextFieldTableCell;
  *
  * @author horvathpatricia
  */
-public class FXML_Leader_BoardController implements Initializable {
+public class ResultController implements Initializable {
 
     @FXML
     private TableView table;
     @FXML
     private User hierUser;
     @FXML
-    private FXMLDocumentController_Login DocContLog;
+    private LoginController DocContLog;
     
     DB db = new DB();
     
@@ -80,7 +80,7 @@ public class FXML_Leader_BoardController implements Initializable {
         userResult.setCellValueFactory(new PropertyValueFactory<User, Integer>("userResult"));
         
         table.getColumns().addAll(userName, gender, age, id, excercisesNumber, userResult);
-        FXMLDocumentController_Login cl = new FXMLDocumentController_Login();
+        LoginController cl = new LoginController();
         /*for(User user: us.getUserList()){
             table.getItems().add(user);
         }*/
@@ -97,7 +97,7 @@ public class FXML_Leader_BoardController implements Initializable {
         
     }*/
     
-    public void SetDocControl(FXMLDocumentController_Login DocContLog){
+    public void SetDocControl(LoginController DocContLog){
         this.SetDocControl(DocContLog);
         table.setItems(DocContLog.getPersonData());  
     }

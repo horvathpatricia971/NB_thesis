@@ -24,7 +24,7 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author horvathpatricia
  */
-public class FXMLDocumentController_Login implements Initializable {
+public class LoginController implements Initializable {
     
     @FXML
     private Label label;
@@ -69,8 +69,6 @@ public class FXMLDocumentController_Login implements Initializable {
        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Topics.fxml"));
        rootPane.getChildren().setAll(pane);
        
-       
-      // String gender = (String) genericBox.getValue();
        int age = Integer.parseInt(inputAge.getText());
        int id = Integer.parseInt((inputId.getText()));
        

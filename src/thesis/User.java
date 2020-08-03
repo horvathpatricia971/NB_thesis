@@ -5,8 +5,6 @@
  */
 package thesis;
 
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -19,7 +17,6 @@ public class User {
     private final SimpleStringProperty gender; 
     private final SimpleIntegerProperty age;
     private final SimpleIntegerProperty id;
-  //  private final SimpleIntegerProperty result;
     private final SimpleIntegerProperty excercisesNumber;
     private final SimpleIntegerProperty userResult;
     
@@ -31,7 +28,6 @@ public class User {
         this.gender = new SimpleStringProperty("");
         this.age = new SimpleIntegerProperty(0);
         this.id = new SimpleIntegerProperty(0);
-    //   this.result = new SimpleIntegerProperty(0);
         this.excercisesNumber = new SimpleIntegerProperty(0);
         this.userResult = new SimpleIntegerProperty(0);
     }
@@ -41,7 +37,6 @@ public class User {
         this.gender = new SimpleStringProperty(gend);
         this.age = new SimpleIntegerProperty(ages);
         this.id = new SimpleIntegerProperty(identity);
-  //  this.result = new SimpleIntegerProperty(results);
         this.excercisesNumber = new SimpleIntegerProperty(excercises);
         this.userResult = new SimpleIntegerProperty(eredmeny);
     }
@@ -78,14 +73,6 @@ public class User {
         id.set(identity);
     }
     
-    /*public float getResult(){
-        return result.get();
-    }
-    
-    public void setResult(int results){
-        result.set(results);
-    }*/
-    
     public int getExcercisesNumber(){
         return excercisesNumber.get();
     }
@@ -94,7 +81,7 @@ public class User {
         id.set(excercises);
     }
     
- public int getUserResult(){
+    public int getUserResult(){
         return userResult.get();
     }
     
