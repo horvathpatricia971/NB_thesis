@@ -1,24 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="thesis.ResultController">
+<AnchorPane id="AnchorPane" fx:id="resultAnchor" prefHeight="650.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thesis.ResultController">
    <children>
-      <Pane prefHeight="650.0" prefWidth="600.0">
+      <Pane prefHeight="650.0" prefWidth="650.0">
          <children>
-            <TableView fx:id="table" layoutY="40.0" prefHeight="610.0" prefWidth="600.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffae2134" height="650.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
+            <TableView fx:id="table" layoutX="76.0" layoutY="64.0" prefHeight="523.0" prefWidth="497.0" style="-fx-background-color: #fce3b8; -fx-border-color: #000000;">
               <placeholder>
-                  <Label text="Még nincsenek eredmények"/>
+                  <Label text="Még nincsenek eredmények">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Label>
               </placeholder>
               <columns>
               </columns>
             </TableView>
-            <Label layoutX="244.0" layoutY="14.0" text="Eredmények" />
+            <Label layoutX="135.0" layoutY="20.0" text="Itt láthatóak az eddig elért eredményei">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Button layoutX="25.0" layoutY="595.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-background-insets: 0; -fx-border-radius: 4;" text="Vissza">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="A gombot megnyomva újra a Témák kiválasztása felület jelenik meg." />
+               </tooltip>
+            </Button>
          </children>
       </Pane>
    </children>

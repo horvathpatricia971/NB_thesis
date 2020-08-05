@@ -96,7 +96,7 @@ public class HealthController implements Initializable {
         ninthPane.setVisible(false);
         tenthPane.setVisible(false);
         
-        firstButton.setStyle("-fx-background-color: #6AEA88");
+        firstButton.setStyle("-fx-background-color: #A0E5AA");
     }
     
     @FXML
@@ -115,7 +115,7 @@ public class HealthController implements Initializable {
         ninthPane.setVisible(false);
         tenthPane.setVisible(false);
         
-        secondButton.setStyle("-fx-background-color: #6AEA88");
+        secondButton.setStyle("-fx-background-color: #A0E5AA");
     }
     
     @FXML
@@ -134,7 +134,7 @@ public class HealthController implements Initializable {
         ninthPane.setVisible(false);
         tenthPane.setVisible(false);
         
-        thirdButton.setStyle("-fx-background-color: #6AEA88");
+        thirdButton.setStyle("-fx-background-color: #A0E5AA");
     }
     
     @FXML
@@ -153,7 +153,7 @@ public class HealthController implements Initializable {
         ninthPane.setVisible(false);
         tenthPane.setVisible(false);
         
-        fourthButton.setStyle("-fx-background-color: #6AEA88");
+        fourthButton.setStyle("-fx-background-color: #A0E5AA");
     }
     
     @FXML
@@ -173,7 +173,7 @@ public class HealthController implements Initializable {
         ninthPane.setVisible(false);
         tenthPane.setVisible(false);
         
-        fifthButton.setStyle("-fx-background-color: #6AEA88");
+        fifthButton.setStyle("-fx-background-color: #A0E5AA");
     }
     
     @FXML
@@ -193,7 +193,7 @@ public class HealthController implements Initializable {
         ninthPane.setVisible(false);
         tenthPane.setVisible(false);
         
-        sixthButton.setStyle("-fx-background-color: #6AEA88");
+        sixthButton.setStyle("-fx-background-color: #A0E5AA");
     }
     
     @FXML
@@ -212,7 +212,7 @@ public class HealthController implements Initializable {
         ninthPane.setVisible(false);
         tenthPane.setVisible(false);
         
-        seventhButton.setStyle("-fx-background-color: #6AEA88");
+        seventhButton.setStyle("-fx-background-color: #A0E5AA");
     }
     
     @FXML
@@ -232,7 +232,7 @@ public class HealthController implements Initializable {
         ninthPane.setVisible(false);
         tenthPane.setVisible(false);
         
-        eighthButton.setStyle("-fx-background-color: #6AEA88");
+        eighthButton.setStyle("-fx-background-color: #A0E5AA");
     }
     
     @FXML
@@ -252,7 +252,7 @@ public class HealthController implements Initializable {
         ninthPane.setVisible(true);
         tenthPane.setVisible(false);
         
-        ninthButton.setStyle("-fx-background-color: #6AEA88");
+        ninthButton.setStyle("-fx-background-color: #A0E5AA");
     }
     
     @FXML
@@ -272,7 +272,7 @@ public class HealthController implements Initializable {
         ninthPane.setVisible(false);
         tenthPane.setVisible(true);
         
-        tenthButton.setStyle("-fx-background-color: #6AEA88");
+        tenthButton.setStyle("-fx-background-color: #A0E5AA");
     }
     
     /**
@@ -288,7 +288,11 @@ public class HealthController implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Test_Health.fxml"));
         healthAnchorPane.getChildren().setAll(pane);
     }
-    
-   
+
+    @FXML
+    private void logOut(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Topics.fxml"));
+        healthAnchorPane.getChildren().setAll(pane);
+    }
     
 }

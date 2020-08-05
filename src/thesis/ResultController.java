@@ -5,19 +5,21 @@
  */
 package thesis;
 
+import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -27,13 +29,13 @@ import javafx.scene.control.cell.TextFieldTableCell;
 public class ResultController implements Initializable {
 
     @FXML
+    private AnchorPane resultAnchor;
+    @FXML
     private TableView table;
     @FXML
     private User hierUser;
     @FXML
     private LoginController DocContLog;
-    
-    DB db = new DB();
     
     public final ObservableList<User> data = FXCollections.observableArrayList();
 
@@ -107,5 +109,11 @@ public class ResultController implements Initializable {
     public void SetDocControl(LoginController DocContLog){
         this.SetDocControl(DocContLog);
         table.setItems(DocContLog.getPersonData());  
+    }
+    
+    @FXML
+    private void logOut(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Topics.fxml"));
+        resultAnchor.getChildren().setAll(pane);
     }
 }

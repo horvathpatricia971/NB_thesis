@@ -48,5 +48,11 @@ public class TopicsController implements Initializable {
         secondAnchorPane.getChildren().setAll(pane);
        
     }
+
+    @FXML
+    private void logOut(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Login.fxml"));
+        secondAnchorPane.getChildren().setAll(pane);
+    }
     
 }

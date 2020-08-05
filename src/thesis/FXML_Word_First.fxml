@@ -101,7 +101,7 @@
             </Button>
          </children>
       </VBox>
-      <Pane fx:id="firstPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0" visible="false">
+      <Pane fx:id="firstPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
             <Label layoutX="117.0" layoutY="31.0" text="egészség - health">
@@ -220,7 +220,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="fourthPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0">
+      <Pane fx:id="fourthPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
             <Label layoutX="121.0" layoutY="31.0" text="boldog - happy">
@@ -500,7 +500,12 @@
             </Label>
          </children>
       </Pane>
-      <Button fx:id="testClick" layoutX="458.0" layoutY="594.0" onAction="#testClickAction" prefHeight="42.0" prefWidth="178.0" text="Teszt megoldása">
+      <Button fx:id="testClick" layoutX="414.0" layoutY="594.0" onAction="#testClickAction" prefHeight="42.0" prefWidth="178.0" style="-fx-background-color: #8AD1FA;" text="Teszt megoldása">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="70.0" layoutY="594.0" mnemonicParsing="false" onAction="#logOut" prefHeight="39.0" prefWidth="120.0" style="-fx-background-color: #8AD1FA;" text="Vissza">
          <font>
             <Font size="20.0" />
          </font>

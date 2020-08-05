@@ -18,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -61,7 +62,7 @@ public class LoginController implements Initializable {
         
   //      genericBox.setItems(list);
       genericBox.getItems().add("nő");
-      genericBox.getItems().add("férfi");  
+      genericBox.getItems().add("férfi");
     }   
     
     @FXML
@@ -93,6 +94,5 @@ public class LoginController implements Initializable {
         loader.setLocation(MainApp.class.getResource("thesis/FXML_Leader_BoardController.fxml"));
         Pane content = (Pane) loader.load();
     }*/
-    
-    
+
 }

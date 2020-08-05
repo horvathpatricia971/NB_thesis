@@ -30,32 +30,50 @@
             <Font size="36.0" />
          </font>
       </Label>
-        <Label fx:id="label" layoutX="83.0" layoutY="241.0" minHeight="16" minWidth="69" text="Adja meg a felhasználónevét:">
+        <Label fx:id="label" layoutX="83.0" layoutY="348.0" minHeight="16" minWidth="69" text="Adja meg a felhasználónevét:">
          <font>
             <Font size="24.0" />
          </font></Label>
-      <Label layoutX="83.0" layoutY="348.0" text="Adja meg az életkorát:">
+      <Label layoutX="83.0" layoutY="455.0" text="Adja meg az életkorát:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="83.0" layoutY="296.0" text="Adja meg a nemét:">
+      <Label layoutX="83.0" layoutY="403.0" text="Adja meg a nemét:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="83.0" layoutY="397.0" prefHeight="37.0" prefWidth="270.0" text="Adja meg a telefonszámát:">
+      <Label layoutX="83.0" layoutY="504.0" prefHeight="37.0" prefWidth="270.0" text="Adja meg a telefonszámát:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="inputUsername" layoutX="406.0" layoutY="242.0" />
-      <ChoiceBox fx:id="genericBox" layoutX="406.0" layoutY="297.0" prefHeight="21.0" prefWidth="161.0" />
-      <TextField fx:id="inputAge" layoutX="406.0" layoutY="349.0" />
-      <TextField fx:id="inputId" layoutX="406.0" layoutY="402.0" />
-        <Button fx:id="button" layoutX="406.0" layoutY="454.0" onAction="#loadSecond" prefHeight="37.0" prefWidth="161.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Tovább">
+      <TextField fx:id="inputUsername" layoutX="406.0" layoutY="349.0" />
+      <ChoiceBox fx:id="genericBox" layoutX="406.0" layoutY="404.0" prefHeight="21.0" prefWidth="161.0" />
+      <TextField fx:id="inputAge" layoutX="406.0" layoutY="456.0" />
+      <TextField fx:id="inputId" layoutX="406.0" layoutY="509.0" />
+        <Button fx:id="button" layoutX="406.0" layoutY="561.0" onAction="#loadSecond" prefHeight="37.0" prefWidth="161.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Tovább">
          <font>
             <Font size="18.0" />
-         </font></Button>
+         </font>
+         <tooltip>
+            <Tooltip text="A gomb megnyomásával a Választható témák felületére érsz." />
+         </tooltip></Button>
+      <Label layoutX="222.0" layoutY="195.0" text="Kedves Felhasználó!">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="37.0" layoutY="243.0" text="Az alábbi adatok megadásával és a program segítségével ">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="127.0" layoutY="272.0" text="elkezdheted az angol nyelv elsajátítását.">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

@@ -93,7 +93,7 @@ public class DB {
        /* try {
             ResultSet rs = dbmb.getTables(null, "APP", "TESTS", null);
             if (!rs.next()) {
-                createStatement.execute("create table tests (testId int primary key, userId int references users(id), exerciseId int references exercises(exerciseId), testResult int, startTime time, endTime time)");
+                createStatement.execute("create table tests (testId int not null primary key generated always as identity (start with 1, increment by 1), userId int references users(id), exerciseId int references exercises(exerciseId), testResult int, startTime time, endTime time)");
                 System.out.println("A tábla létrejött");
             }
         } catch (SQLException ex) {
@@ -165,12 +165,12 @@ public class DB {
                         rs.getString("gender"),
                         rs.getInt("age"),
                         rs.getInt("id"),
-                        rs.getInt("exercisesNumber"),
+                        rs.getInt("excercisesNumber"),
                         rs.getInt("userResult")));          
             }
         } catch (SQLException ex) {
             System.out.println("Valami gond van a userek kiolvasásakor.");
-            System.out.println(""+ex);
+            ex.printStackTrace();
         }
         return users;
     }
