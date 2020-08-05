@@ -7,6 +7,8 @@ package thesis;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -79,6 +81,8 @@ public class HealthController implements Initializable {
     @FXML
     private AnchorPane healthAnchorPane;
     
+    private List<Boolean> testReady;
+    
     @FXML
     private void firstWordAction(ActionEvent Event){
         //FXMLLoadHealth object = new FXMLLoadHealth();
@@ -97,6 +101,11 @@ public class HealthController implements Initializable {
         tenthPane.setVisible(false);
         
         firstButton.setStyle("-fx-background-color: #A0E5AA");
+        
+        if(!this.testReady.get(0)){
+            this.testReady.set(0, Boolean.TRUE);
+            this.checkTestReady();
+        }
     }
     
     @FXML
@@ -116,6 +125,11 @@ public class HealthController implements Initializable {
         tenthPane.setVisible(false);
         
         secondButton.setStyle("-fx-background-color: #A0E5AA");
+        
+        if(!this.testReady.get(1)){
+            this.testReady.set(1, Boolean.TRUE);
+            this.checkTestReady();
+        }
     }
     
     @FXML
@@ -135,6 +149,10 @@ public class HealthController implements Initializable {
         tenthPane.setVisible(false);
         
         thirdButton.setStyle("-fx-background-color: #A0E5AA");
+        if(!this.testReady.get(2)){
+            this.testReady.set(2, Boolean.TRUE);
+            this.checkTestReady();
+        }
     }
     
     @FXML
@@ -154,6 +172,10 @@ public class HealthController implements Initializable {
         tenthPane.setVisible(false);
         
         fourthButton.setStyle("-fx-background-color: #A0E5AA");
+        if(!this.testReady.get(3)){
+            this.testReady.set(3, Boolean.TRUE);
+            this.checkTestReady();
+        }
     }
     
     @FXML
@@ -174,6 +196,10 @@ public class HealthController implements Initializable {
         tenthPane.setVisible(false);
         
         fifthButton.setStyle("-fx-background-color: #A0E5AA");
+        if(!this.testReady.get(4)){
+            this.testReady.set(4, Boolean.TRUE);
+            this.checkTestReady();
+        }
     }
     
     @FXML
@@ -194,6 +220,10 @@ public class HealthController implements Initializable {
         tenthPane.setVisible(false);
         
         sixthButton.setStyle("-fx-background-color: #A0E5AA");
+        if(!this.testReady.get(5)){
+            this.testReady.set(5, Boolean.TRUE);
+            this.checkTestReady();
+        }
     }
     
     @FXML
@@ -213,6 +243,11 @@ public class HealthController implements Initializable {
         tenthPane.setVisible(false);
         
         seventhButton.setStyle("-fx-background-color: #A0E5AA");
+        
+        if(!this.testReady.get(6)){
+            this.testReady.set(6, Boolean.TRUE);
+            this.checkTestReady();
+        }
     }
     
     @FXML
@@ -233,6 +268,11 @@ public class HealthController implements Initializable {
         tenthPane.setVisible(false);
         
         eighthButton.setStyle("-fx-background-color: #A0E5AA");
+        
+        if(!this.testReady.get(7)){
+            this.testReady.set(7, Boolean.TRUE);
+            this.checkTestReady();
+        }
     }
     
     @FXML
@@ -253,6 +293,11 @@ public class HealthController implements Initializable {
         tenthPane.setVisible(false);
         
         ninthButton.setStyle("-fx-background-color: #A0E5AA");
+        
+        if(!this.testReady.get(8)){
+            this.testReady.set(8, Boolean.TRUE);
+            this.checkTestReady();
+        }
     }
     
     @FXML
@@ -273,6 +318,12 @@ public class HealthController implements Initializable {
         tenthPane.setVisible(true);
         
         tenthButton.setStyle("-fx-background-color: #A0E5AA");
+        
+        if(!this.testReady.get(9)){
+            this.testReady.set(9, Boolean.TRUE);
+            this.checkTestReady();
+        }
+        
     }
     
     /**
@@ -280,13 +331,14 @@ public class HealthController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }   
+        
+    }
 
     @FXML
     private void testClickAction(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Test_Health.fxml"));
         healthAnchorPane.getChildren().setAll(pane);
+        
     }
 
     @FXML
@@ -295,4 +347,12 @@ public class HealthController implements Initializable {
         healthAnchorPane.getChildren().setAll(pane);
     }
     
+    private void checkTestReady() {
+        boolean ready = true;
+        for (Boolean b : this.testReady){
+            if(!b)ready = false;
+        }
+        if(ready) this.testClick.setDisable(!ready);
+    }
+        
 }
