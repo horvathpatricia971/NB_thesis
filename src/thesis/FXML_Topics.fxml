@@ -15,57 +15,89 @@
         <URL value="@main.css" />
     </stylesheets>
    <children>
-      <Pane prefHeight="650.0" prefWidth="650.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffae2133" height="650.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="95.0" layoutX="54.0" layoutY="69.0" stroke="BLACK" strokeType="INSIDE" width="547.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop color="#3896d9b9" />
-                  <Stop color="#55bcd9ba" offset="0.32028551107498476" />
-                  <Stop color="#55bcd9ba" offset="0.6925675675675675" />
-                  <Stop color="#3896d9b9" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </fill></Rectangle>
-      <Label layoutX="183.0" layoutY="74.0" prefHeight="85.0" prefWidth="284.0" text="Választható témák">
-         <font>
-            <Font size="36.0" />
-         </font></Label>
-      <Button layoutX="91.0" layoutY="261.0" mnemonicParsing="false" onAction="#loadThird" style="-fx-background-color: #F8B9DE; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Egészség">
-         <font>
-            <Font size="24.0" />
-         </font>
-         <tooltip>
-            <Tooltip text="A gomb megnyomásával az egészség  témakörben tanulhat." />
-         </tooltip></Button>
-      <Button layoutX="92.0" layoutY="343.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="130.0" style="-fx-background-color: #ACFBD5; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Utazás">
-         <font>
-            <Font size="24.0" />
-         </font>
-         <tooltip>
-            <Tooltip text="A gomb megnyomásával az utazás témakörben tanulhat." />
-         </tooltip>
-      </Button>
-      <Button fx:id="dataOut" layoutX="428.0" layoutY="580.0" mnemonicParsing="false" onAction="#dataOutAction" style="-fx-background-color: #D7A5F1; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Eredményeim">
-         <font>
-            <Font size="24.0" />
-         </font>
-         <tooltip>
-            <Tooltip text="A gombra kattintva megtekintheti eddigi eredményeit." />
-         </tooltip></Button>
-      <Label layoutX="51.0" layoutY="193.0" text="Ezen a felületen tudja kiválasztani a tanulni kívánt témát.">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Button layoutX="54.0" layoutY="580.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: #D7A5F1; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Kilépés">
-         <font>
-            <Font size="24.0" />
-         </font>
-         <tooltip>
-            <Tooltip text="A gomb megnyomásával kilép a programból." />
-         </tooltip>
-      </Button>
+      <Pane fx:id="beginPane" prefHeight="650.0" prefWidth="650.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffae2133" height="650.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="95.0" layoutX="52.0" layoutY="73.0" stroke="BLACK" strokeType="INSIDE" width="547.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#3896d9b9" />
+                        <Stop color="#55bcd9ba" offset="0.32028551107498476" />
+                        <Stop color="#55bcd9ba" offset="0.6925675675675675" />
+                        <Stop color="#3896d9b9" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Label layoutX="184.0" layoutY="78.0" prefHeight="85.0" prefWidth="284.0" text="Választható témák">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="193.0" text="Ezen a felületen tudja kiválasztani a tanulni kívánt témát.">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="91.0" layoutY="261.0" mnemonicParsing="false" onAction="#loadThird" style="-fx-background-color: #F8B9DE; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Egészség">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="A gomb megnyomásával az egészség  témakörben tanulhat." />
+               </tooltip>
+            </Button>
+            <Button layoutX="92.0" layoutY="343.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="130.0" style="-fx-background-color: #ACFBD5; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Utazás">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="A gomb megnyomásával az utazás témakörben tanulhat." />
+               </tooltip>
+            </Button>
+            <Button fx:id="dataOut" layoutX="428.0" layoutY="580.0" mnemonicParsing="false" onAction="#dataOutAction" style="-fx-background-color: #D7A5F1; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Eredményeim">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="A gombra kattintva megtekintheti eddigi eredményeit." />
+               </tooltip>
+            </Button>
+            <Button layoutX="54.0" layoutY="580.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: #D7A5F1; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Kilépés">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="A gomb megnyomásával kilép a programból." />
+               </tooltip>
+            </Button>
+         </children></Pane>
+      <Pane fx:id="quitPane" layoutX="171.0" layoutY="243.0" prefHeight="200.0" prefWidth="319.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e6b4e2" height="200.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="320.0" />
+            <Label layoutX="84.0" layoutY="48.0" text="Biztosan kilép?">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="buttonQuit" layoutX="42.0" layoutY="124.0" onAction="#quitAction" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Igen">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="A gomb megnyomásával  ismét próbálkozhat az adatok megadásával." />
+               </tooltip>
+            </Button>
+            <Button fx:id="buttonNoQuit" layoutX="192.0" layoutY="124.0" onAction="#noQuitAction" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Nem">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="A gomb megnyomásával  ismét próbálkozhat az adatok megadásával." />
+               </tooltip>
+            </Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

@@ -14,26 +14,28 @@
         <URL value="@tests.css" />
     </stylesheets>
    <children>
-      <Pane prefHeight="650.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffae2133" height="650.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-      <Label layoutX="91.0" layoutY="14.0" text="Teszt az egészség témakörben">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Label>
-      <Button layoutX="244.0" layoutY="290.0" mnemonicParsing="false" onAction="#beginAction" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Kezdés">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Button>
-      <Button layoutX="19.0" layoutY="589.0" mnemonicParsing="false" onAction="#logOut" prefHeight="47.0" prefWidth="112.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Vissza">
-         <font>
-            <Font size="24.0" />
-         </font>
-         <tooltip>
-            <Tooltip text="A gombra kattintva a teszt befejeződik, a témakör választás felülete jelenik meg." />
-         </tooltip>
-      </Button>
+      <Pane fx:id="basePane" prefHeight="650.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffae2133" height="650.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
+            <Label layoutX="90.0" layoutY="15.0" text="Teszt az egészség témakörben">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Button layoutX="244.0" layoutY="290.0" mnemonicParsing="false" onAction="#beginAction" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Kezdés">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+            <Button layoutX="19.0" layoutY="589.0" mnemonicParsing="false" onAction="#logOut" prefHeight="47.0" prefWidth="112.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Vissza">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="A gombra kattintva a teszt befejeződik, a témakör választás felülete jelenik meg." />
+               </tooltip>
+            </Button>
+         </children></Pane>
       <Pane fx:id="firstPane" layoutX="75.0" layoutY="65.0" prefHeight="510.0" prefWidth="500.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fce3b8" height="510.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" width="500.0" />
@@ -659,6 +661,37 @@
                   <Font size="24.0" />
                </font>
             </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="quitPane" layoutX="125.0" layoutY="233.0" prefHeight="200.0" prefWidth="401.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e6b4e2" height="200.0" layoutX="-3.0" stroke="BLACK" strokeType="INSIDE" width="407.0" />
+            <Label layoutX="16.0" layoutY="34.0" text="Kilépés után a teszt nem foltytatható. ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="125.0" layoutY="71.0" text="Biztosan kilép?">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="buttonQuit" layoutX="77.0" layoutY="124.0" onAction="#quitAction" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Igen">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="A gomb megnyomásával  ismét próbálkozhat az adatok megadásával." />
+               </tooltip>
+            </Button>
+            <Button fx:id="buttonNoQuit" layoutX="233.0" layoutY="124.0" onAction="#noQuitAction" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Nem">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="A gomb megnyomásával  ismét próbálkozhat az adatok megadásával." />
+               </tooltip>
+            </Button>
          </children>
       </Pane>
    </children>

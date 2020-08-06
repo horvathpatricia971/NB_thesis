@@ -16,8 +16,33 @@
         <URL value="@words.css" />
     </stylesheets>
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffaa2133" height="650.0" stroke="#00000033" strokeType="INSIDE" width="650.0" />
-      <VBox alignment="TOP_CENTER" layoutY="41.0" prefHeight="450.0" prefWidth="140.0">
+      <Pane prefHeight="650.0" prefWidth="650.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffaa2133" height="650.0" stroke="#00000033" strokeType="INSIDE" width="650.0" />
+            <Button layoutX="70.0" layoutY="594.0" mnemonicParsing="false" onAction="#logOut" prefHeight="39.0" prefWidth="120.0" style="-fx-background-color: #8AD1FA;" text="Vissza">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="A gombra kattintva kilép az Egészség témakörből." />
+               </tooltip>
+            </Button>
+            <Button fx:id="testClick" disable="true" layoutX="414.0" layoutY="594.0" onAction="#testClickAction" prefHeight="42.0" prefWidth="178.0" style="-fx-background-color: #8AD1FA;" text="Teszt indítása">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="A gombra kattintva  a témakörhöz tartozó tesztet indíthatja el." />
+               </tooltip>
+            </Button>
+            <Label layoutX="209.0" layoutY="8.0" text="Egészség témakör">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <VBox alignment="TOP_CENTER" layoutY="50.0" prefHeight="450.0" prefWidth="140.0">
          <children>
             <Button fx:id="firstButton" onAction="#firstWordAction" prefHeight="39.0" prefWidth="120.0" text="egészség">
                <VBox.margin>
@@ -101,7 +126,7 @@
             </Button>
          </children>
       </VBox>
-      <Pane fx:id="firstPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0">
+      <Pane fx:id="firstPane" layoutX="140.0" layoutY="56.0" prefHeight="508.0" prefWidth="503.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
             <Label layoutX="117.0" layoutY="31.0" text="egészség - health">
@@ -140,7 +165,7 @@
       </Label>
          </children>
       </Pane>
-      <Pane fx:id="secondPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0" visible="false">
+      <Pane fx:id="secondPane" layoutX="140.0" layoutY="56.0" prefHeight="508.0" prefWidth="503.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
             <Label layoutX="117.0" layoutY="31.0" text="zöldség - vegetable">
@@ -180,7 +205,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="thirdPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0" visible="false">
+      <Pane fx:id="thirdPane" layoutX="140.0" layoutY="56.0" prefHeight="508.0" prefWidth="503.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
             <Label layoutX="117.0" layoutY="31.0" text="gyümölcs - fruit">
@@ -220,7 +245,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="fourthPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0" visible="false">
+      <Pane fx:id="fourthPane" layoutX="140.0" layoutY="56.0" prefHeight="508.0" prefWidth="503.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
             <Label layoutX="121.0" layoutY="31.0" text="boldog - happy">
@@ -260,7 +285,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="fifthPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0" visible="false">
+      <Pane fx:id="fifthPane" layoutX="140.0" layoutY="56.0" prefHeight="508.0" prefWidth="503.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
             <Label layoutX="155.0" layoutY="32.0" text="erős - strong">
@@ -300,7 +325,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="sixthPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0" visible="false">
+      <Pane fx:id="sixthPane" layoutX="140.0" layoutY="56.0" prefHeight="508.0" prefWidth="503.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
             <Label layoutX="111.0" layoutY="36.0" text="edz – to do excercise">
@@ -340,7 +365,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="seventhPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0" visible="false">
+      <Pane fx:id="seventhPane" layoutX="140.0" layoutY="56.0" prefHeight="508.0" prefWidth="503.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
             <Label layoutX="69.0" layoutY="33.0" text="diétázik – to be on a diet">
@@ -380,7 +405,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="eightPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0" visible="false">
+      <Pane fx:id="eightPane" layoutX="140.0" layoutY="56.0" prefHeight="508.0" prefWidth="503.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
             <Label layoutX="117.0" layoutY="31.0" text="otthon - home">
@@ -420,7 +445,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="ninthPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0" visible="false">
+      <Pane fx:id="ninthPane" layoutX="140.0" layoutY="56.0" prefHeight="508.0" prefWidth="503.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
             <Label layoutX="117.0" layoutY="31.0" text="család - family">
@@ -460,7 +485,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="tenthPane" layoutX="140.0" layoutY="48.0" prefHeight="508.0" prefWidth="503.0" visible="false">
+      <Pane fx:id="tenthPane" layoutX="140.0" layoutY="56.0" prefHeight="508.0" prefWidth="503.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0c4db" height="510.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
             <Label layoutX="117.0" layoutY="31.0" text="szeretet - love">
@@ -500,16 +525,6 @@
             </Label>
          </children>
       </Pane>
-      <Button fx:id="testClick" layoutX="414.0" layoutY="594.0" disable="true" onAction="#testClickAction" prefHeight="42.0" prefWidth="178.0" style="-fx-background-color: #8AD1FA;" text="Teszt megoldása">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button layoutX="70.0" layoutY="594.0" mnemonicParsing="false" onAction="#logOut" prefHeight="39.0" prefWidth="120.0" style="-fx-background-color: #8AD1FA;" text="Vissza">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
       
    </children>
 </AnchorPane>

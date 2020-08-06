@@ -1,8 +1,8 @@
 ----------------------------------------------------------------
-Wed Aug 05 16:12:58 CEST 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0173-bef7-d0f5-00000662b708 
+Thu Aug 06 17:01:22 CEST 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0173-c44a-7c7e-000006628268 
 on database directory /Users/horvathpatricia/NetBeansProjects/Ugras/sampleDataBase with class loader sun.misc.Launcher$AppClassLoader@42a57993 
-Loaded from file:/Users/horvathpatricia/NetBeansProjects/Ugras/dist/run256756250/lib/derby.jar
+Loaded from file:/Users/horvathpatricia/NetBeansProjects/Ugras/dist/run1558890392/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_251-b08
 user.dir=/Users/horvathpatricia/NetBeansProjects/Ugras

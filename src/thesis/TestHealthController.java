@@ -62,9 +62,17 @@ public class TestHealthController implements Initializable {
     @FXML
     private Pane tenthPane;
     @FXML
+    private Pane basePane;
+    @FXML
     private Button tenthButton;
     @FXML
     private Button sixthButton;
+    @FXML
+    private Pane quitPane;
+    @FXML
+    private Button buttonQuit;
+    @FXML
+    private Button buttonNoQuit;
 
     /**
      * Initializes the controller class.
@@ -83,12 +91,6 @@ public class TestHealthController implements Initializable {
     private void firstButtonAction(ActionEvent event) {
         firstPane.setVisible(false);
         secondPane.setVisible(true);
-    }
-
-    @FXML
-    private void logOut(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Topics.fxml"));
-        testAnchor.getChildren().setAll(pane);
     }
 
     @FXML
@@ -179,6 +181,27 @@ public class TestHealthController implements Initializable {
     private void tenthButtonAction(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Leader_Board.fxml"));
         testAnchor.getChildren().setAll(pane);
+    }
+    
+    @FXML
+    private void logOut(ActionEvent event) {
+        quitPane.setVisible(true);
+        basePane.setDisable(true);
+        basePane.setOpacity(0.2);
+    }
+
+    @FXML
+    private void quitAction(ActionEvent event) throws IOException  {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Topics.fxml"));
+        testAnchor.getChildren().setAll(pane);
+        
+    }
+
+    @FXML
+    private void noQuitAction(ActionEvent event) {
+        quitPane.setVisible(false);
+        basePane.setDisable(false);
+        basePane.setOpacity(1);
     }
     
 }

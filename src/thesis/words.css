@@ -13,7 +13,6 @@
 
 .button:focused{
     -fx-border-color: #CE1F1B;
-    -fx-text-fill: #CE1F1B;
     -fx-background-color:#e0c4db;
     -fx-background-insets: -1.4, 0, 1, 2;
     -fx-background-radius: 6.4, 5, 4, 3;  

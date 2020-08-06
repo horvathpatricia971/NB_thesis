@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 /**
  * FXML Controller class
@@ -26,6 +27,14 @@ public class TopicsController implements Initializable {
     private AnchorPane secondAnchorPane;
     @FXML
     private Button dataOut;
+    @FXML
+    private Pane beginPane;
+    @FXML
+    private Pane quitPane;
+    @FXML
+    private Button buttonQuit;
+    @FXML
+    private Button buttonNoQuit;
 
     /**
      * Initializes the controller class.
@@ -51,8 +60,22 @@ public class TopicsController implements Initializable {
 
     @FXML
     private void logOut(ActionEvent event) throws IOException {
+        quitPane.setVisible(true);
+        beginPane.setDisable(true);
+        beginPane.setOpacity(0.2);
+    }
+
+    @FXML
+    private void quitAction(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Login.fxml"));
         secondAnchorPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void noQuitAction(ActionEvent event) {
+        quitPane.setVisible(false);
+        beginPane.setDisable(false);
+        beginPane.setOpacity(1);
     }
     
 }
