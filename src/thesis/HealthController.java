@@ -331,7 +331,10 @@ public class HealthController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        this.testReady = new ArrayList<Boolean>();
+        for (int i = 0; i < 10; i++){
+            this.testReady.add(Boolean.FALSE);
+        }
     }
 
     @FXML

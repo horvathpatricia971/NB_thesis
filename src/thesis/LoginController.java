@@ -65,12 +65,10 @@ public class LoginController implements Initializable {
     public final ObservableList<User> data = FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        
-  //      genericBox.setItems(list);
+  //  genericBox.setItems(list);
       genericBox.getItems().add("nő");
       genericBox.getItems().add("férfi");
-    }   
+    }
     
     @FXML
     private void loadSecond(ActionEvent event) throws IOException {
@@ -78,27 +76,25 @@ public class LoginController implements Initializable {
        try {
         String username = inputUsername.getText();
         String gender = genericBox.getValue();
-        int age = Integer.parseInt(inputAge.getText());
+        String ageText = inputAge.getText();
+        String idText = inputId.getText();
         
-        if (username == null && username.isEmpty()){
-           rightPane.setVisible(true);
-           basePane.setDisable(true);
-           basePane.setOpacity(0.3);
-        }
-        
-        if (gender == null && gender.isEmpty()){
-           rightPane.setVisible(true);
-           basePane.setDisable(true);
-           basePane.setOpacity(0.3);
-        }
-        
-        if (age < 7 || age > 115){
-           rightPane.setVisible(true);
-           basePane.setDisable(true);
-           basePane.setOpacity(0.3);
-        }
-
-        int id = Integer.parseInt((inputId.getText()));
+        if(username == null || gender == null || ageText == null || idText == null){
+            
+            this.isFailedValidation();
+            
+        }else if(username.equals("") || gender.equals("") || ageText.equals("") || idText.equals("")){
+            
+            this.isFailedValidation();
+            
+        }else if (Integer.parseInt(ageText) < 7 || Integer.parseInt(ageText) > 115 ){
+          
+            this.isFailedValidation();
+           
+        }else{
+            
+        int age = Integer.parseInt(ageText);
+        int id = Integer.parseInt(idText);
         
         User newUser = new User(username, gender , age, id, 0, 0);
         data.add(newUser);
@@ -110,20 +106,16 @@ public class LoginController implements Initializable {
        
         AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Topics.fxml"));
         rootPane.getChildren().setAll(pane);
-        }catch(Exception e){
-           rightPane.setVisible(true);
-           basePane.setDisable(true);
-           basePane.setOpacity(0.3);
-
         }
-       
-        
-
+        }catch(Exception e){
+           this.isFailedValidation();
+           e.printStackTrace();
+        }
     }
     
     public ObservableList<User> getPersonData() {
 		return data;
-	}
+    }
     
     
    /* public void showContent() {
@@ -132,12 +124,22 @@ public class LoginController implements Initializable {
         loader.setLocation(MainApp.class.getResource("thesis/FXML_Leader_BoardController.fxml"));
         Pane content = (Pane) loader.load();
     }*/
+    
+    
 
     @FXML
     private void loadRight(ActionEvent event) {
+        this.isEnablePanel();
+    }
+    
+    private void isFailedValidation() {
+        rightPane.setVisible(true);
+        basePane.setDisable(true);
+    }
+    
+    private void isEnablePanel() {
         rightPane.setVisible(false);
         basePane.setDisable(false);
-        basePane.setOpacity(1);
     }
 
 }
