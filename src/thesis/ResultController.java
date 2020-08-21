@@ -83,7 +83,7 @@ public class ResultController implements Initializable {
         
         table.getColumns().addAll(userName, gender, age, id, excercisesNumber, userResult);
         //LoginController cl = new LoginController();
-        try{
+        /*try{
         ArrayList<User> newList = us.getList();
         table.getItems();
         table.setItems(us.getUserList(newList));

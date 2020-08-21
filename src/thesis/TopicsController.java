@@ -45,11 +45,6 @@ public class TopicsController implements Initializable {
         
     }    
 
-    @FXML
-    private void loadThird(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Word_First.fxml"));
-        secondAnchorPane.getChildren().setAll(pane);
-    }
 
     @FXML
     private void dataOutAction(ActionEvent event) throws IOException {
@@ -76,6 +71,18 @@ public class TopicsController implements Initializable {
         quitPane.setVisible(false);
         beginPane.setDisable(false);
         beginPane.setOpacity(1);
+    }
+
+    @FXML
+    private void loadHealth(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Word_First.fxml"));
+        secondAnchorPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void loadNature(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Nature.fxml"));
+        secondAnchorPane.getChildren().setAll(pane);
     }
     
 }

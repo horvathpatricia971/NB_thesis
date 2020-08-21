@@ -43,31 +43,46 @@ public class LoginController implements Initializable {
     TextField inputUsername;
     
     @FXML
-    private ChoiceBox<String> genericBox;
-    
+    private ChoiceBox<String> genericBox1;
+     @FXML
+    private ChoiceBox<String> genericBox2;
+    @FXML
+    private ChoiceBox<String> genericBox3;
+    @FXML
+    private ChoiceBox<String> genericBox4;
+    @FXML
+    private ChoiceBox<String> genericBox5;
     @FXML
     TextField inputAge;
     
     @FXML
-    TextField inputId;
-    
-    @FXML
     private Button buttonRight;
-    
-    
-    
-    DB db = new DB();
-    
-    
-  //  private final ObservableList<String> list = FXCollections.observableArrayList("nő", "férfi");
 
+    DB db = new DB();
 
     public final ObservableList<User> data = FXCollections.observableArrayList();
+    
+    @FXML
+    private Button button;
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
   //  genericBox.setItems(list);
-      genericBox.getItems().add("nő");
-      genericBox.getItems().add("férfi");
+      genericBox1.getItems().add("nő");
+      genericBox1.getItems().add("férfi");
+      
+      genericBox2.getItems().add("általános iskola");
+      genericBox2.getItems().add("középfokú");
+      genericBox2.getItems().add("felsőfokú");
+      
+      genericBox3.getItems().add("igen");
+      genericBox3.getItems().add("nem");
+      
+      genericBox4.getItems().add("igen");
+      genericBox4.getItems().add("nem");
+      
+      genericBox5.getItems().add("igen");
+      genericBox5.getItems().add("nem");
     }
     
     @FXML
@@ -75,15 +90,18 @@ public class LoginController implements Initializable {
        
        try {
         String username = inputUsername.getText();
-        String gender = genericBox.getValue();
+        String gender = genericBox1.getValue();
         String ageText = inputAge.getText();
-        String idText = inputId.getText();
+        String education = genericBox2.getValue();
+        String desease = genericBox3.getValue();
+        String hearing = genericBox4.getValue();
+        String seeing = genericBox5.getValue();
         
-        if(username == null || gender == null || ageText == null || idText == null){
+        if(username == null || gender == null || ageText == null || education == null || desease == null || hearing ==null || seeing == null){
             
             this.isFailedValidation();
             
-        }else if(username.equals("") || gender.equals("") || ageText.equals("") || idText.equals("")){
+        }else if(username.equals("") || gender.equals("") || ageText.equals("") || education.equals("") || desease.equals("") || hearing.equals("") || seeing.equals("")){
             
             this.isFailedValidation();
             
@@ -94,15 +112,14 @@ public class LoginController implements Initializable {
         }else{
             
         int age = Integer.parseInt(ageText);
-        int id = Integer.parseInt(idText);
+        //int id = Integer.parseInt(idText);
         
-        User newUser = new User(username, gender , age, id, 0, 0);
+        User newUser = new User(0, username, gender , age, education, desease, hearing, seeing, 0, 0);
         data.add(newUser);
-        db.addUser(newUser);
+ //       db.addUser(newUser);
         inputUsername.clear();
         inputAge.clear();
-        inputId.clear();
-        db.getAllUsers();
+ //       db.getAllUsers();
        
         AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Topics.fxml"));
         rootPane.getChildren().setAll(pane);
@@ -117,16 +134,6 @@ public class LoginController implements Initializable {
 		return data;
     }
     
-    
-   /* public void showContent() {
-    try {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(MainApp.class.getResource("thesis/FXML_Leader_BoardController.fxml"));
-        Pane content = (Pane) loader.load();
-    }*/
-    
-    
-
     @FXML
     private void loadRight(ActionEvent event) {
         this.isEnablePanel();

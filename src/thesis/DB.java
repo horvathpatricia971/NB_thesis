@@ -1,8 +1,10 @@
 
 package thesis;
 
+import com.mysql.jdbc.Driver;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
+//import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,9 +15,11 @@ import java.util.ArrayList;
 
 
 public class DB {
-    final String URL = "jdbc:derby:sampleDataBase;create=true";
-    final String Username = "";
-    final String Password = "";
+    //final String URL = "jdbc:derby:sampleDataBase;create=true";
+  //  static final String JDBC_DRIVER = "com.mysql.jdbc.Driver"; 
+    final String URL = "jdbc:mysql://localhost:3306/language_db?serverTimezone=UTC";
+    final String Username = "root";
+    final String Password = "Database";
     
     Connection conn = null;
     Statement createStatement = null;
@@ -25,7 +29,9 @@ public class DB {
     public DB(){
         
         try {
-            conn = DriverManager.getConnection(URL);
+        //    Class.forName("com.mysql.jdbc.Driver");
+           // Driver driver = new com.mysql.jdbc.Driver();
+            conn = DriverManager.getConnection(URL, Username, Password);
             System.out.println("A híd létrejött");
         } catch (SQLException ex) {
             
@@ -44,6 +50,7 @@ public class DB {
         }
     
         try {
+
             dbmb = conn.getMetaData();
             System.out.println("Az adatbázis létrejött");
         } catch (SQLException ex) {
@@ -51,7 +58,7 @@ public class DB {
             System.out.println(""+ex);
         }
         //User tábla létrehozása
-        try {
+    /*    try {
             ResultSet rs = dbmb.getTables(null, "APP", "USERS", null);
             if (!rs.next()) {
                 createStatement.execute("create table users (username varchar(20), gender varchar(5), age int, id int primary key, excercisesNumber int, userResult int)");
@@ -60,7 +67,7 @@ public class DB {
         } catch (SQLException ex) {
             System.out.println("Valami nem jó az adattáblák létrehozásánál");
             System.out.println(""+ex);
-        }
+        }*/
         
         
         //Excercises tábla létrehozása
@@ -116,20 +123,20 @@ public class DB {
         
     }   
     
-    public void addUser(User user){
+/*    public void addUser(User user){
         try {
             
-            String sql = "insert into users (username, gender, age, id, excercisesNumber, userResult) values (?,?,?,?,?,?)";
+            String sql = "insert into users (userID, userName, gender, age, phoneNumber, testNumber, userResult) values (?,?,?,?,?,?,?)";
             
             PreparedStatement preparedStatement = conn.prepareCall(sql);
-            preparedStatement.setString(1, user.getUsername());
-            preparedStatement.setString(2, user.getGender());
-            preparedStatement.setInt(3, Integer.valueOf(user.getAge()));
-            preparedStatement.setInt(4, Integer.valueOf(user.getId()));
-        //    preparedStatement.setInt(5, (int) user.getResult());
-            preparedStatement.setInt(5, Integer.valueOf(user.getExcercisesNumber()));
-            preparedStatement.setInt(6, Integer.valueOf(user.getUserResult()));
-            preparedStatement.execute(); //ezt irtam
+            preparedStatement.setInt(1, Integer.valueOf(user.getId()));
+            preparedStatement.setString(2, user.getUsername());
+            preparedStatement.setString(3, user.getGender());
+            preparedStatement.setInt(4, Integer.valueOf(user.getAge()));
+            preparedStatement.setInt(5, Integer.valueOf(user.getPhoneNumber()));
+            preparedStatement.setInt(6, Integer.valueOf(user.getTestNumber()));
+            preparedStatement.setInt(7, Integer.valueOf(user.getUserResult()));
+            preparedStatement.execute();
             System.out.println("User hozzaadva.");
         } catch (SQLException ex) {
             System.out.println("Valami gond van a userek hozzáadásakor.");
@@ -137,12 +144,12 @@ public class DB {
         }
     }
     
-    public ArrayList<User> getAllUsers(){
+      public ArrayList<User> getAllUsers(){
         String sql = "select * from users";
         ArrayList<User> users = null;
         int i = 0;
         try {
-            /*ResultSet rs = createStatement.executeQuery(sql);
+        ResultSet rs = createStatement.executeQuery(sql);
             users = new ArrayList<>();
             if (!rs.next()) {
                 User actualUser = new User(rs.getString("username"), rs.getString("gender"), rs.getInt("age"), rs.getInt("id"),rs.getInt("excercisesNumber"),rs.getInt("userResult"));
@@ -155,17 +162,18 @@ public class DB {
                 i++;
                
                 System.out.println(i + ".");
-            }*/
+            }
             ResultSet rs = createStatement.executeQuery(sql);
             users = new ArrayList<>();
             while(rs.next()){
                 users.add(
                         new User(
+                        rs.getInt("userId"),
                         rs.getString("username"),
                         rs.getString("gender"),
                         rs.getInt("age"),
-                        rs.getInt("id"),
-                        rs.getInt("excercisesNumber"),
+                        rs.getInt("phoneNumber"),
+                        rs.getInt("testNumber"),
                         rs.getInt("userResult")));          
             }
         } catch (SQLException ex) {
@@ -173,8 +181,8 @@ public class DB {
             ex.printStackTrace();
         }
         return users;
-    }
+    }*/
     
-    
+   
     
 }

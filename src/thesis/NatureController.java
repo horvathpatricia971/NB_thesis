@@ -23,7 +23,7 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author horvathpatricia
  */
-public class HealthController implements Initializable {
+public class NatureController implements Initializable {
     
     
     @FXML
@@ -329,7 +329,6 @@ public class HealthController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.testReady = new ArrayList<Boolean>();
         for (int i = 0; i < 10; i++){

@@ -14,7 +14,7 @@
       <Pane fx:id="basePane" prefHeight="650.0" prefWidth="650.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffae2133" height="650.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" height="95.0" layoutX="52.0" layoutY="73.0" stroke="BLACK" strokeType="INSIDE" width="547.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="95.0" layoutX="52.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="547.0">
                <fill>
                   <LinearGradient endX="1.0" endY="0.5192307692307692" startY="0.5288461538461539">
                      <stops>
@@ -27,36 +27,69 @@
                   </LinearGradient>
                </fill>
             </Rectangle>
-            <Label layoutX="138.0" layoutY="99.0" text="Nyelvprogram időseknek">
+            <Label layoutX="165.0" layoutY="47.0" text="Nyelvteszt időseknek">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-              <Label fx:id="label" layoutX="83.0" layoutY="347.0" minHeight="16" minWidth="69" text="Adja meg a felhasználónevét:">
+            <Label layoutX="222.0" layoutY="131.0" text="Kedves Felhasználó!">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="83.0" layoutY="399.0" text="Adja meg a nemét:">
+            <Label layoutX="37.0" layoutY="170.0" text="Az alábbi adatok megadásával és a program segítségével ">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="83.0" layoutY="454.0" text="Adja meg az életkorát:">
+            <Label layoutX="43.0" layoutY="208.0" text="tesztelheti memóriáját angol szavak elsajátítán keresztül.">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="83.0" layoutY="502.0" prefHeight="37.0" prefWidth="270.0" text="Adja meg a telefonszámát:">
+              <Label fx:id="label" layoutX="52.0" layoutY="263.0" minHeight="16" minWidth="69" text="Adja meg a felhasználónevét:">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <TextField fx:id="inputUsername" layoutX="407.0" layoutY="348.0" />
-            <ChoiceBox fx:id="genericBox" layoutX="407.0" layoutY="400.0" prefHeight="21.0" prefWidth="161.0" />
-            <TextField fx:id="inputAge" layoutX="407.0" layoutY="455.0" />
-            <TextField fx:id="inputId" layoutX="407.0" layoutY="507.0" />
-              <Button fx:id="button" layoutX="407.0" layoutY="570.0" onAction="#loadSecond" prefHeight="37.0" prefWidth="161.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Tovább">
+            <Label layoutX="52.0" layoutY="308.0" text="Adja meg a nemét:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="52.0" layoutY="357.0" text="Adja meg az életkorát:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="52.0" layoutY="399.0" text="Legmagasabb iskolai végzettsége:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="52.0" layoutY="441.0" prefHeight="37.0" prefWidth="321.0" text="Időskori betegségben szenved:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="50.0" layoutY="491.0" text="Tapasztalt magán nagyothallást:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="52.0" layoutY="540.0" text="Tapasztalta látásának romlását:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="inputUsername" layoutX="407.0" layoutY="263.0" prefHeight="27.0" prefWidth="161.0" />
+            <ChoiceBox fx:id="genericBox1" layoutX="407.0" layoutY="308.0" prefHeight="21.0" prefWidth="161.0" />
+            <TextField fx:id="inputAge" layoutX="407.0" layoutY="358.0" />
+            <ChoiceBox fx:id="genericBox2" layoutX="407.0" layoutY="401.0" prefHeight="21.0" prefWidth="161.0" />
+            <ChoiceBox fx:id="genericBox3" layoutX="407.0" layoutY="446.0" prefHeight="21.0" prefWidth="161.0" />
+            <ChoiceBox fx:id="genericBox4" layoutX="407.0" layoutY="491.0" prefHeight="21.0" prefWidth="161.0" />
+            <ChoiceBox fx:id="genericBox5" layoutX="407.0" layoutY="541.0" prefHeight="21.0" prefWidth="161.0" />
+              <Button fx:id="button" layoutX="407.0" layoutY="588.0" onAction="#loadSecond" prefHeight="37.0" prefWidth="161.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Tovább">
                <font>
                   <Font size="18.0" />
                </font>
@@ -64,21 +97,6 @@
                   <Tooltip text="A gomb megnyomásával a Választható témák felületére érsz." />
                </tooltip>
             </Button>
-            <Label layoutX="222.0" layoutY="205.0" text="Kedves Felhasználó!">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="37.0" layoutY="243.0" text="Az alábbi adatok megadásával és a program segítségével ">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="153.0" layoutY="272.0" text="elkezdheted az angol nyelv elsajátítását.">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
          </children></Pane>
       <Pane fx:id="rightPane" layoutX="152.0" layoutY="225.0" prefHeight="200.0" prefWidth="350.0" visible="false">
          <children>

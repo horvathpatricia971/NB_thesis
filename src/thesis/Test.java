@@ -6,87 +6,74 @@
 package thesis;
 
 import java.sql.Time;
-import javafx.beans.property.SimpleIntegerProperty;
 
 /**
  *
  * @author horvathpatricia
  */
 public class Test {
-    //create table tests (test_id int primary key, user_id int references users(id), exercise_id int references exercises(exercises_id), result int, start_time time, end_time time)
-    
-    private final SimpleIntegerProperty testId;
-    private final SimpleIntegerProperty userId;
-    private final SimpleIntegerProperty exerciseId;
-    private final SimpleIntegerProperty testResult;
-    private final Time startTime;
-    private final Time endTime;
+    private int testID;
+    private int userID;
+    private int topicID;
+    private int testResult;
+    private Time startTime;
+    private Time endTime;
     
     
-    public Test(){
-        this.testId = new SimpleIntegerProperty();
-        this.userId = new SimpleIntegerProperty();
-        this.exerciseId = new SimpleIntegerProperty();
-        this.testResult = new SimpleIntegerProperty(0);
-        this.startTime = new Time(0);
-        this.endTime = new Time(0);
+    public Test(int TestID, int UserID, int TopicID, int TestResult, Time StartTime, Time EndTime){
+        this.testID = TestID;
+        this.userID = UserID;
+        this.topicID = TopicID;
+        this.testResult = TestResult;
+        this.startTime = StartTime;
+        this.endTime = EndTime;
     }
-    
-    public Test(int tId, int uId, int eId, int tResult, int sTime, int eTime){
-        this.testId = new SimpleIntegerProperty(tId);
-        this.userId = new SimpleIntegerProperty(uId);
-        this.exerciseId = new SimpleIntegerProperty(eId);
-        this.testResult = new SimpleIntegerProperty(tResult);
-        this.startTime = new Time(sTime);
-        this.endTime = new Time(eTime);
-    }
-    
     
     public int getTestId(){
-        return testId.get();
+        return testID;
     }
     
-    public void setTestId(int identity){
-        testId.set(identity);
+    public void setTestId(int TestID){
+        this.testID = TestID;
     }
     
     public int getUserId(){
-        return userId.get();
+        return userID;
     }
     
-    public void setUserId(int identity){
-        userId.set(identity);
+    public void setUserId(int UserID){
+        this.userID = UserID;
     }
     
-    public int getExerciseId(){
-        return exerciseId.get();
+    public int getTopicID(){
+        return topicID;
     }
     
-    public void setExerciseId(int identity){
-        exerciseId.set(identity);
+    public void setTopicID(int TopicID){
+        this.topicID = TopicID;
     }
     
     public int getTestResult(){
-        return testResult.get();
+        return testResult;
     }
     
-    public void setTestResult(int tResult){
-        testResult.set(tResult);
+    public void setTestResult(int TestResult){
+        this.testResult = TestResult;
     }
     
-    public int getStartTime(){
-        return (int) startTime.getTime();
+    public Time getStartTime(){
+        return startTime;
     }
     
-    public void setStartTime(int sTime){
-        startTime.setTime(sTime);
+    public void setStartTime(Time StartTime){
+        this.startTime = StartTime;
     }
     
-    public int getEndTime(){
-        return (int) endTime.getTime();
+    public Time getEndTime(){
+        return endTime;
     }
     
-    public void setEndTime(int eTime){
-        endTime.setTime(eTime);
+    public void setEndTime(Time EndTime){
+        this.endTime = EndTime;
     }
 }

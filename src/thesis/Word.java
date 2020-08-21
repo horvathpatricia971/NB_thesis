@@ -5,55 +5,52 @@
  */
 package thesis;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-
 /**
  *
  * @author horvathpatricia
  */
 public class Word {
     //serial_number int primary key, word varchar(20), word_class varchar(20), exercises_id int references exercises(exercises_id))
-    private final SimpleIntegerProperty serialNumber;
-    private final SimpleStringProperty word;
-    private final SimpleStringProperty wordClass;
-    private final SimpleIntegerProperty exercisesId;
+    private int serialNumber;
+    private String word;
+    private String wordClass;
+    private int topicsID;
 
-    public Word(int sNumber, String wor, String wClass, int exId){
-        this.serialNumber = new SimpleIntegerProperty(sNumber);
-        this.word = new SimpleStringProperty(wor);
-        this.wordClass = new SimpleStringProperty(wClass);
-        this.exercisesId = new SimpleIntegerProperty(exId);
+    public Word(int SerialNumber, String Word, String WordClass, int TopicsID){
+        this.serialNumber = SerialNumber;
+        this.word = Word;
+        this.wordClass = WordClass;
+        this.topicsID = TopicsID;
     }
     
     public int getSerialNumber(){
-        return serialNumber.get();
+        return serialNumber;
     }
     
-    public void setSerialNumber(int serNum){
-        serialNumber.set(serNum);
+    public void setSerialNumber(int SerialNumber){
+        this.serialNumber = SerialNumber;
     }
     public String getWord(){
-        return word.get();
+        return word;
     }
     
-    public void setWord(String wor){
-        word.set(wor);
+    public void setWord(String Word){
+        this.word = Word;
     }
     
     public String getWordClass(){
-        return wordClass.get();
+        return wordClass;
     }
     
-    public void setWordClass(String wClass){
-        wordClass.set(wClass);
+    public void setWordClass(String WordClass){
+        this.wordClass = WordClass;
     }
     
-    public int getExercisesId(){
-	return exercisesId.get();
+    public int getTopicsID(){
+	return topicsID;
     }
 
-    public void setExercisesId(int exId){
-	exercisesId.set(exId);
+    public void setExercisesId(int TopicsID){
+	this.topicsID = TopicsID;
     }
 }

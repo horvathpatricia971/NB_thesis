@@ -31,7 +31,7 @@ public class UserService {
         return result;
     }*/
     
-    public ObservableList<User> userService(){
+/*    public ObservableList<User> userService(){
         return this.getUserList(getList());
     }
     
@@ -41,6 +41,6 @@ public class UserService {
     
     public ObservableList<User> getUserList(ArrayList<User> list){
         return FXCollections.observableArrayList(list);
-    }
+    }*/
     
 }
