@@ -25,10 +25,9 @@ public class UserDAO {
     
     public UserDAO(Connection conn) throws SQLException {
         this.conn = conn;
-        // TODO: adatbázis és program legyen azonos:
-        this.insert = conn.prepareStatement("insert into users (userName, gender, age, education, disease, hearing, seeing, testNumber, userResult) values (?,?,?,?,?,?,?,?,?)");
+        this.insert = conn.prepareStatement("insert into user (userName, gender, age, education, disease, hearing, seeing, testNumber, userResult) values (?,?,?,?,?,?,?,?,?)");
         this.delete = conn.prepareStatement("DELETE FROM user WHERE userID = ?");
-        this.update = conn.prepareStatement("UPDATE user SET username = ?, ... WHERE userID = ?"); // ID-t nem változtathatunk!!!
+        this.update = conn.prepareStatement("UPDATE user SET userName = ?, gender = ?, age = ?, education = ?, disease = ?, hearing = ?, seeing = ?, testNumber = ?, userResult = ? WHERE userID = ?");
         this.findAll = conn.prepareStatement("SELECT * FROM user");
         this.findById = conn.prepareStatement("SELECT * FROM user WHERE userID = ?");
     }

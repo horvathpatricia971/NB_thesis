@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="healthAnchorPane" prefHeight="650.0" prefWidth="650.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thesis.LearnController">
+    <stylesheets>
+        <URL value="@words.css" />
+    </stylesheets>
+   <children>
+      <Pane prefHeight="650.0" prefWidth="650.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffaa2133" height="650.0" stroke="#00000033" strokeType="INSIDE" width="650.0" />
+            <Button layoutX="70.0" layoutY="594.0" mnemonicParsing="false" onAction="#logOut" prefHeight="39.0" prefWidth="120.0" style="-fx-background-color: #8AD1FA;" text="Vissza">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="A gombra kattintva kilép a Természet témakörből." />
+               </tooltip>
+            </Button>
+            <Button fx:id="testClick" disable="true" layoutX="414.0" layoutY="594.0" onAction="#testClickAction" prefHeight="42.0" prefWidth="178.0" style="-fx-background-color: #8AD1FA;" text="Teszt indítása">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="A gombra kattintva  a témakörhöz tartozó tesztet indíthatja el." />
+               </tooltip>
+            </Button>
+            <Label fx:id="topicLabel" alignment="CENTER" layoutX="189.0" layoutY="8.0" prefHeight="37.0" prefWidth="272.0">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="202.0" layoutY="165.0" text="A témakört kiválasztva a természettel">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="209.0" layoutY="218.0" text="kapcsolatos szavakat sajátíthatja el.">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="238.0" layoutY="270.0" text="Eredményes tanulást kívánok!">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <VBox alignment="TOP_CENTER" layoutY="50.0" prefHeight="515.0" prefWidth="147.0">
+         <children>
+            <Button fx:id="firstButton" onAction="#firstWordAction" prefHeight="42.0" prefWidth="137.0">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="secondButton" onAction="#secondWordAction" prefHeight="42.0" prefWidth="136.0">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="thirdButton" onAction="#thirdWordAction" prefHeight="42.0" prefWidth="135.0">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="fourthButton" onAction="#fourtWordAction" prefHeight="42.0" prefWidth="134.0">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="fifthButton" onAction="#fifthWordAction" prefHeight="42.0" prefWidth="136.0">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="sixthButton" mnemonicParsing="false" onAction="#sixthWordAction" prefHeight="42.0" prefWidth="142.0">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="seventhButton" mnemonicParsing="false" onAction="#seventhWordAction" prefHeight="42.0" prefWidth="140.0">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="eighthButton" mnemonicParsing="false" onAction="#eightWordAction" prefHeight="42.0" prefWidth="139.0">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="ninthButton" mnemonicParsing="false" onAction="#ninthWordAction" prefHeight="42.0" prefWidth="139.0">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="tenthButton" mnemonicParsing="false" onAction="#tenthWordAction" prefHeight="42.0" prefWidth="147.0">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <Pane fx:id="firstPane" layoutX="150.0" layoutY="56.0" prefHeight="508.0" prefWidth="493.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c7eedb" height="510.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="492.0" />
+            <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="31.0" prefHeight="44.0" prefWidth="467.0">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="picture" fitHeight="150.0" fitWidth="200.0" layoutX="22.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+            <Image url="@nature.jpg" />
+         </image></ImageView>
+         <Button layoutX="269.0" layoutY="155.0" mnemonicParsing="false" style="-fx-background-color: #87BAD7; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="hang lejátszása">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Label fx:id="firstLabel" layoutX="12.0" layoutY="274.0" prefHeight="31.0" prefWidth="467.0">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="secondLabel" alignment="CENTER_RIGHT" layoutX="15.0" layoutY="322.0" prefHeight="31.0" prefWidth="467.0" textAlignment="RIGHT">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="thirdLabel" layoutX="15.0" layoutY="373.0" prefHeight="31.0" prefWidth="467.0">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="fourthLabel" alignment="CENTER_RIGHT" layoutX="12.0" layoutY="419.0" prefHeight="31.0" prefWidth="467.0" textAlignment="RIGHT">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+         </children>
+      </Pane>
+      
+   </children>
+</AnchorPane>

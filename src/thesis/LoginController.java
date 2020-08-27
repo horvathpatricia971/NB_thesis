@@ -7,6 +7,9 @@ package thesis;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,9 +31,6 @@ import javafx.scene.layout.Pane;
 public class LoginController implements Initializable {
     
     @FXML
-    private Label label;
-    
-    @FXML
     private AnchorPane rootPane;
     
     @FXML
@@ -44,30 +44,44 @@ public class LoginController implements Initializable {
     
     @FXML
     private ChoiceBox<String> genericBox1;
-     @FXML
+    
+    @FXML
     private ChoiceBox<String> genericBox2;
+     
     @FXML
     private ChoiceBox<String> genericBox3;
+    
     @FXML
     private ChoiceBox<String> genericBox4;
+    
     @FXML
     private ChoiceBox<String> genericBox5;
+    
     @FXML
     TextField inputAge;
-    
-    @FXML
-    private Button buttonRight;
-
-    DB db = new DB();
 
     public final ObservableList<User> data = FXCollections.observableArrayList();
+
+    Connection conn;
+
+    UserDAO userDAO;
+    DBConnection dbconnection;
     
-    @FXML
-    private Button button;
-   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-  //  genericBox.setItems(list);
+        
+        try {
+        //    dbconnection.getInstance();
+            conn = DBConnection.getInstance();
+            System.out.println("A híd létrejött");
+            userDAO = new UserDAO(conn);
+        } catch (SQLException ex) {
+            
+            System.out.println("Valami nem jó a connection létrehozásakor");
+            System.out.println(""+ex);
+        }
+        
+
       genericBox1.getItems().add("nő");
       genericBox1.getItems().add("férfi");
       
@@ -111,15 +125,13 @@ public class LoginController implements Initializable {
            
         }else{
             
-        int age = Integer.parseInt(ageText);
-        //int id = Integer.parseInt(idText);
+            int age = Integer.parseInt(ageText);
         
         User newUser = new User(0, username, gender , age, education, desease, hearing, seeing, 0, 0);
         data.add(newUser);
- //       db.addUser(newUser);
+        userDAO.addUser(newUser);
         inputUsername.clear();
         inputAge.clear();
- //       db.getAllUsers();
        
         AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Topics.fxml"));
         rootPane.getChildren().setAll(pane);

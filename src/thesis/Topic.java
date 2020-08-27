@@ -51,11 +51,11 @@ public class Topic {
         this.numberOfWords = NumberOfWords;
     }
     
-    public boolean getImages(){
+    public boolean getImage(){
         return images;
     }
     
-    public void setPictures(boolean Images){
+    public void setImage(boolean Images){
         this.images = Images;
     }
     

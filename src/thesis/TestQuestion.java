@@ -32,11 +32,11 @@ public class TestQuestion {
         this.testID = TestID;
     }
     
-    public int getTestQuestionId(){
+    public int getTestQuestionID(){
         return testQuestionID;
     }
     
-    public void setQuestionId(int TestQuestionID){
+    public void setQuestionID(int TestQuestionID){
         this.testQuestionID = TestQuestionID;
     }
     

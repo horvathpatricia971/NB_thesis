@@ -28,16 +28,7 @@ public class DB {
     
     public DB(){
         
-        try {
-        //    Class.forName("com.mysql.jdbc.Driver");
-           // Driver driver = new com.mysql.jdbc.Driver();
-            conn = DriverManager.getConnection(URL, Username, Password);
-            System.out.println("A híd létrejött");
-        } catch (SQLException ex) {
-            
-            System.out.println("Valami nem jó a connection létrehozásakor");
-            System.out.println(""+ex);
-        }
+        
         
         if(conn != null){
             try {

@@ -12,21 +12,19 @@ package thesis;
 public class TestAnswer {
     private int testAnswerID;
     private String userAnswer;
-    private int userID;
-    private int testQuestionID;
+    private int testAttemptID;
     
-    public TestAnswer(int TestAnswerID, String UserAnswer, int UserID, int TestQuestionID){
+    public TestAnswer(int TestAnswerID, String UserAnswer, int TestAttemptID){
         this.testAnswerID = TestAnswerID;
         this.userAnswer = UserAnswer;
-        this.userID = UserID;
-        this.testQuestionID = TestQuestionID;
+        this.testAttemptID = TestAttemptID;
     }
     
-    public int getTestAnswerId(){
+    public int getTestAnswerID(){
         return testAnswerID;
     }
     
-    public void setAnswerId(int TestAnswerID){
+    public void setAnswerID(int TestAnswerID){
         this.testAnswerID = TestAnswerID;
     }
     
@@ -38,19 +36,11 @@ public class TestAnswer {
         this.userAnswer = UserAnswer;
     }
     
-    public int getUserId(){
-        return userID;
+    public int getTestAttemptID(){
+        return testAttemptID;
     }
     
-    public void setUserId(int UserId){
-        this.userID = UserId;
-    }
-    
-    public int getTestQuestionId(){
-        return testQuestionID;
-    }
-    
-    public void setQuestionId(int TestQuestionID){
-        this.testQuestionID = TestQuestionID;
+    public void setTestAttemptID(int TestAttemptID){
+        this.testAttemptID = TestAttemptID;
     }
 }

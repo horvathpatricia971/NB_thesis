@@ -23,9 +23,6 @@ public class User {
     private int testNumber;
     private int userResult;
     
-    //result-float
-    //number of excercises
-    
     public User(int UserID, String UserName, String Gender, int Age, String Education, String Desease, String Hearing, String Seeing, int TestNumber, int UserResult){
         this.userID = UserID;
         this.userName = UserName;
@@ -39,11 +36,11 @@ public class User {
         this.userResult = UserResult;
     }
     
-    public int getUserId(){
+    public int getUserID(){
         return userID;
     }
     
-    public void setUserId(int UserId){
+    public void setUserID(int UserId){
         this.userID = UserId;
     }
     

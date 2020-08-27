@@ -5,75 +5,32 @@
  */
 package thesis;
 
-import java.sql.Time;
-
 /**
  *
  * @author horvathpatricia
  */
 public class Test {
     private int testID;
-    private int userID;
     private int topicID;
-    private int testResult;
-    private Time startTime;
-    private Time endTime;
     
-    
-    public Test(int TestID, int UserID, int TopicID, int TestResult, Time StartTime, Time EndTime){
+    public Test(int TestID, int TopicID){
         this.testID = TestID;
-        this.userID = UserID;
         this.topicID = TopicID;
-        this.testResult = TestResult;
-        this.startTime = StartTime;
-        this.endTime = EndTime;
     }
     
-    public int getTestId(){
+    public int getTestID(){
         return testID;
     }
     
-    public void setTestId(int TestID){
+    public void setTestID(int TestID){
         this.testID = TestID;
     }
     
-    public int getUserId(){
-        return userID;
-    }
-    
-    public void setUserId(int UserID){
-        this.userID = UserID;
-    }
-    
     public int getTopicID(){
-        return topicID;
+	return topicID;
     }
-    
-    public void setTopicID(int TopicID){
-        this.topicID = TopicID;
-    }
-    
-    public int getTestResult(){
-        return testResult;
-    }
-    
-    public void setTestResult(int TestResult){
-        this.testResult = TestResult;
-    }
-    
-    public Time getStartTime(){
-        return startTime;
-    }
-    
-    public void setStartTime(Time StartTime){
-        this.startTime = StartTime;
-    }
-    
-    public Time getEndTime(){
-        return endTime;
-    }
-    
-    public void setEndTime(Time EndTime){
-        this.endTime = EndTime;
+
+    public void setTopicID(int TopicId){
+	this.topicID = TopicId;
     }
 }

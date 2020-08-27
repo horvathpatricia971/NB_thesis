@@ -338,7 +338,7 @@ public class NatureController implements Initializable {
 
     @FXML
     private void testClickAction(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Test_Health.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Test.fxml"));
         healthAnchorPane.getChildren().setAll(pane);
         
     }

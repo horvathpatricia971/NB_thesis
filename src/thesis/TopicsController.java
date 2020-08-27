@@ -7,6 +7,8 @@ package thesis;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,6 +37,13 @@ public class TopicsController implements Initializable {
     private Button buttonQuit;
     @FXML
     private Button buttonNoQuit;
+    
+    
+    Connection conn;
+
+    WordDAO worddao;
+    LearnDAO learndao;
+    DBConnection dbconnection;
 
     /**
      * Initializes the controller class.
@@ -42,7 +51,17 @@ public class TopicsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+        try {
+        //    dbconnection.getInstance();
+            conn = DBConnection.getInstance();
+            System.out.println("A híd létrejött");
+            worddao = new WordDAO(conn);
+            learndao = new LearnDAO(conn);
+        } catch (SQLException ex) {
+            
+            System.out.println("Valami nem jó a connection létrehozásakor");
+            System.out.println(""+ex);
+        }
     }    
 
 
@@ -74,9 +93,10 @@ public class TopicsController implements Initializable {
     }
 
     @FXML
-    private void loadHealth(ActionEvent event) throws IOException {
+    private void loadHealth(ActionEvent event) throws IOException, SQLException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Word_First.fxml"));
         secondAnchorPane.getChildren().setAll(pane);
+        learndao.addLearn(new Learn(1, new java.sql.Date(System.currentTimeMillis()), null, 1, 1));
     }
 
     @FXML
@@ -84,5 +104,9 @@ public class TopicsController implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Nature.fxml"));
         secondAnchorPane.getChildren().setAll(pane);
     }
-    
+    @FXML
+    private void loadFood(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Learn.fxml"));
+        secondAnchorPane.getChildren().setAll(pane);
+    }
 }
