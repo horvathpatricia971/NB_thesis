@@ -47,6 +47,7 @@ public class WordConnectionDAO {
     public void updateConnection(WordConnection wConnection) throws SQLException {
         this.update.setInt(1, wConnection.getWordID());
         this.update.setInt(2, wConnection.getUserID());
+        this.update.setInt(3, wConnection.getConnectionID());
         this.update.executeUpdate();
     }
     

@@ -28,9 +28,9 @@ public class TopicDAO {
     public TopicDAO(Connection conn) throws SQLException {
         this.conn = conn;
         // TODO: adatbázis és program legyen azonos:
-        this.topicInsert = conn.prepareStatement("insert into topic (topic, numberOfWords, images, sound, difficulty) values (?,?,?,?,?)");
+        this.topicInsert = conn.prepareStatement("insert into topic (topic, numberOfWords, images, sound, difficulty, colour) values (?,?,?,?,?,?)");
         this.topicDelete = conn.prepareStatement("DELETE FROM topic WHERE topicID = ?");
-        this.topicUpdate = conn.prepareStatement("UPDATE topic SET numberOfWords = ?, ... WHERE topicID = ?");
+        this.topicUpdate = conn.prepareStatement("UPDATE topic SET numberOfWords = ?, numberOfWords = ?, images = ?, sound = ?, difficulty = ?, colour = ? WHERE topicID = ?");
         this.findAll = conn.prepareStatement("SELECT * FROM topic");
         this.findById = conn.prepareStatement("SELECT * FROM topic WHERE topicID = ?");
     }
@@ -41,6 +41,7 @@ public class TopicDAO {
         this.topicInsert.setBoolean(3, newTopic.getImage());
         this.topicInsert.setBoolean(4, newTopic.getSound());
         this.topicInsert.setInt(5, newTopic.getDifficulty());
+        this.topicInsert.setString(6, newTopic.getColour());
         this.topicInsert.executeUpdate();
     }
     
@@ -55,6 +56,8 @@ public class TopicDAO {
         this.topicUpdate.setBoolean(3, topic.getImage());
         this.topicUpdate.setBoolean(4, topic.getSound());
         this.topicUpdate.setInt(5, topic.getDifficulty());
+        this.topicUpdate.setString(6, topic.getColour());
+        this.topicUpdate.setInt(7, topic.getTopicID());
         this.topicUpdate.executeUpdate();
     }
     
@@ -87,8 +90,9 @@ public class TopicDAO {
         Boolean image = rs.getBoolean("image");
         Boolean sound = rs.getBoolean("sound");
         int difficulty = rs.getInt("difficulty");
+        String colour = rs.getString("colour");
         
-        Topic topics = new Topic(topicID, topic, numberOfWords, image, sound, difficulty); 
+        Topic topics = new Topic(topicID, topic, numberOfWords, image, sound, difficulty, colour); 
         return topics;
     }
 }

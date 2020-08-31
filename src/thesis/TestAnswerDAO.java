@@ -26,16 +26,18 @@ public class TestAnswerDAO {
     
     public TestAnswerDAO(Connection conn) throws SQLException{
         this.conn = conn;
-        this.insert = conn.prepareStatement("INSERT INTO testAnswer (userAnswer, testAttemptID) values (?,?)");
+        this.insert = conn.prepareStatement("INSERT INTO testAnswer (userAnswer, isRight, testAttemptID, testQuestionID) values (?,?,?,?)");
         this.delete = conn.prepareStatement("DELETE FROM testAnswer WHERE testAnswerID = ?");
-        this.update = conn.prepareStatement("UPDATE tests SET userAnswer = ?, testAttemptID = ? WHERE testAnswerID = ?");
+        this.update = conn.prepareStatement("UPDATE tests SET userAnswer = ?, isRight = ?, testAttemptID = ?, testQuestionID = ? WHERE testAnswerID = ?");
         this.findAll = conn.prepareStatement("SELECT * FROM testAnswer");
         this.findById = conn.prepareStatement("SELECT * FROM testAnswer WHERE testAnswerID = ?");
     }
     
     public void addAnswer(TestAnswer newAnswer) throws SQLException {
         this.insert.setString(1, newAnswer.getUserAnswer());
-        this.insert.setInt(2, newAnswer.getTestAttemptID());
+        this.insert.setInt(2, newAnswer.getIsRight());
+        this.insert.setInt(3, newAnswer.getTestAttemptID());
+        this.insert.setInt(4, newAnswer.getTestQuestionID());
         this.insert.executeUpdate();
     }
     
@@ -47,7 +49,10 @@ public class TestAnswerDAO {
     
     public void updateAnswer(TestAnswer answer) throws SQLException {
         this.update.setString(1, answer.getUserAnswer());
-        this.update.setInt(2, answer.getTestAttemptID());
+        this.update.setInt(2, answer.getIsRight());
+        this.update.setInt(3, answer.getTestAttemptID());
+        this.update.setInt(4, answer.getTestQuestionID());
+        this.update.setInt(5, answer.getTestAnswerID());
         this.update.executeUpdate();
     }
     
@@ -76,9 +81,11 @@ public class TestAnswerDAO {
     private TestAnswer makeOneAnswer(ResultSet rs) throws SQLException {
         int testAnswerID = rs.getInt("testAnswerID");
         String userAnswer = rs.getString("userAnswer");
+        int isRight = rs.getInt("isRight");
         int testAttemptID = rs.getInt("testAttemptID");
+        int testQuestionID = rs.getInt("testQuestionID");
         
-        TestAnswer answer = new TestAnswer(testAnswerID, userAnswer, testAttemptID); 
+        TestAnswer answer = new TestAnswer(testAnswerID, userAnswer, isRight, testAttemptID, testQuestionID); 
         return answer;
     }
 }

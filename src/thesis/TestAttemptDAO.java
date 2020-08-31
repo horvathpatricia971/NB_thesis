@@ -54,6 +54,7 @@ public class TestAttemptDAO {
         this.update.setInt(3, attempt.getResult());
         this.update.setDate(4, attempt.getStartTime());
         this.update.setDate(5, attempt.getEndTime());
+        this.update.setInt(6, attempt.getTestAttemptID());
         this.update.executeUpdate();
     }
     

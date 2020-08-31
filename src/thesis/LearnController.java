@@ -5,6 +5,9 @@
  */
 package thesis;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -12,6 +15,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,8 +24,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 /**
  * FXML Controller class
@@ -73,9 +81,13 @@ public class LearnController implements Initializable {
     private AnchorPane healthAnchorPane;
     
     private List<Boolean> testReady;
+    
     private WordDAO worddao;
+    
     private TopicDAO topicdao;
+    
     private Topic topic;
+    
     private List<Word> words;
     @FXML
     private ImageView picture;
@@ -90,185 +102,88 @@ public class LearnController implements Initializable {
     @FXML
     private Label fourthLabel;
     
+    private MediaPlayer mediaPlayer;
     @FXML
-    private void firstWordAction(ActionEvent Event){
+    private Button soundButton;
+    
+    private Word currentWord;
+    
+    private void fillLearnData(int number){
+        Word w = words.get(number);
+        currentWord = w;
+        titleLabel.setText(w.getWord() + " - " + w.getWordInEng());
+        firstLabel.setText(w.getSentenceHun1());
+        secondLabel.setText(w.getSentenceEng1());
+        thirdLabel.setText(w.getSentenceHun2());
+        fourthLabel.setText(w.getSentenceEng2());
         
         firstButton.setStyle("-fx-background-color: #A0E5AA");
         
-        firstPane.setVisible(true);
-        Word w = words.get(0);
-        titleLabel.setText(w.getWord() + "-" + w.getWordInEng());
-        firstLabel.setText(w.getSentenceHun1());
-        secondLabel.setText(w.getSentenceEng1());
-        thirdLabel.setText(w.getSentenceHun1());
-        fourthLabel.setText(w.getSentenceEng2());
+        try {
+            FileInputStream fis = new FileInputStream("src/thesis/" + w.getImage());
+            picture.setImage(new Image(fis));
+        } catch (FileNotFoundException ex) {
+            // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+        }
         
-        if(!this.testReady.get(0)){
-            this.testReady.set(0, Boolean.TRUE);
+        firstPane.setVisible(true);
+        
+        if(!this.testReady.get(number)){
+            this.testReady.set(number, Boolean.TRUE);
             this.checkTestReady();
         }
+    }
+            
+            
+    @FXML
+    private void firstWordAction(ActionEvent Event){
+        fillLearnData(0);
     }
     
     @FXML
     private void secondWordAction(ActionEvent Event){
+        fillLearnData(1);
         
-        secondButton.setStyle("-fx-background-color: #A0E5AA");
-        
-        Word w = words.get(1);
-        titleLabel.setText(w.getWord() + "-" + w.getWordInEng());
-        firstLabel.setText(w.getSentenceHun1());
-        secondLabel.setText(w.getSentenceEng1());
-        thirdLabel.setText(w.getSentenceHun1());
-        fourthLabel.setText(w.getSentenceEng2());
-        
-        if(!this.testReady.get(1)){
-            this.testReady.set(1, Boolean.TRUE);
-            this.checkTestReady();
-        }
     }
     
     @FXML
     private void thirdWordAction(ActionEvent Event){
-        
-        thirdButton.setStyle("-fx-background-color: #A0E5AA");
-        
-        Word w = words.get(2);
-        titleLabel.setText(w.getWord() +  "-" + w.getWordInEng());
-        firstLabel.setText(w.getSentenceHun1());
-        secondLabel.setText(w.getSentenceEng1());
-        thirdLabel.setText(w.getSentenceHun1());
-        fourthLabel.setText(w.getSentenceEng2());
-        
-        if(!this.testReady.get(2)){
-            this.testReady.set(2, Boolean.TRUE);
-            this.checkTestReady();
-        }
+        fillLearnData(2);
     }
     
     @FXML
     private void fourtWordAction(ActionEvent Event){
-
-        fourthButton.setStyle("-fx-background-color: #A0E5AA");
-        
-        Word w = words.get(3);
-        titleLabel.setText(w.getWord() +  "-" + w.getWordInEng());
-        firstLabel.setText(w.getSentenceHun1());
-        secondLabel.setText(w.getSentenceEng1());
-        thirdLabel.setText(w.getSentenceHun1());
-        fourthLabel.setText(w.getSentenceEng2());
-        
-        if(!this.testReady.get(3)){
-            this.testReady.set(3, Boolean.TRUE);
-            this.checkTestReady();
-        }
+        fillLearnData(3);
     }
     
     @FXML
     private void fifthWordAction(ActionEvent Event){
-        
-        fifthButton.setStyle("-fx-background-color: #A0E5AA");
-        
-        Word w = words.get(4);
-        titleLabel.setText(w.getWord() +  "-" + w.getWordInEng());
-        firstLabel.setText(w.getSentenceHun1());
-        secondLabel.setText(w.getSentenceEng1());
-        thirdLabel.setText(w.getSentenceHun1());
-        fourthLabel.setText(w.getSentenceEng2());
-        
-        if(!this.testReady.get(4)){
-            this.testReady.set(4, Boolean.TRUE);
-            this.checkTestReady();
-        }
+        fillLearnData(4);
     }
     
     @FXML
     private void sixthWordAction(ActionEvent Event){
-        
-        sixthButton.setStyle("-fx-background-color: #A0E5AA");
-        
-        Word w = words.get(5);
-        titleLabel.setText(w.getWord() +  "-" + w.getWordInEng());
-        firstLabel.setText(w.getSentenceHun1());
-        secondLabel.setText(w.getSentenceEng1());
-        thirdLabel.setText(w.getSentenceHun1());
-        fourthLabel.setText(w.getSentenceEng2());
-        
-        if(!this.testReady.get(5)){
-            this.testReady.set(5, Boolean.TRUE);
-            this.checkTestReady();
-        }
+        fillLearnData(5);
     }
     
     @FXML
     private void seventhWordAction(ActionEvent Event){
-        
-        seventhButton.setStyle("-fx-background-color: #A0E5AA");
-        
-        Word w = words.get(6);
-        titleLabel.setText(w.getWord() +  "-" + w.getWordInEng());
-        firstLabel.setText(w.getSentenceHun1());
-        secondLabel.setText(w.getSentenceEng1());
-        thirdLabel.setText(w.getSentenceHun1());
-        fourthLabel.setText(w.getSentenceEng2());
-        
-        if(!this.testReady.get(6)){
-            this.testReady.set(6, Boolean.TRUE);
-            this.checkTestReady();
-        }
+        fillLearnData(6);
     }
     
     @FXML
     private void eightWordAction(ActionEvent Event){
-        eighthButton.setStyle("-fx-background-color: #A0E5AA");
-        
-        Word w = words.get(7);
-        titleLabel.setText(w.getWord() +  "-" + w.getWordInEng());
-        firstLabel.setText(w.getSentenceHun1());
-        secondLabel.setText(w.getSentenceEng1());
-        thirdLabel.setText(w.getSentenceHun1());
-        fourthLabel.setText(w.getSentenceEng2());
-        
-        if(!this.testReady.get(7)){
-            this.testReady.set(7, Boolean.TRUE);
-            this.checkTestReady();
-        }
+        fillLearnData(7);
     }
     
     @FXML
     private void ninthWordAction(ActionEvent Event){
-        
-        ninthButton.setStyle("-fx-background-color: #A0E5AA");
-        
-        Word w = words.get(8);
-        titleLabel.setText(w.getWord() +  "-" + w.getWordInEng());
-        firstLabel.setText(w.getSentenceHun1());
-        secondLabel.setText(w.getSentenceEng1());
-        thirdLabel.setText(w.getSentenceHun1());
-        fourthLabel.setText(w.getSentenceEng2());
-        
-        if(!this.testReady.get(8)){
-            this.testReady.set(8, Boolean.TRUE);
-            this.checkTestReady();
-        }
+        fillLearnData(8);
     }
     
     @FXML
     private void tenthWordAction(ActionEvent Event){
-        
-        tenthButton.setStyle("-fx-background-color: #A0E5AA");
-        
-        Word w = words.get(9);
-        titleLabel.setText(w.getWord() +  "-" + w.getWordInEng());
-        firstLabel.setText(w.getSentenceHun1());
-        secondLabel.setText(w.getSentenceEng1());
-        thirdLabel.setText(w.getSentenceHun1());
-        fourthLabel.setText(w.getSentenceEng2());
-        
-        if(!this.testReady.get(9)){
-            this.testReady.set(9, Boolean.TRUE);
-            this.checkTestReady();
-        }
-        
+        fillLearnData(9);
     }
     
     /**
@@ -325,6 +240,14 @@ public class LearnController implements Initializable {
             if(!b)ready = false;
         }
         if(ready) this.testClick.setDisable(!ready);
+    }
+
+    @FXML
+    private void soundAction(ActionEvent event) {
+        String mp3 = currentWord.getAudio(); //fájl 
+        Media sound = new Media(new File(mp3).toURI().toString());
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
     }
         
 }

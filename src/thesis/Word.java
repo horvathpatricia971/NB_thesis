@@ -5,8 +5,6 @@
  */
 package thesis;
 
-import javax.sql.rowset.serial.SerialBlob;
-
 /**
  *
  * @author horvathpatricia
@@ -16,15 +14,15 @@ public class Word {
     private String wordInHun;
     private String wordInEng;
     private String wordClass;
-    private SerialBlob image;
-    private SerialBlob audio;
+    private String image;
+    private String audio;
     private String sentenceHun1;
     private String sentenceEng1;
     private String sentenceHun2;
     private String sentenceEng2;
     private int topicID;
 
-    public Word(int WordID, String WordInHun, String WordInEng, String WordClass, SerialBlob Image, SerialBlob Audio, String SentenceHun1, String SentenceEng1, String SentenceHun2, String SentenceEng2, int TopicID){
+    public Word(int WordID, String WordInHun, String WordInEng, String WordClass, String Image, String Audio, String SentenceHun1, String SentenceEng1, String SentenceHun2, String SentenceEng2, int TopicID){
         this.wordID = WordID;
         this.wordInHun = WordInHun;
         this.wordInEng = WordInEng;
@@ -70,19 +68,19 @@ public class Word {
         this.wordClass = WordClass;
     }
     
-    public SerialBlob getImage(){
+    public String getImage(){
         return image;
     }
     
-    public void setImage(SerialBlob Image){
+    public void setImage(String Image){
         this.image = Image;
     }
     
-    public SerialBlob getAudio(){
+    public String getAudio(){
         return audio;
     }
     
-    public void setAudio(SerialBlob Audio){
+    public void setAudio(String Audio){
         this.audio = Audio;
     }
     

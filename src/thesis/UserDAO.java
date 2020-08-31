@@ -60,6 +60,7 @@ public class UserDAO {
         this.update.setString(7, user.getSeeing());
         this.update.setInt(8, user.getTestNumber());
         this.update.setInt(9, user.getUserResult());
+        this.update.setInt(10, user.getUserID());
         this.update.executeUpdate();
     }
     

@@ -47,6 +47,7 @@ public class TestDAO {
     
     public void updateTest(Test test) throws SQLException {
         this.update.setInt(1, test.getTopicID());
+        this.update.setInt(2, test.getTestID());
         this.update.executeUpdate();
     }
     

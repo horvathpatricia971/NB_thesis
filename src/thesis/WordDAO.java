@@ -31,7 +31,7 @@ public class WordDAO {
         // TODO: adatbázis és program legyen azonos:
         this.insert = conn.prepareStatement("insert into word (wordInHun, wordInEng, wordClass, image, audio, sentenceHun1, sentenceEng1, sentenceHun2, sentenceEng2, topicID) values (?,?,?,?,?,?,?,?,?,?)");
         this.delete = conn.prepareStatement("DELETE FROM word WHERE wordID = ?");
-        this.update = conn.prepareStatement("UPDATE word SET wordInHun = ?, wordInEng = ?, wordClass = ?, image = ?, audio = ?, sentenceHun1 = ?, sentenceEng1 = ?, sentenceHun2 = ?, sentenceEng2 = ?, topicID = ?");
+        this.update = conn.prepareStatement("UPDATE word SET wordInHun = ?, wordInEng = ?, wordClass = ?, image = ?, audio = ?, sentenceHun1 = ?, sentenceEng1 = ?, sentenceHun2 = ?, sentenceEng2 = ?, topicID = ? WHERE wordID = ?");
         this.findAll = conn.prepareStatement("SELECT * FROM word");
         this.findById = conn.prepareStatement("SELECT * FROM word WHERE wordID = ?");
         this.findByTopicID = conn.prepareStatement("SELECT * FROM word WHERE topicID = ?");
@@ -41,8 +41,8 @@ public class WordDAO {
         this.insert.setString(1, newWord.getWord());
         this.insert.setString(2, newWord.getWordInEng());
         this.insert.setString(3, newWord.getWordClass());
-        this.insert.setBlob(4, newWord.getImage());
-        this.insert.setBlob(5, newWord.getAudio());
+        this.insert.setString(4, newWord.getImage());
+        this.insert.setString(5, newWord.getAudio());
         this.insert.setString(6, newWord.getSentenceHun1());
         this.insert.setString(7, newWord.getSentenceEng1());
         this.insert.setString(8, newWord.getSentenceHun2());
@@ -61,13 +61,14 @@ public class WordDAO {
         this.update.setString(1, word.getWord());
         this.update.setString(2, word.getWordInEng());
         this.update.setString(3, word.getWordClass());
-        this.update.setBlob(4, word.getImage());
-        this.update.setBlob(5, word.getAudio());
+        this.update.setString(4, word.getImage());
+        this.update.setString(5, word.getAudio());
         this.update.setString(6, word.getSentenceHun1());
         this.update.setString(7, word.getSentenceEng1());
         this.update.setString(8, word.getSentenceHun2());
         this.update.setString(9, word.getSentenceEng2());
         this.update.setInt(10, word.getTopicID());
+        this.update.setInt(11, word.getWordID());
     }
     
     public List<Word> findAllWord() throws SQLException {
@@ -97,8 +98,8 @@ public class WordDAO {
         String word = rs.getString("wordInHun");
         String wordInEng = rs.getString("wordInEng");
         String wordClass = rs.getString("wordClass");
-        SerialBlob image = (SerialBlob) rs.getBlob("image");
-        SerialBlob audio = (SerialBlob) rs.getBlob("audio");
+        String image = rs.getString("image");
+        String audio = rs.getString("audio");
         String sentenceHun1 = rs.getString("sentenceHun1");
         String sentenceEng1 = rs.getString("sentenceEng1");
         String sentenceHun2 = rs.getString("sentenceHun2");

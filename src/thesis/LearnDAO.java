@@ -52,6 +52,7 @@ public class LearnDAO {
         this.update.setDate(2, learn.getEndLearnTime());
         this.update.setInt(3, learn.getUserId());
         this.update.setInt(4, learn.getTopicId());
+        this.update.setInt(5, learn.getLearnId());
         this.update.executeUpdate();
     }
     

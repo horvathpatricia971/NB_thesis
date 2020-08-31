@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,12 +39,24 @@ public class TopicsController implements Initializable {
     @FXML
     private Button buttonNoQuit;
     
-    
+    @FXML
+    private Button topLeft;
     Connection conn;
 
     WordDAO worddao;
     LearnDAO learndao;
     DBConnection dbconnection;
+    TopicDAO topicdao;
+    @FXML
+    private Button topRight;
+    @FXML
+    private Button middleLeft;
+    @FXML
+    private Button middleRight;
+    @FXML
+    private Button bottomLeft;
+    @FXML
+    private Button bottomRight;
 
     /**
      * Initializes the controller class.
@@ -57,6 +70,21 @@ public class TopicsController implements Initializable {
             System.out.println("A híd létrejött");
             worddao = new WordDAO(conn);
             learndao = new LearnDAO(conn);
+            topicdao = new TopicDAO(conn);
+            List<Topic> t = topicdao.findAllTopic();
+            topLeft.setStyle(topLeft.getStyle()+";-fx-background-color: " + t.get(0).getColour());
+            topLeft.setText(t.get(0).getTopic());
+            topRight.setStyle(topRight.getStyle()+";-fx-background-color: " + t.get(1).getColour());
+            topRight.setText(t.get(1).getTopic());
+            middleLeft.setStyle(middleLeft.getStyle()+";-fx-background-color: " + t.get(2).getColour());
+            middleLeft.setText(t.get(2).getTopic());
+            middleRight.setStyle(middleRight.getStyle()+";-fx-background-color: " + t.get(3).getColour());
+            middleRight.setText(t.get(3).getTopic());
+            bottomLeft.setStyle(bottomLeft.getStyle()+";-fx-background-color: " + t.get(4).getColour());
+            bottomLeft.setText(t.get(4).getTopic());
+            bottomRight.setStyle(bottomRight.getStyle()+";-fx-background-color: " + t.get(5).getColour());
+            bottomRight.setText(t.get(5).getTopic());
+            
         } catch (SQLException ex) {
             
             System.out.println("Valami nem jó a connection létrehozásakor");
@@ -108,5 +136,17 @@ public class TopicsController implements Initializable {
     private void loadFood(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Learn.fxml"));
         secondAnchorPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void loadTransportation(ActionEvent event) {
+    }
+
+    @FXML
+    private void loadFamily(ActionEvent event) {
+    }
+
+    @FXML
+    private void loadTravel(ActionEvent event) {
     }
 }

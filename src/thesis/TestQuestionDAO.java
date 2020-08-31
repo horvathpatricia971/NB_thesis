@@ -57,6 +57,7 @@ public class TestQuestionDAO {
         this.update.setString(5, question.getAnswer3());
         this.update.setString(6, question.getRightAnswer());
         this.update.setInt(7, question.getTestID());
+        this.update.setInt(8, question.getTestQuestionID());
         this.update.executeUpdate();
     }
     
