@@ -23,14 +23,16 @@ public class TestQuestionDAO {
     private PreparedStatement update;
     private PreparedStatement findAll;
     private PreparedStatement findById;
+    private PreparedStatement findByTestId;
     
     public TestQuestionDAO(Connection conn) throws SQLException {
         this.conn = conn;
-        this.insert = conn.prepareStatement("insert into testQuestion (questionInHungarian, questionInEnglish, answer1, answer2, answer3, rightAnswer, testID) values (?,?,?,?,?,?,?)");
+        this.insert = conn.prepareStatement("insert into testQuestion (questionInHungarian, questionInEnglish, answer1, answer2, answer3, rightAnswer, questionNum, testID) values (?,?,?,?,?,?,?,?)");
         this.delete = conn.prepareStatement("DELETE FROM testQuestion WHERE testQuestionID = ?");
-        this.update = conn.prepareStatement("UPDATE testQuestion SET questionInHungarian = ?, questionInEnglish = ?, answer1 = ?, answer2 = ?, answer3 = ?, rightAnswer = ?, testID = ? WHERE testQuestionID = ?"); 
+        this.update = conn.prepareStatement("UPDATE testQuestion SET questionInHungarian = ?, questionInEnglish = ?, answer1 = ?, answer2 = ?, answer3 = ?, rightAnswer = ?, questionNum =?, testID = ? WHERE testQuestionID = ?"); 
         this.findAll = conn.prepareStatement("SELECT * FROM testQuestion");
         this.findById = conn.prepareStatement("SELECT * FROM testQuestion WHERE testQuestionID = ?");
+        this.findByTestId = conn.prepareStatement("SELECT * FROM testQuestion WHERE testID = ? ORDER BY questionNum");
     }
     
     public void addQuestion(TestQuestion newQuestion) throws SQLException{
@@ -40,7 +42,8 @@ public class TestQuestionDAO {
         this.insert.setString(4, newQuestion.getAnswer2());
         this.insert.setString(5, newQuestion.getAnswer3());
         this.insert.setString(6, newQuestion.getRightAnswer());
-        this.insert.setInt(7, newQuestion.getTestID());
+        this.insert.setInt(7, newQuestion.getQuestionNum());
+        this.insert.setInt(8, newQuestion.getTestID());
         this.insert.executeUpdate();
     }
     
@@ -56,8 +59,9 @@ public class TestQuestionDAO {
         this.update.setString(4, question.getAnswer2());
         this.update.setString(5, question.getAnswer3());
         this.update.setString(6, question.getRightAnswer());
-        this.update.setInt(7, question.getTestID());
-        this.update.setInt(8, question.getTestQuestionID());
+        this.insert.setInt(7, question.getQuestionNum());
+        this.update.setInt(8, question.getTestID());
+        this.update.setInt(9, question.getTestQuestionID());
         this.update.executeUpdate();
     }
     
@@ -83,6 +87,18 @@ public class TestQuestionDAO {
         return ret;
     }
     
+    public List<TestQuestion>  findQuestionByTestId(int testID) throws SQLException {
+        List<TestQuestion> ret = new ArrayList<>();
+        this.findByTestId.setInt(1, testID);
+        ResultSet rs = this.findByTestId.executeQuery();
+        
+        while (rs.next()) {
+            ret.add(makeOneQuestion(rs));
+        }
+        rs.close();
+        return ret;
+    }
+    
     private TestQuestion makeOneQuestion(ResultSet rs) throws SQLException {
         int testQuestionID = rs.getInt("testQuestionID");
         String questionInHungarian = rs.getString("questionInHungarian");
@@ -91,8 +107,9 @@ public class TestQuestionDAO {
         String answer2 = rs.getString("answer2");
         String answer3 = rs.getString("answer3");
         String rightAnswer = rs.getString("rightAnswer");
+        int questionNum = rs.getInt("questionNum");
         int testID = rs.getInt("testID");
-        TestQuestion question = new TestQuestion(testQuestionID, questionInHungarian, questionInEnglish, answer1, answer2, answer3, rightAnswer, testID); 
+        TestQuestion question = new TestQuestion(testQuestionID, questionInHungarian, questionInEnglish, answer1, answer2, answer3, rightAnswer, questionNum, testID); 
         return question;
     }
 }

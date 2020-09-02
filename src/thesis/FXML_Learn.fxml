@@ -40,17 +40,17 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <Label layoutX="202.0" layoutY="165.0" text="A témakört kiválasztva a természettel">
+            <Label layoutX="175.0" layoutY="165.0" text="A témakört kiválasztva a fent megnevezett">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="209.0" layoutY="218.0" text="kapcsolatos szavakat sajátíthatja el.">
+            <Label layoutX="167.0" layoutY="217.0" text="témával kapcsolatos szavakat sajátíthatja el.">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="238.0" layoutY="270.0" text="Eredményes tanulást kívánok!">
+            <Label layoutX="237.0" layoutY="270.0" text="Eredményes tanulást kívánok!">
                <font>
                   <Font size="24.0" />
                </font>
@@ -149,10 +149,7 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <ImageView fx:id="picture" fitHeight="150.0" fitWidth="200.0" layoutX="22.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-            <Image url="@nature.jpg" />
-         </image></ImageView>
+            <ImageView fx:id="picture" fitHeight="150.0" fitWidth="200.0" layoutX="22.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true" />
          <Button fx:id="soundButton" layoutX="269.0" layoutY="155.0" mnemonicParsing="false" onAction="#soundAction" style="-fx-background-color: #87BAD7; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="hang lejátszása">
          <font>
             <Font size="20.0" />

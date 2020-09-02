@@ -38,15 +38,8 @@ public class TopicsController implements Initializable {
     private Button buttonQuit;
     @FXML
     private Button buttonNoQuit;
-    
     @FXML
     private Button topLeft;
-    Connection conn;
-
-    WordDAO worddao;
-    LearnDAO learndao;
-    DBConnection dbconnection;
-    TopicDAO topicdao;
     @FXML
     private Button topRight;
     @FXML
@@ -57,6 +50,13 @@ public class TopicsController implements Initializable {
     private Button bottomLeft;
     @FXML
     private Button bottomRight;
+    
+    Connection conn;
+
+    WordDAO worddao;
+    LearnDAO learndao;
+    DBConnection dbconnection;
+    TopicDAO topicdao;
 
     /**
      * Initializes the controller class.
@@ -65,7 +65,6 @@ public class TopicsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         try {
-        //    dbconnection.getInstance();
             conn = DBConnection.getInstance();
             System.out.println("A híd létrejött");
             worddao = new WordDAO(conn);
@@ -92,10 +91,9 @@ public class TopicsController implements Initializable {
         }
     }    
 
-
     @FXML
     private void dataOutAction(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Leader_Board.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Results.fxml"));
         secondAnchorPane.getChildren().setAll(pane);
        
     }
@@ -121,32 +119,56 @@ public class TopicsController implements Initializable {
     }
 
     @FXML
-    private void loadHealth(ActionEvent event) throws IOException, SQLException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Word_First.fxml"));
-        secondAnchorPane.getChildren().setAll(pane);
-        learndao.addLearn(new Learn(1, new java.sql.Date(System.currentTimeMillis()), null, 1, 1));
-    }
-
-    @FXML
-    private void loadNature(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Nature.fxml"));
-        secondAnchorPane.getChildren().setAll(pane);
-    }
-    @FXML
-    private void loadFood(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Learn.fxml"));
+    private void loadTopLeft(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Learn.fxml"));
+        AnchorPane pane = loader.load();
+        LearnController controller = loader.<LearnController>getController();
+        controller.setTopicId(1);
         secondAnchorPane.getChildren().setAll(pane);
     }
 
     @FXML
-    private void loadTransportation(ActionEvent event) {
+    private void loadTopRight(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Learn.fxml"));
+        AnchorPane pane = loader.load();
+        LearnController controller = loader.<LearnController>getController();
+        controller.setTopicId(2);
+        secondAnchorPane.getChildren().setAll(pane);
     }
 
     @FXML
-    private void loadFamily(ActionEvent event) {
+    private void loadMiddleLeft(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Learn.fxml"));
+        AnchorPane pane = loader.load();
+        LearnController controller = loader.<LearnController>getController();
+        controller.setTopicId(3);
+        secondAnchorPane.getChildren().setAll(pane);
     }
 
     @FXML
-    private void loadTravel(ActionEvent event) {
+    private void loadMiddleRight(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Learn.fxml"));
+        AnchorPane pane = loader.load();
+        LearnController controller = loader.<LearnController>getController();
+        controller.setTopicId(4);
+        secondAnchorPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void loadBottomLeft(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Learn.fxml"));
+        AnchorPane pane = loader.load();
+        LearnController controller = loader.<LearnController>getController();
+        controller.setTopicId(5);
+        secondAnchorPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void loadBottomRight(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Learn.fxml"));
+        AnchorPane pane = loader.load();
+        LearnController controller = loader.<LearnController>getController();
+        controller.setTopicId(6);
+        secondAnchorPane.getChildren().setAll(pane);
     }
 }

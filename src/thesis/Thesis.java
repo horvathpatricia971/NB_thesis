@@ -20,12 +20,7 @@ public class Thesis extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXML_Login.fxml"));
-        
         Scene scene = new Scene(root);
-        
-        String css = Thesis.class.getResource("main.css").toExternalForm();
-        scene.getStylesheets().add(css);
-        stage.setTitle("Genuine Coder");
         stage.setScene(scene);
         stage.show();
     }

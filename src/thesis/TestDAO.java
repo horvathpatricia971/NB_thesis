@@ -24,6 +24,7 @@ public class TestDAO {
     private PreparedStatement update;
     private PreparedStatement findAll;
     private PreparedStatement findById;
+    private PreparedStatement findByTopicId;
     
     public TestDAO(Connection testConn) throws SQLException{
         this.testConn = testConn;
@@ -32,6 +33,7 @@ public class TestDAO {
         this.update = testConn.prepareStatement("UPDATE test SET topicID = ? WHERE testID = ?");
         this.findAll = testConn.prepareStatement("SELECT * FROM test");
         this.findById = testConn.prepareStatement("SELECT * FROM test WHERE testID = ?");
+        this.findByTopicId = testConn.prepareStatement("SELECT * FROM test WHERE topicID = ?");
     }
     
     //test DAO
@@ -68,6 +70,18 @@ public class TestDAO {
         Test ret = null;
         if (rs.next()) {
             ret = makeOneTest(rs);
+        }
+        rs.close();
+        return ret;
+    }
+    
+    public List<Test> findTestByTopicId(int topicID) throws SQLException {
+        List<Test> ret = new ArrayList<>();
+        this.findByTopicId.setInt(1, topicID);
+        ResultSet rs = this.findByTopicId.executeQuery();
+
+        while (rs.next()) {
+            ret.add(makeOneTest(rs));
         }
         rs.close();
         return ret;

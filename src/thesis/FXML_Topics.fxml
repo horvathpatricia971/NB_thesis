@@ -40,7 +40,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="topLeft" layoutX="91.0" layoutY="261.0" mnemonicParsing="false" onAction="#loadHealth" prefHeight="47.0" prefWidth="159.0" style="-fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="x">
+            <Button fx:id="topLeft" layoutX="91.0" layoutY="261.0" mnemonicParsing="false" onAction="#loadTopLeft" prefHeight="47.0" prefWidth="159.0" style="-fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="x">
                <font>
                   <Font size="24.0" />
                </font>
@@ -48,7 +48,7 @@
                   <Tooltip text="A gomb megnyomásával az egészség  témakörben tanulhat." />
                </tooltip>
             </Button>
-            <Button fx:id="topRight" layoutX="399.0" layoutY="261.0" mnemonicParsing="false" onAction="#loadNature" prefHeight="47.0" prefWidth="159.0" style="-fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="x">
+            <Button fx:id="topRight" layoutX="399.0" layoutY="261.0" mnemonicParsing="false" onAction="#loadTopRight" prefHeight="47.0" prefWidth="159.0" style="-fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="x">
                <font>
                   <Font size="24.0" />
                </font>
@@ -56,7 +56,7 @@
                   <Tooltip text="A gomb megnyomásával a temészet témakörben tanulhat." />
                </tooltip>
             </Button>
-            <Button fx:id="middleLeft" layoutX="91.0" layoutY="343.0" mnemonicParsing="false" onAction="#loadFood" prefHeight="47.0" prefWidth="159.0" style="-fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="x">
+            <Button fx:id="middleLeft" layoutX="91.0" layoutY="343.0" mnemonicParsing="false" onAction="#loadMiddleLeft" prefHeight="47.0" prefWidth="159.0" style="-fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="x">
                <font>
                   <Font size="24.0" />
                </font>
@@ -64,7 +64,7 @@
                   <Tooltip text="A gomb megnyomásával az étkezés témakörben tanulhat." />
                </tooltip>
             </Button>
-            <Button fx:id="middleRight" layoutX="399.0" layoutY="343.0" mnemonicParsing="false" onAction="#loadTransportation" prefHeight="47.0" prefWidth="159.0" style="-fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="x">
+            <Button fx:id="middleRight" layoutX="399.0" layoutY="343.0" mnemonicParsing="false" onAction="#loadMiddleRight" prefHeight="47.0" prefWidth="159.0" style="-fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="x">
                <font>
                   <Font size="24.0" />
                </font>
@@ -72,7 +72,7 @@
                   <Tooltip text="A gomb megnyomásával a közlekedés témakörben tanulhat." />
                </tooltip>
             </Button>
-            <Button fx:id="bottomLeft" layoutX="92.0" layoutY="432.0" mnemonicParsing="false" onAction="#loadFamily" prefHeight="47.0" prefWidth="159.0" style="-fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="x">
+            <Button fx:id="bottomLeft" layoutX="92.0" layoutY="432.0" mnemonicParsing="false" onAction="#loadBottomLeft" prefHeight="47.0" prefWidth="159.0" style="-fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="x">
                <font>
                   <Font size="24.0" />
                </font>
@@ -80,7 +80,7 @@
                   <Tooltip text="A gomb megnyomásával a család témakörben tanulhat." />
                </tooltip>
             </Button>
-            <Button fx:id="bottomRight" layoutX="399.0" layoutY="432.0" mnemonicParsing="false" onAction="#loadTravel" prefHeight="47.0" prefWidth="159.0" style="-fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="x">
+            <Button fx:id="bottomRight" layoutX="399.0" layoutY="432.0" mnemonicParsing="false" onAction="#loadBottomRight" prefHeight="47.0" prefWidth="159.0" style="-fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="x">
                <font>
                   <Font size="24.0" />
                </font>
@@ -88,7 +88,7 @@
                   <Tooltip text="A gomb megnyomásával az utazás témakörben tanulhat." />
                </tooltip>
             </Button>
-            <Button fx:id="dataOut" layoutX="428.0" layoutY="580.0" mnemonicParsing="false" onAction="#dataOutAction" style="-fx-background-color: #D7A5F1; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Eredményeim">
+            <Button fx:id="dataOut" layoutX="428.0" layoutY="580.0" mnemonicParsing="false" onAction="#dataOutAction" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Eredményeim">
                <font>
                   <Font size="24.0" />
                </font>
@@ -96,7 +96,7 @@
                   <Tooltip text="A gombra kattintva megtekintheti eddigi eredményeit." />
                </tooltip>
             </Button>
-            <Button layoutX="54.0" layoutY="580.0" mnemonicParsing="false" onAction="#logOut" prefHeight="47.0" prefWidth="117.0" style="-fx-background-color: #D7A5F1; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Kilépés">
+            <Button layoutX="54.0" layoutY="580.0" mnemonicParsing="false" onAction="#logOut" prefHeight="47.0" prefWidth="117.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Kilépés">
                <font>
                   <Font size="24.0" />
                </font>

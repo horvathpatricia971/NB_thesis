@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -107,6 +108,7 @@ public class LearnController implements Initializable {
     private Button soundButton;
     
     private Word currentWord;
+    private int topicId;
     
     private void fillLearnData(int number){
         Word w = words.get(number);
@@ -116,8 +118,6 @@ public class LearnController implements Initializable {
         secondLabel.setText(w.getSentenceEng1());
         thirdLabel.setText(w.getSentenceHun2());
         fourthLabel.setText(w.getSentenceEng2());
-        
-        firstButton.setStyle("-fx-background-color: #A0E5AA");
         
         try {
             FileInputStream fis = new FileInputStream("src/thesis/" + w.getImage());
@@ -133,57 +133,91 @@ public class LearnController implements Initializable {
             this.checkTestReady();
         }
     }
+
+    public void setTopicId(int topicId) {
+        this.topicId = topicId;
+        fillFrame();
+    }
+    
+    private void fillFrame(){
+        try {
+            topic = topicdao.findTopicById(topicId);
+            words = worddao.findByTopicID(topicId);
+            topicLabel.setText(topic.getTopic() + " témakör");
+            firstButton.setText(words.get(0).getWord());
+            secondButton.setText(words.get(1).getWord());
+            thirdButton.setText(words.get(2).getWord());
+            fourthButton.setText(words.get(3).getWord());
+            fifthButton.setText(words.get(4).getWord());
+            sixthButton.setText(words.get(5).getWord());
+            seventhButton.setText(words.get(6).getWord());
+            eighthButton.setText(words.get(7).getWord());
+            ninthButton.setText(words.get(8).getWord());
+            tenthButton.setText(words.get(9).getWord());
+        } catch (SQLException ex) {
+            Logger.getLogger(LearnController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
             
             
     @FXML
     private void firstWordAction(ActionEvent Event){
         fillLearnData(0);
+        firstButton.setStyle("-fx-background-color: #A0E5AA");
     }
     
     @FXML
     private void secondWordAction(ActionEvent Event){
         fillLearnData(1);
-        
+        secondButton.setStyle("-fx-background-color: #A0E5AA");
     }
     
     @FXML
     private void thirdWordAction(ActionEvent Event){
         fillLearnData(2);
+        thirdButton.setStyle("-fx-background-color: #A0E5AA");
     }
     
     @FXML
     private void fourtWordAction(ActionEvent Event){
         fillLearnData(3);
+        fourthButton.setStyle("-fx-background-color: #A0E5AA");
     }
     
     @FXML
     private void fifthWordAction(ActionEvent Event){
         fillLearnData(4);
+        fifthButton.setStyle("-fx-background-color: #A0E5AA");
     }
     
     @FXML
     private void sixthWordAction(ActionEvent Event){
         fillLearnData(5);
+        sixthButton.setStyle("-fx-background-color: #A0E5AA");
     }
     
     @FXML
     private void seventhWordAction(ActionEvent Event){
         fillLearnData(6);
+        seventhButton.setStyle(("-fx-background-color: #A0E5AA"));
     }
     
     @FXML
     private void eightWordAction(ActionEvent Event){
         fillLearnData(7);
+        eighthButton.setStyle(("-fx-background-color: #A0E5AA"));
     }
     
     @FXML
     private void ninthWordAction(ActionEvent Event){
         fillLearnData(8);
+        ninthButton.setStyle(("-fx-background-color: #A0E5AA"));
     }
     
     @FXML
     private void tenthWordAction(ActionEvent Event){
         fillLearnData(9);
+        tenthButton.setStyle(("-fx-background-color: #A0E5AA"));
     }
     
     /**
@@ -201,19 +235,7 @@ public class LearnController implements Initializable {
             System.out.println("A híd létrejött");
             worddao = new WordDAO(conn);
             topicdao = new TopicDAO(conn);
-            topic = topicdao.findTopicById(3);
-            words = worddao.findByTopicID(3);
-            topicLabel.setText(topic.getTopic() + " témakör");
-            firstButton.setText(words.get(0).getWord());
-            secondButton.setText(words.get(1).getWord());
-            thirdButton.setText(words.get(2).getWord());
-            fourthButton.setText(words.get(3).getWord());
-            fifthButton.setText(words.get(4).getWord());
-            sixthButton.setText(words.get(5).getWord());
-            seventhButton.setText(words.get(6).getWord());
-            eighthButton.setText(words.get(7).getWord());
-            ninthButton.setText(words.get(8).getWord());
-            tenthButton.setText(words.get(9).getWord());
+            
         } catch (SQLException ex) {
             
             System.out.println("Valami nem jó a connection létrehozásakor");

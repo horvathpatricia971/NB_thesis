@@ -17,11 +17,12 @@ public class TestQuestion {
     private String answer2;
     private String answer3;
     private String rightAnswer;
+    private int questionNum;
     private int testID;
     
     
     
-    public TestQuestion(int TestQuestionID, String QuestionInHungarian, String QuestionInEnglish, String Answer1, String Answer2, String Answer3, String RightAnswer, int TestID){
+    public TestQuestion(int TestQuestionID, String QuestionInHungarian, String QuestionInEnglish, String Answer1, String Answer2, String Answer3, String RightAnswer, int QuestionNum, int TestID){
         this.testQuestionID = TestQuestionID;
         this.questionInHungarian = QuestionInHungarian;
         this.questionInEnglish = QuestionInEnglish;
@@ -29,6 +30,7 @@ public class TestQuestion {
         this.answer2 = Answer2;
         this.answer3 = Answer3;
         this.rightAnswer = RightAnswer;
+        this.questionNum = QuestionNum;
         this.testID = TestID;
     }
     
@@ -86,6 +88,14 @@ public class TestQuestion {
     
     public void setRightAnswer(String RightAnswer){
         this.rightAnswer = RightAnswer;
+    }
+    
+    public int getQuestionNum() {
+        return questionNum;
+    }
+
+    public void setQuestionNum(int questionNum) {
+        this.questionNum = questionNum;
     }
     
     public int getTestID(){

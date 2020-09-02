@@ -49,51 +49,26 @@ public class ResultController implements Initializable {
     
     public void initialize(URL url, ResourceBundle rb) {
         
-        UserService us = new UserService();
-        //table.setItems(us.getUserList());
         TableColumn userName = new TableColumn("Felhasználónév");
         userName.setMinWidth(100);
         userName.setCellFactory(TextFieldTableCell.forTableColumn());
-        userName.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
         
-        TableColumn gender = new TableColumn("Nem");
-        gender.setMinWidth(40);
-        gender.setCellFactory(TextFieldTableCell.forTableColumn());
-        gender.setCellValueFactory(new PropertyValueFactory<User, String>("gender"));
+        TableColumn topic = new TableColumn("Téma");
+        topic.setMinWidth(100);
+        topic.setCellFactory(TextFieldTableCell.forTableColumn());
         
-        TableColumn age = new TableColumn("Kor");
-        age.setMinWidth(20);
-        age.setCellFactory(TextFieldTableCell.forTableColumn());
-        age.setCellValueFactory(new PropertyValueFactory<User, Integer>("age"));
+        TableColumn difficulty = new TableColumn("Nehézség");
+        difficulty.setMinWidth(20);
+        difficulty.setCellFactory(TextFieldTableCell.forTableColumn());
         
-        TableColumn id = new TableColumn("Id");
-        id.setMinWidth(100);
-        id.setCellFactory(TextFieldTableCell.forTableColumn());
-        id.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
+        TableColumn result = new TableColumn("Eredmény");
+        result.setMinWidth(50);
+        result.setCellFactory(TextFieldTableCell.forTableColumn());
         
-        TableColumn excercisesNumber = new TableColumn("Feladatszam");
-        excercisesNumber.setMinWidth(50);
-        excercisesNumber.setCellFactory(TextFieldTableCell.forTableColumn());
-        excercisesNumber.setCellValueFactory(new PropertyValueFactory<User, Integer>("excercisesNumber"));
-        
-        TableColumn userResult = new TableColumn("Eredmény");
-        userResult.setMinWidth(50);
-        userResult.setCellFactory(TextFieldTableCell.forTableColumn());
-        userResult.setCellValueFactory(new PropertyValueFactory<User, Integer>("userResult"));
-        
-        table.getColumns().addAll(userName, gender, age, id, excercisesNumber, userResult);
-        //LoginController cl = new LoginController();
-        /*try{
-        ArrayList<User> newList = us.getList();
-        table.getItems();
-        table.setItems(us.getUserList(newList));
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        /*for(User user: us.getUserList()){
-            table.getItems().add(user);
-        }*/
-        // table.getItems(cl.data);
+        TableColumn time = new TableColumn("Idő");
+        time.setMinWidth(50);
+        time.setCellFactory(TextFieldTableCell.forTableColumn());
+
     }
    
 /*public static ArrayList<User> searchUsers() throws SQLException, ClassNotFoundException {
