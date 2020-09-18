@@ -5,7 +5,7 @@
  */
 package thesis;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
@@ -13,12 +13,12 @@ import java.sql.Date;
  */
 public class Learn {
     private int learnID;
-    private Date startLearnTime;
-    private Date endLearnTime;
+    private Timestamp startLearnTime;
+    private Timestamp endLearnTime;
     private int userID;
     private int topicID;
     
-    public Learn(int LearnID, Date StartLearnTime, Date EndLearnTime, int UserID, int TopicID){
+    public Learn(int LearnID, Timestamp StartLearnTime, Timestamp EndLearnTime, int UserID, int TopicID){
         this.learnID = LearnID;
         this.startLearnTime = StartLearnTime;
         this.endLearnTime = EndLearnTime;
@@ -34,19 +34,19 @@ public class Learn {
         this.learnID = LearnID;
     }
     
-    public Date getStartLearnTime(){
+    public Timestamp getStartLearnTime(){
         return startLearnTime;
     }
     
-    public void setStartLearnTime(Date StartLearnTime){
+    public void setStartLearnTime(Timestamp StartLearnTime){
         this.startLearnTime = StartLearnTime;
     }
     
-    public Date getEndLearnTime(){
+    public Timestamp getEndLearnTime(){
         return endLearnTime;
     }
     
-    public void setEndLearnTime(Date EndLearnTime){
+    public void setEndLearnTime(Timestamp EndLearnTime){
         this.endLearnTime = EndLearnTime;
     }
       

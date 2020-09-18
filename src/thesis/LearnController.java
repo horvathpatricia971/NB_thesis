@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -28,6 +27,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -40,7 +40,17 @@ import javafx.scene.media.MediaPlayer;
 
     
 public class LearnController implements Initializable {
+    @FXML
+    private Pane mainPane;
     
+    @FXML
+    private Pane firstPane;
+    
+    @FXML
+    private Pane errorPane;
+    
+    @FXML
+    private VBox vbox;
     
     @FXML
     private Button firstButton;
@@ -71,44 +81,70 @@ public class LearnController implements Initializable {
     
     @FXML
     private Button tenthButton;
-    @FXML
-    private Pane firstPane;
 
     @FXML
     private Button testClick;
-    @FXML
-    private Label topicLabel;
+    
     @FXML
     private AnchorPane healthAnchorPane;
     
-    private List<Boolean> testReady;
+    @FXML
+    private ImageView picture;
+    
+    private MediaPlayer mediaPlayer;
+    
+    @FXML
+    private Label firstLabel;
+    
+    @FXML
+    private Label titleLabel;
+    
+    @FXML
+    private Label secondLabel;
+    
+    @FXML
+    private Label thirdLabel;
+    
+    @FXML
+    private Label fourthLabel;
+    
+    @FXML
+    private Label topicLabel;
+    
+    @FXML
+    private Label firstErrorLabel;
+    
+    private Word currentWord;
+    
+    private int topicId;
+    
+    private int userId;
+    
+    private Learn learn;
     
     private WordDAO worddao;
     
     private TopicDAO topicdao;
     
+    private LearnDAO learndao;
+    
     private Topic topic;
     
     private List<Word> words;
-    @FXML
-    private ImageView picture;
-    @FXML
-    private Label firstLabel;
-    @FXML
-    private Label titleLabel;
-    @FXML
-    private Label secondLabel;
-    @FXML
-    private Label thirdLabel;
-    @FXML
-    private Label fourthLabel;
     
-    private MediaPlayer mediaPlayer;
+    private List<Boolean> testReady;
     @FXML
     private Button soundButton;
-    
-    private Word currentWord;
-    private int topicId;
+    @FXML
+    private Label secondErrorLabel;
+    @FXML
+    private Button buttonRight;
+    @FXML
+    private Pane quitPane;
+    @FXML
+    private Button buttonQuit;
+    @FXML
+    private Button buttonNoQuit;
     
     private void fillLearnData(int number){
         Word w = words.get(number);
@@ -120,7 +156,7 @@ public class LearnController implements Initializable {
         fourthLabel.setText(w.getSentenceEng2());
         
         try {
-            FileInputStream fis = new FileInputStream("src/thesis/" + w.getImage());
+            FileInputStream fis = new FileInputStream("images/" + w.getImage());
             picture.setImage(new Image(fis));
         } catch (FileNotFoundException ex) {
             // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
@@ -133,16 +169,31 @@ public class LearnController implements Initializable {
             this.checkTestReady();
         }
     }
-
+    
+    
+    
     public void setTopicId(int topicId) {
         this.topicId = topicId;
         fillFrame();
+        try {
+            learn = new Learn(0, new java.sql.Timestamp(new java.util.Date().getTime()), null, this.userId, this.topicId);
+            learndao.addLearn(learn);
+        } catch (SQLException ex) {
+            errorPane.setVisible(true);
+            firstPane.setDisable(true);
+            mainPane.setVisible(true);
+            vbox.setVisible(true);
+            firstErrorLabel.setText("Probléma a tanulási fázis hozzáadásakor.");
+            System.out.println(""+ex);
+            // TODO Alert ablak, hogz lássuk, mi történt
+            // DBConnection.exceptionHanlder(ex)
+        }
     }
     
     private void fillFrame(){
         try {
             topic = topicdao.findTopicById(topicId);
-            words = worddao.findByTopicID(topicId);
+            words = worddao.findWordsByTopicID(topicId);
             topicLabel.setText(topic.getTopic() + " témakör");
             firstButton.setText(words.get(0).getWord());
             secondButton.setText(words.get(1).getWord());
@@ -155,10 +206,30 @@ public class LearnController implements Initializable {
             ninthButton.setText(words.get(8).getWord());
             tenthButton.setText(words.get(9).getWord());
         } catch (SQLException ex) {
+            errorPane.setVisible(true);
+            firstPane.setDisable(true);
+            firstErrorLabel.setText("Hiányzó elem az adatbázisban.");
+            System.out.println(""+ex);
             Logger.getLogger(LearnController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-            
+    
+    
+
+    // eyt kell előbb meghívni, utána a setTopicId-t
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+    
+         
+    
+    private void checkTestReady() {
+        boolean ready = true;
+        for (Boolean b : this.testReady){
+            if(!b)ready = false;
+        }
+        if(ready) this.testClick.setDisable(!ready);
+    }
             
     @FXML
     private void firstWordAction(ActionEvent Event){
@@ -219,57 +290,108 @@ public class LearnController implements Initializable {
         fillLearnData(9);
         tenthButton.setStyle(("-fx-background-color: #A0E5AA"));
     }
-    
-    /**
-     * Initializes the controller class.
-     */
+
     public void initialize(URL url, ResourceBundle rb) {
+        
+        firstButton.getStyleClass().add("button-words");
+        secondButton.getStyleClass().add("button-words");
+        thirdButton.getStyleClass().add("button-words");
+        fourthButton.getStyleClass().add("button-words");
+        fifthButton.getStyleClass().add("button-words");
+        sixthButton.getStyleClass().add("button-words");
+        seventhButton.getStyleClass().add("button-words");
+        eighthButton.getStyleClass().add("button-words");
+        ninthButton.getStyleClass().add("button-words");
+        tenthButton.getStyleClass().add("button-words");
         
         this.testReady = new ArrayList<Boolean>();
         for (int i = 0; i < 10; i++){
             this.testReady.add(Boolean.FALSE);
         }  
         
-         try {
+        try {
             Connection conn = DBConnection.getInstance();
-            System.out.println("A híd létrejött");
+            System.out.println("Adatbáziskapcsolat létrehozva.");
             worddao = new WordDAO(conn);
             topicdao = new TopicDAO(conn);
+            learndao = new LearnDAO(conn);
             
         } catch (SQLException ex) {
-            
-            System.out.println("Valami nem jó a connection létrehozásakor");
+            errorPane.setVisible(true);
+            firstPane.setDisable(true);
+            mainPane.setVisible(true);
+            vbox.setVisible(true);
+            firstErrorLabel.setText("Nem jött létre az adatbáziskapcsolat.");
             System.out.println(""+ex);
         }
     }
-
     @FXML
     private void testClickAction(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Test.fxml"));
+        learn.setEndLearnTime(new java.sql.Timestamp(new java.util.Date().getTime()));
+        try {
+            learndao.updateLearn(learn);
+        } catch (SQLException ex) {
+            errorPane.setVisible(true);
+            mainPane.setVisible(true);
+            vbox.setVisible(true);
+            firstPane.setDisable(true);
+            firstErrorLabel.setText("Probléma a befejezési idő tárolásánál.");
+            Logger.getLogger(LearnController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Test.fxml"));
+        AnchorPane pane = loader.load();
+        TestController controller = loader.<TestController>getController();
+        controller.setTopicId(this.topicId);
+        controller.setUserId(this.userId);
         healthAnchorPane.getChildren().setAll(pane);
-        
     }
 
     @FXML
     private void logOut(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Topics.fxml"));
-        healthAnchorPane.getChildren().setAll(pane);
-    }
-    
-    private void checkTestReady() {
-        boolean ready = true;
-        for (Boolean b : this.testReady){
-            if(!b)ready = false;
-        }
-        if(ready) this.testClick.setDisable(!ready);
+        quitPane.setVisible(true);
+        mainPane.setDisable(true);
+        firstPane.setDisable(true);
+        vbox.setDisable(true);
+        mainPane.setOpacity(0.5);
+        firstPane.setOpacity(0.8);
+        vbox.setOpacity(0.5);
     }
 
     @FXML
     private void soundAction(ActionEvent event) {
-        String mp3 = currentWord.getAudio(); //fájl 
+        String mp3 = "mp3/" + currentWord.getAudio(); //fájl 
         Media sound = new Media(new File(mp3).toURI().toString());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
+    }
+    
+    @FXML
+    private void loadRight(ActionEvent event) {
+        errorPane.setVisible(false);
+        mainPane.setDisable(false);
+        mainPane.setVisible(false);
+        vbox.setVisible(false);
+    }
+
+    @FXML
+    private void quitAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Topics.fxml"));
+        AnchorPane pane = loader.load();
+        TopicsController controller = loader.<TopicsController>getController();
+        controller.setUserId(this.userId);
+        healthAnchorPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void noQuitAction(ActionEvent event) {
+        quitPane.setVisible(false);
+        mainPane.setDisable(false);
+        firstPane.setDisable(false);
+        vbox.setDisable(false);
+        mainPane.setOpacity(1);
+        firstPane.setOpacity(1);
+        vbox.setOpacity(1);
     }
         
 }

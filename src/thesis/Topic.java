@@ -33,16 +33,16 @@ public class Topic {
 	return topicID;
     }
 
-    public void setTopicID(int TopicId){
-	this.topicID = TopicId;
+    public void setTopicID(int TopicID){
+	this.topicID = TopicID;
     }
     
     public String getTopic(){
         return topic;
     }
     
-    public void setTopic(String Topic){
-        this.topic = Topic;
+    public void setTopic(String topic){
+        this.topic = topic;
     }
     
     public int getNumberOfWords(){

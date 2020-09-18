@@ -1,0 +1,125 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.button{
+    -fx-background-color: #8AD1FA; 
+    -fx-background-radius: 5;
+    -fx-border-color: #000000;
+    -fx-border-width: 1 1 1 1;
+    -fx-background-insets: 0;
+    -fx-border-radius: 4;
+}
+
+.button:hover{
+    -fx-background-color: #70B2D8;
+}
+
+.button-words:focused{
+    -fx-border-color: #CE1F1B;
+    -fx-border-radius: 5;
+    -fx-border-width: 2 2 2 2;
+    -fx-background-insets: 0;
+    -fx-background-radius: 4; 
+}
+
+.button-health{
+    -fx-background-color: #F8B9DE;
+    -fx-background-radius: 5;
+    -fx-border-color: #000000;
+    -fx-border-width: 1 1 1 1;
+    -fx-background-insets: 0;
+    -fx-border-radius: 4;
+}
+
+.button-health:hover{
+    -fx-background-color: #E1A8C9;
+}
+
+.button-nature{
+    -fx-background-color: #ACFBD5; 
+    -fx-background-radius: 5;
+    -fx-border-color: #000000;
+    -fx-border-width: 1 1 1 1;
+    -fx-background-insets: 0;
+    -fx-border-radius: 4;
+}
+
+.button-nature:hover{
+    -fx-background-color: #9CE4C2;
+}
+
+.button-meal{
+    -fx-background-color: #FFC560;
+    -fx-background-radius: 5;
+    -fx-border-color: #000000;
+    -fx-border-width: 1 1 1 1;
+    -fx-background-insets: 0;
+    -fx-border-radius: 4;
+}
+
+.button-meal:hover{
+    -fx-background-color: #FFB93E;
+}
+
+.button-transportation{
+    -fx-background-color: #FA836B;
+    -fx-background-radius: 5;
+    -fx-border-color: #000000;
+    -fx-border-width: 1 1 1 1;
+    -fx-background-insets: 0;
+    -fx-border-radius: 4;
+}
+
+.button-transportation:hover{
+    -fx-background-color: #F96B4E;
+}
+
+.button-family{
+    -fx-background-color: #60BAFF;
+    -fx-background-radius: 5;
+    -fx-border-color: #000000;
+    -fx-border-width: 1 1 1 1;
+    -fx-background-insets: 0;
+    -fx-border-radius: 4;
+}
+
+.button-family:hover{
+    -fx-background-color: #5CACE9;
+}
+
+.button-travel{
+    -fx-background-color: #EEFF60;
+    -fx-background-radius: 5;
+    -fx-border-color: #000000;
+    -fx-border-width: 1 1 1 1;
+    -fx-background-insets: 0;
+    -fx-border-radius: 4;
+}
+
+.button-travel:hover{
+    -fx-background-color: #DFF61C;
+}
+
+.textfield-choicebox{
+    -fx-border-color: #000000;
+    -fx-border-radius: 4;
+    -fx-background-radius: 5;
+}
+
+.table-view{
+    -fx-background-color: #FFAE21;
+    -fx-font-size: 14pt;
+    -fx-border-color: #000000;
+}
+
+.table-cell{
+    -fx-background-color: #FAD38F;
+    -fx-font-size: 14pt;
+    -fx-border-color: #000000;
+}
+
+.column-header{
+    -fx-background-color:#FBC058;
+    -fx-border-color: #000000;
+}

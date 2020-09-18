@@ -8,7 +8,6 @@ package thesis;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -40,7 +39,16 @@ public class LoginController implements Initializable {
     private Pane basePane;
     
     @FXML
-    TextField inputUsername;
+    private TextField inputUsername;
+    
+    @FXML
+    private TextField inputAge;
+    
+    @FXML
+    private Label firstErrorLabel;
+    
+    @FXML
+    private Label secondErrorLabel;
     
     @FXML
     private ChoiceBox<String> genericBox1;
@@ -56,51 +64,55 @@ public class LoginController implements Initializable {
     
     @FXML
     private ChoiceBox<String> genericBox5;
-    
-    @FXML
-    TextField inputAge;
 
     public final ObservableList<User> data = FXCollections.observableArrayList();
 
     Connection conn;
 
     UserDAO userDAO;
+    
     DBConnection dbconnection;
     
-    @Override
+@Override
     public void initialize(URL url, ResourceBundle rb) {
         
         try {
-        //    dbconnection.getInstance();
             conn = DBConnection.getInstance();
-            System.out.println("A híd létrejött");
+            System.out.println("Adatbáziskapcsolat létrehozva.");
             userDAO = new UserDAO(conn);
         } catch (SQLException ex) {
-            
-            System.out.println("Valami nem jó a connection létrehozásakor");
+            this.isFailedValidation();
+            firstErrorLabel.setText("Nem jött létre az adatbáziskapcsolat.");
             System.out.println(""+ex);
         }
         
+        inputUsername.getStyleClass().add("textfield-choicebox");
+        inputAge.getStyleClass().add("textfield-choicebox");
 
-      genericBox1.getItems().add("nő");
-      genericBox1.getItems().add("férfi");
+        genericBox1.getItems().add("nő");
+        genericBox1.getItems().add("férfi");
+        genericBox1.getStyleClass().add("textfield-choicebox");
       
-      genericBox2.getItems().add("általános iskola");
-      genericBox2.getItems().add("középfokú");
-      genericBox2.getItems().add("felsőfokú");
+        genericBox2.getItems().add("általános iskola");
+        genericBox2.getItems().add("középfokú");
+        genericBox2.getItems().add("felsőfokú");
+        genericBox2.getStyleClass().add("textfield-choicebox");
       
-      genericBox3.getItems().add("igen");
-      genericBox3.getItems().add("nem");
+        genericBox3.getItems().add("igen");
+        genericBox3.getItems().add("nem");
+        genericBox3.getStyleClass().add("textfield-choicebox");
       
-      genericBox4.getItems().add("igen");
-      genericBox4.getItems().add("nem");
+        genericBox4.getItems().add("igen");
+        genericBox4.getItems().add("nem");
+        genericBox4.getStyleClass().add("textfield-choicebox");
       
-      genericBox5.getItems().add("igen");
-      genericBox5.getItems().add("nem");
+        genericBox5.getItems().add("igen");
+        genericBox5.getItems().add("nem");
+        genericBox5.getStyleClass().add("textfield-choicebox");
     }
     
     @FXML
-    private void loadSecond(ActionEvent event) throws IOException {
+    private void loadTopics(ActionEvent event) throws IOException {
        
        try {
         String username = inputUsername.getText();
@@ -114,15 +126,19 @@ public class LoginController implements Initializable {
         if(username == null || gender == null || ageText == null || education == null || desease == null || hearing ==null || seeing == null){
             
             this.isFailedValidation();
+            firstErrorLabel.setText("Valamely adatot nem adott meg!");
             
         }else if(username.equals("") || gender.equals("") || ageText.equals("") || education.equals("") || desease.equals("") || hearing.equals("") || seeing.equals("")){
             
             this.isFailedValidation();
+            firstErrorLabel.setText("Valamely adatot nem adott meg!");
             
         }else if (Integer.parseInt(ageText) < 7 || Integer.parseInt(ageText) > 115 ){
           
             this.isFailedValidation();
-           
+            firstErrorLabel.setText("Helytelenül adta meg az életkorát!");
+            secondErrorLabel.setText("Életkor 6 és 116 közötti érték lehet.");
+            
         }else{
             
             int age = Integer.parseInt(ageText);
@@ -133,11 +149,15 @@ public class LoginController implements Initializable {
         inputUsername.clear();
         inputAge.clear();
        
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("FXML_Topics.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Topics.fxml"));
+        AnchorPane pane = loader.load();
+        TopicsController controller = loader.<TopicsController>getController();
+        controller.setUserId(newUser.getUserID());
         rootPane.getChildren().setAll(pane);
         }
         }catch(Exception e){
-           this.isFailedValidation();
+          this.isFailedValidation();
+          firstErrorLabel.setText("Valamely adatot helytelenül adott meg!");
            e.printStackTrace();
         }
     }
@@ -159,6 +179,8 @@ public class LoginController implements Initializable {
     private void isEnablePanel() {
         rightPane.setVisible(false);
         basePane.setDisable(false);
+        firstErrorLabel.setText("");
+        secondErrorLabel.setText("");
     }
 
 }

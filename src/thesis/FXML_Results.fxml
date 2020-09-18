@@ -8,12 +8,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="resultAnchor" prefHeight="650.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thesis.ResultController">
+<AnchorPane id="AnchorPane" fx:id="resultAnchor" prefHeight="650.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thesis.ResultController">
    <children>
-      <Pane prefHeight="650.0" prefWidth="650.0">
+      <Pane prefHeight="650.0" prefWidth="750.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffae2134" height="650.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-            <TableView fx:id="table" layoutX="76.0" layoutY="64.0" prefHeight="523.0" prefWidth="497.0" style="-fx-background-color: #fce3b8; -fx-border-color: #000000;">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffae2134" height="650.0" stroke="BLACK" strokeType="INSIDE" width="750.0" />
+            <TableView fx:id="table" layoutX="100.0" layoutY="150.0" prefHeight="300.0" prefWidth="550.0" style="-fx-background-color: #fce3b8; -fx-border-color: #000000;">
               <placeholder>
                   <Label text="Még nincsenek eredmények">
                      <font>
@@ -23,16 +23,39 @@
               <columns>
               </columns>
             </TableView>
-            <Label layoutX="135.0" layoutY="20.0" text="Itt láthatóak az eddig elért eredményei">
+            <Label layoutX="185.0" layoutY="69.0" text="Itt láthatóak az eddig elért eredményei">
                <font>
                   <Font size="24.0" />
                </font></Label>
-            <Button layoutX="25.0" layoutY="595.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-background-insets: 0; -fx-border-radius: 4;" text="Vissza">
+            <Button layoutX="50.0" layoutY="547.0" mnemonicParsing="false" onAction="#logOut" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-background-insets: 0; -fx-border-radius: 4;" text="Vissza">
                <font>
                   <Font size="24.0" />
                </font>
                <tooltip>
                   <Tooltip text="A gombot megnyomva újra a Témák kiválasztása felület jelenik meg." />
+               </tooltip>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="errorPane" layoutX="81.5" layoutY="283.0" prefHeight="199.0" prefWidth="485.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e6b4e2" height="200.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" width="484.0" />
+            <Label fx:id="firstErrorLabel" alignment="CENTER" layoutX="28.0" layoutY="42.0" prefHeight="29.0" prefWidth="392.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="secondErrorLabel" alignment="CENTER" layoutX="28.0" layoutY="86.0" prefHeight="29.0" prefWidth="392.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="buttonRight" layoutX="183.0" layoutY="134.0" onAction="#loadRight" prefHeight="37.0" prefWidth="120.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Rendben">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="A gomb megnyomásával  ismét próbálkozhat az adatok megadásával." />
                </tooltip>
             </Button>
          </children>

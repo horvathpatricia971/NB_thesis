@@ -10,6 +10,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +29,7 @@ public class LearnDAO {
     
     public LearnDAO(Connection conn) throws SQLException {
         this.conn = conn;
-        this.insert = conn.prepareStatement("insert into learn (startLearnTime, endLearnTime, userID, topicID) values (?,?,?,?)");
+        this.insert = conn.prepareStatement("INSERT INTO learn (startLearnTime, endLearnTime, userID, topicID) values (?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
         this.delete = conn.prepareStatement("DELETE FROM learn WHERE learnID = ?");
         this.update = conn.prepareStatement("UPDATE learn SET startLearnTime =?, endLearnTime = ?, userID = ?, topicID = ? WHERE learnID = ?");
         this.findAll = conn.prepareStatement("SELECT * FROM learn");
@@ -35,11 +37,17 @@ public class LearnDAO {
     }
     
     public void addLearn(Learn learn) throws SQLException {
-        this.insert.setDate(1, learn.getStartLearnTime());
-        this.insert.setDate(2, learn.getEndLearnTime());
+        this.insert.setTimestamp(1, learn.getStartLearnTime());
+        this.insert.setTimestamp(2, learn.getEndLearnTime());
         this.insert.setInt(3, learn.getUserId());
         this.insert.setInt(4, learn.getTopicId());
         this.insert.executeUpdate();
+        try (ResultSet keys = this.insert.getGeneratedKeys()) {
+            if (keys.next())
+                learn.setLearnId(keys.getInt(1));
+            else
+                throw new SQLException("Learn ID setting failed.");
+        }
     }
     
     public void deleteLearn(int learnID) throws SQLException {
@@ -48,8 +56,8 @@ public class LearnDAO {
     }
     
     public void updateLearn(Learn learn) throws SQLException {
-        this.update.setDate(1, learn.getStartLearnTime());
-        this.update.setDate(2, learn.getEndLearnTime());
+        this.update.setTimestamp(1, learn.getStartLearnTime());
+        this.update.setTimestamp(2, learn.getEndLearnTime());
         this.update.setInt(3, learn.getUserId());
         this.update.setInt(4, learn.getTopicId());
         this.update.setInt(5, learn.getLearnId());
@@ -80,8 +88,8 @@ public class LearnDAO {
     
     private Learn makeOneLearn(ResultSet rs) throws SQLException {
         int learnID = rs.getInt("learnID");
-        Date startLearnTime = rs.getDate("startLearnTime");
-        Date endLearnTime = rs.getDate("endLearnTime");
+        Timestamp startLearnTime = rs.getTimestamp("startLearnTime");
+        Timestamp endLearnTime = rs.getTimestamp("endLearnTime");
         int userID = rs.getInt("userID");
         int topicID = rs.getInt("topicID");
         Learn learn = new Learn(learnID, startLearnTime, endLearnTime, userID, topicID); 

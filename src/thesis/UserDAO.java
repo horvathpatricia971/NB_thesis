@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -25,7 +26,7 @@ public class UserDAO {
     
     public UserDAO(Connection conn) throws SQLException {
         this.conn = conn;
-        this.insert = conn.prepareStatement("insert into user (userName, gender, age, education, disease, hearing, seeing, testNumber, userResult) values (?,?,?,?,?,?,?,?,?)");
+        this.insert = conn.prepareStatement("insert into user (userName, gender, age, education, disease, hearing, seeing, testNumber, userResult) values (?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
         this.delete = conn.prepareStatement("DELETE FROM user WHERE userID = ?");
         this.update = conn.prepareStatement("UPDATE user SET userName = ?, gender = ?, age = ?, education = ?, disease = ?, hearing = ?, seeing = ?, testNumber = ?, userResult = ? WHERE userID = ?");
         this.findAll = conn.prepareStatement("SELECT * FROM user");
@@ -43,6 +44,13 @@ public class UserDAO {
         this.insert.setInt(8, newUser.getTestNumber());
         this.insert.setInt(9, newUser.getUserResult());
         this.insert.executeUpdate();
+        
+        try (ResultSet generatedKeys = this.insert.getGeneratedKeys()) {
+            if (generatedKeys.next())
+                newUser.setUserID(generatedKeys.getInt(1));
+            else
+                throw new SQLException("No ID generated");
+        }
     }
     
     public void deleteUser(int userID) throws SQLException {

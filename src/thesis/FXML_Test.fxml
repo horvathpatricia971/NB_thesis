@@ -9,52 +9,72 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="mainPane" prefHeight="650.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thesis.TestController">
+<AnchorPane id="AnchorPane" fx:id="mainPane" prefHeight="650.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thesis.TestController">
    <children>
        <Pane fx:id="basePane" prefHeight="650.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffae2133" height="650.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-               <Label fx:id="titleLabel" alignment="CENTER" layoutX="28.0" layoutY="14.0" prefHeight="44.0" prefWidth="599.0">
+               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffae2133" height="650.0" stroke="BLACK" strokeType="INSIDE" width="750.0" />
+               <Label fx:id="titleLabel" alignment="CENTER" layoutX="76.0" layoutY="25.0" prefHeight="44.0" prefWidth="599.0">
                   <font>
                      <Font size="36.0" />
                   </font>
                </Label>
-               <Button layoutX="244.0" layoutY="290.0" mnemonicParsing="false" onAction="#beginAction" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Kezdés">
+               <Button layoutX="294.0" layoutY="426.0" mnemonicParsing="false" onAction="#beginAction" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Kezdés">
                   <font>
                      <Font size="36.0" />
                   </font>
                </Button>
+            <Label layoutX="84.0" layoutY="115.0" text="Remélem, hasznos volt az Ön számára a kiválasztott téma.">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="109.0" layoutY="216.0" text="Amint készen áll, hogy tesztelje megszerzett tudását, ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="233.0" layoutY="272.0" text="kattintson a Kezdés gombra!">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="255.0" layoutY="326.0" text="Sok szerencsét kívánok!">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
             </children>
        </Pane>
-       <Pane fx:id="firstPane" layoutX="26.0" layoutY="65.0" prefHeight="510.0" prefWidth="600.0">
+       <Pane fx:id="firstPane" layoutX="35.0" layoutY="90.0" prefHeight="510.0" prefWidth="680.0" visible="false">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fce3b8" height="510.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-            <Label layoutX="137.0" layoutY="64.0" text="Melyik a hiányzó szó?">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fce3b8" height="510.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="680.0" />
+            <Label layoutX="167.0" layoutY="58.0" text="Melyik a hiányzó szó?">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label fx:id="firstLabel" layoutX="52.0" layoutY="115.0" prefHeight="44.0" prefWidth="490.0">
+            <Label fx:id="firstLabel" layoutX="21.0" layoutY="115.0" prefHeight="44.0" prefWidth="637.0">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label fx:id="secondLabel" layoutX="54.0" layoutY="168.0" prefHeight="44.0" prefWidth="490.0">
+            <Label fx:id="secondLabel" layoutX="18.0" layoutY="168.0" prefHeight="44.0" prefWidth="637.0">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <Button fx:id="answer1" layoutX="131.0" layoutY="236.0" mnemonicParsing="false" onAction="#answerButtonAction" prefHeight="47.0" prefWidth="179.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;">
+            <Button fx:id="answer1" layoutX="137.0" layoutY="236.0" mnemonicParsing="false" onAction="#answerButtonAction" prefHeight="47.0" prefWidth="193.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="answer2" layoutX="131.0" layoutY="304.0" mnemonicParsing="false" onAction="#answerButtonAction" prefHeight="47.0" prefWidth="179.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;">
+            <Button fx:id="answer2" layoutX="137.0" layoutY="304.0" mnemonicParsing="false" onAction="#answerButtonAction" prefHeight="47.0" prefWidth="193.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="answer3" layoutX="131.0" layoutY="373.0" mnemonicParsing="false" onAction="#answerButtonAction" prefHeight="47.0" prefWidth="179.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;">
+            <Button fx:id="answer3" layoutX="137.0" layoutY="373.0" mnemonicParsing="false" onAction="#answerButtonAction" prefHeight="47.0" prefWidth="193.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;">
                <font>
                   <Font size="24.0" />
                </font>
@@ -64,20 +84,63 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label fx:id="numberLabel" layoutX="27.0" layoutY="459.0" prefHeight="29.0" prefWidth="54.0">
+            <Label fx:id="numberLabel" layoutX="27.0" layoutY="459.0" prefHeight="29.0" prefWidth="74.0">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="checkButton1" layoutX="384.0" layoutY="304.0" mnemonicParsing="false" onAction="#checkButtonAction1" prefHeight="47.0" prefWidth="138.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="ellenőrzés">
+            <Button fx:id="checkButton1" layoutX="430.0" layoutY="304.0" mnemonicParsing="false" onAction="#checkButtonAction1" prefHeight="47.0" prefWidth="138.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="ellenőrzés">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="nextButton" layoutX="384.0" layoutY="450.0" mnemonicParsing="false" onAction="#nextButtonAction" prefHeight="47.0" prefWidth="138.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="következő">
+            <Button fx:id="nextButton" layoutX="430.0" layoutY="450.0" mnemonicParsing="false" onAction="#nextButtonAction" prefHeight="47.0" prefWidth="138.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="következő">
                <font>
                   <Font size="24.0" />
                </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="resultPane" layoutX="32.0" layoutY="90.0" prefHeight="510.0" prefWidth="680.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fce3b8" height="510.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="680.0" />
+            <Label layoutX="159.0" layoutY="71.0" text="A tesztben elért eredménye:">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label fx:id="resultLabel" layoutX="231.0" layoutY="147.0" prefHeight="44.0" prefWidth="132.0">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Button fx:id="nextButton1" layoutX="370.0" layoutY="417.0" mnemonicParsing="false" onAction="#loadResult" prefHeight="47.0" prefWidth="173.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Eredményeim">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="errorPane" layoutX="130.0" layoutY="253.0" prefHeight="199.0" prefWidth="485.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e6b4e2" height="200.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" width="484.0" />
+            <Label fx:id="firstErrorLabel" alignment="CENTER" layoutX="28.0" layoutY="42.0" prefHeight="29.0" prefWidth="392.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="secondErrorLabel" alignment="CENTER" layoutX="28.0" layoutY="86.0" prefHeight="29.0" prefWidth="392.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="buttonRight" layoutX="164.0" layoutY="134.0" onAction="#loadRight" prefHeight="37.0" prefWidth="120.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Rendben">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="A gomb megnyomásával  ismét próbálkozhat az adatok megadásával." />
+               </tooltip>
             </Button>
          </children>
       </Pane>

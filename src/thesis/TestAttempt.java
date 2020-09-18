@@ -5,7 +5,7 @@
  */
 package thesis;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
@@ -16,11 +16,11 @@ public class TestAttempt {
     private int userID;
     private int testID;
     private int result;
-    private Date startTime;
-    private Date endTime;
+    private Timestamp startTime;
+    private Timestamp endTime;
     
     
-    public TestAttempt(int TestAttemptID, int UserID, int TestID, int result, Date StartTime, Date EndTime){
+    public TestAttempt(int TestAttemptID, int UserID, int TestID, int result, Timestamp StartTime, Timestamp EndTime){
         this.testAttemptID = TestAttemptID;
         this.userID = UserID;
         this.testID = TestID;
@@ -61,19 +61,19 @@ public class TestAttempt {
         this.result = result;
     }
     
-    public Date getStartTime(){
+    public Timestamp getStartTime(){
         return startTime;
     }
     
-    public void setStartTime(Date StartTime){
+    public void setStartTime(Timestamp StartTime){
         this.startTime = StartTime;
     }
     
-    public Date getEndTime(){
+    public Timestamp getEndTime(){
         return endTime;
     }
     
-    public void setEndTime(Date EndTime){
+    public void setEndTime(Timestamp EndTime){
         this.endTime = EndTime;
     }
 }

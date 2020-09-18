@@ -110,7 +110,7 @@ public class WordDAO {
         return word1;
     }
     
-    public List<Word> findByTopicID(int TopicID)throws SQLException{
+    public List<Word> findWordsByTopicID(int TopicID)throws SQLException{
         List<Word> ret = new ArrayList<>();
         this.findByTopicID.setInt(1, TopicID);
         ResultSet rs = this.findByTopicID.executeQuery();

@@ -82,6 +82,18 @@ public class TestQuestion {
         this.answer3 = Answer3;
     }
     
+    public String getAnswer(int count) {
+        if (count < 1 || count > 3)
+            return "";
+        switch(count){
+            case 1: return answer1;
+            case 2: return answer2;
+            case 3: return answer3;
+            default: return "";
+        }
+    }
+            
+    
     public String getRightAnswer(){
         return rightAnswer;
     }
