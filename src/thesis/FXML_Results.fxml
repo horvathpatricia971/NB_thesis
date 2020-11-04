@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -13,7 +14,20 @@
       <Pane prefHeight="650.0" prefWidth="750.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffae2134" height="650.0" stroke="BLACK" strokeType="INSIDE" width="750.0" />
-            <TableView fx:id="table" layoutX="100.0" layoutY="150.0" prefHeight="300.0" prefWidth="550.0" style="-fx-background-color: #fce3b8; -fx-border-color: #000000;">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="95.0" layoutX="102.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="547.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="0.5192307692307692" startY="0.5288461538461539">
+                     <stops>
+                        <Stop color="#3794dbbb" />
+                        <Stop color="#53bcdab8" offset="0.3188376346271082" />
+                        <Stop color="#53bcdab8" offset="0.700848404795773" />
+                        <Stop color="#3794dbba" offset="0.9966216216216216" />
+                        <Stop color="#3692ddba" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <TableView fx:id="table" layoutX="100.0" layoutY="190.0" prefHeight="300.0" prefWidth="550.0" style="-fx-background-color: #fce3b8; -fx-border-color: #000000;">
               <placeholder>
                   <Label text="Még nincsenek eredmények">
                      <font>
@@ -23,9 +37,9 @@
               <columns>
               </columns>
             </TableView>
-            <Label layoutX="185.0" layoutY="69.0" text="Itt láthatóak az eddig elért eredményei">
+            <Label layoutX="235.0" layoutY="62.0" text="Eddigi eredményei">
                <font>
-                  <Font size="24.0" />
+                  <Font size="36.0" />
                </font></Label>
             <Button layoutX="50.0" layoutY="547.0" mnemonicParsing="false" onAction="#logOut" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-background-insets: 0; -fx-border-radius: 4;" text="Vissza">
                <font>
@@ -37,9 +51,9 @@
             </Button>
          </children>
       </Pane>
-      <Pane fx:id="errorPane" layoutX="81.5" layoutY="283.0" prefHeight="199.0" prefWidth="485.0" visible="false">
+      <Pane fx:id="errorPane" layoutX="130.0" layoutY="220.0" prefHeight="199.0" prefWidth="485.0" visible="false">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e6b4e2" height="200.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" width="484.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fce3b8" height="200.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" width="484.0" />
             <Label fx:id="firstErrorLabel" alignment="CENTER" layoutX="28.0" layoutY="42.0" prefHeight="29.0" prefWidth="392.0">
                <font>
                   <Font size="24.0" />

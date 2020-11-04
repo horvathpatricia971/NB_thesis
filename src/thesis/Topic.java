@@ -16,16 +16,16 @@ public class Topic {
     private Boolean images;
     private Boolean sound;
     private int difficulty;
-    private String colour;
+    private String imageName;
     
-    public Topic(int TopicId, String Topic, int NumberOfWords, boolean Images, boolean Sound ,int Diff, String Colour){
+    public Topic(int TopicId, String Topic, int NumberOfWords, boolean Images, boolean Sound ,int Diff, String ImageName){
         this.topicID = TopicId;
         this.topic = Topic;
         this.numberOfWords = NumberOfWords;
         this.images = Images;
         this.sound = Sound;
         this.difficulty = Diff;
-        this.colour = Colour;
+        this.imageName = ImageName;
     }
     
     
@@ -76,12 +76,13 @@ public class Topic {
     public void setDifficulty(int Diff){
         this.difficulty = Diff;
     }
-    
-    public String getColour(){
-        return colour;
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
     
-    public void setColour(String Colour){
-        this.colour = Colour;
-    }
 }

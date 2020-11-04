@@ -24,8 +24,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
@@ -90,6 +92,11 @@ public class LearnController implements Initializable {
     
     @FXML
     private ImageView picture;
+    @FXML
+    private ImageView soundImage;
+    
+    @FXML
+    private ImageView slowSoundImage;
     
     private MediaPlayer mediaPlayer;
     
@@ -133,8 +140,7 @@ public class LearnController implements Initializable {
     private List<Word> words;
     
     private List<Boolean> testReady;
-    @FXML
-    private Button soundButton;
+
     @FXML
     private Label secondErrorLabel;
     @FXML
@@ -178,6 +184,7 @@ public class LearnController implements Initializable {
         try {
             learn = new Learn(0, new java.sql.Timestamp(new java.util.Date().getTime()), null, this.userId, this.topicId);
             learndao.addLearn(learn);
+            learndao.saveWords(learn.getLearnId(), words);
         } catch (SQLException ex) {
             errorPane.setVisible(true);
             firstPane.setDisable(true);
@@ -193,7 +200,8 @@ public class LearnController implements Initializable {
     private void fillFrame(){
         try {
             topic = topicdao.findTopicById(topicId);
-            words = worddao.findWordsByTopicID(topicId);
+            //words = worddao.findWordsByTopicID(topicId);
+            words = worddao.findRandom10WordsByTopicId(topicId);
             topicLabel.setText(topic.getTopic() + " témakör");
             firstButton.setText(words.get(0).getWord());
             secondButton.setText(words.get(1).getWord());
@@ -324,6 +332,14 @@ public class LearnController implements Initializable {
             firstErrorLabel.setText("Nem jött létre az adatbáziskapcsolat.");
             System.out.println(""+ex);
         }
+        
+        Tooltip tooltip1 = new Tooltip("Hang lejátszása normál tempóban.");
+        tooltip1.setStyle("-fx-font-size: 24px; fx-position: absolute;");
+        Tooltip.install(soundImage, tooltip1);
+        
+        Tooltip tooltip2 = new Tooltip("Hang lejátszása lassítva.");
+        tooltip2.setStyle("-fx-font-size: 24px; fx-position: absolute;");
+        Tooltip.install(slowSoundImage, tooltip2);
     }
     @FXML
     private void testClickAction(ActionEvent event) throws IOException {
@@ -342,8 +358,8 @@ public class LearnController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Test.fxml"));
         AnchorPane pane = loader.load();
         TestController controller = loader.<TestController>getController();
-        controller.setTopicId(this.topicId);
         controller.setUserId(this.userId);
+        controller.setTopicId(this.topicId);
         healthAnchorPane.getChildren().setAll(pane);
     }
 
@@ -356,14 +372,6 @@ public class LearnController implements Initializable {
         mainPane.setOpacity(0.5);
         firstPane.setOpacity(0.8);
         vbox.setOpacity(0.5);
-    }
-
-    @FXML
-    private void soundAction(ActionEvent event) {
-        String mp3 = "mp3/" + currentWord.getAudio(); //fájl 
-        Media sound = new Media(new File(mp3).toURI().toString());
-        mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
     }
     
     @FXML
@@ -392,6 +400,14 @@ public class LearnController implements Initializable {
         mainPane.setOpacity(1);
         firstPane.setOpacity(1);
         vbox.setOpacity(1);
+    }
+
+    @FXML
+    private void voiceClick(MouseEvent event) {
+        String mp3 = "mp3/" + currentWord.getAudio(); //fájl 
+        Media sound = new Media(new File(mp3).toURI().toString());
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
     }
         
 }

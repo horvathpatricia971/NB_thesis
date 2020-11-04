@@ -29,9 +29,9 @@ public class TestAttemptDAO {
     
     public TestAttemptDAO(Connection conn) throws SQLException{
         this.conn = conn;
-        this.insert = conn.prepareStatement("insert into testAttempt (userID, testID, result, startTime, endTime) values (?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+        this.insert = conn.prepareStatement("insert into testAttempt (userID, testID, questionNum, rightAnswerNum, result, startTime, endTime, testType) values (?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
         this.delete = conn.prepareStatement("DELETE FROM testAttempt WHERE testAttemptID = ?");
-        this.update = conn.prepareStatement("UPDATE testAttempt SET userID = ?, testID = ?, result = ?, startTime = ?, endTime = ? WHERE testAttemptID = ?");
+        this.update = conn.prepareStatement("UPDATE testAttempt SET userID = ?, testID = ?, questionNum = ?, rightAnswerNum = ?, result = ?, startTime = ?, endTime = ?, testType = ? WHERE testAttemptID = ?");
         this.findAll = conn.prepareStatement("SELECT * FROM testAttempt");
         this.findById = conn.prepareStatement("SELECT * FROM testAttempt WHERE testAttemptID = ?");
     }
@@ -39,9 +39,12 @@ public class TestAttemptDAO {
     public void addTestAttempt(TestAttempt attempt) throws SQLException {
         this.insert.setInt(1, attempt.getUserId());
         this.insert.setInt(2, attempt.getTestId());
-        this.insert.setInt(3, attempt.getResult());
-        this.insert.setTimestamp(4, attempt.getStartTime());
-        this.insert.setTimestamp(5, attempt.getEndTime());
+        this.insert.setInt(3, attempt.getQuestionNum());
+        this.insert.setInt(4, attempt.getRightAnswerNum());
+        this.insert.setInt(5, attempt.getResult());
+        this.insert.setTimestamp(6, attempt.getStartTime());
+        this.insert.setTimestamp(7, attempt.getEndTime());
+        this.insert.setInt(8, attempt.getTestType());
         this.insert.executeUpdate();
         try (ResultSet keys = this.insert.getGeneratedKeys()) {
             if (keys.next())
@@ -59,10 +62,13 @@ public class TestAttemptDAO {
     public void updateTestAttempt(TestAttempt attempt) throws SQLException {
         this.update.setInt(1, attempt.getUserId());
         this.update.setInt(2, attempt.getTestId());
-        this.update.setInt(3, attempt.getResult());
-        this.update.setTimestamp(4, attempt.getStartTime());
-        this.update.setTimestamp(5, attempt.getEndTime());
-        this.update.setInt(6, attempt.getTestAttemptID());
+        this.update.setInt(3, attempt.getQuestionNum());
+        this.update.setInt(4, attempt.getRightAnswerNum());
+        this.update.setInt(5, attempt.getResult());
+        this.update.setTimestamp(6, attempt.getStartTime());
+        this.update.setTimestamp(7, attempt.getEndTime());
+        this.update.setInt(8, attempt.getTestType());
+        this.update.setInt(9, attempt.getTestAttemptID());
         this.update.executeUpdate();
     }
     
@@ -92,11 +98,14 @@ public class TestAttemptDAO {
         int testAttemptID = rs.getInt("testAttemptID");
         int userID = rs.getInt("userID");
         int testID = rs.getInt("testID");
+        int questionNum = rs.getInt("questionNum");
+        int rightAnswerNum = rs.getInt("rightAnswerNum");
         int result = rs.getInt("result");
         Timestamp startTime = rs.getTimestamp("startTime");
         Timestamp endTime = rs.getTimestamp("endTime");
+        int testType = rs.getInt("testType");
         
-        TestAttempt attempt = new TestAttempt(testAttemptID, userID, testID, result, startTime, endTime); 
+        TestAttempt attempt = new TestAttempt(testAttemptID, userID, testID, questionNum, rightAnswerNum, result, startTime, endTime, testType); 
         return attempt;
     }
 }

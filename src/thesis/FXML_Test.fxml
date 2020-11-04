@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.shape.*?>
 <?import java.lang.*?>
@@ -14,6 +16,19 @@
        <Pane fx:id="basePane" prefHeight="650.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffae2133" height="650.0" stroke="BLACK" strokeType="INSIDE" width="750.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="60.0" layoutX="110.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" width="547.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="0.5192307692307692" startY="0.5288461538461539">
+                     <stops>
+                        <Stop color="#3794dbbb" />
+                        <Stop color="#53bcdab8" offset="0.3188376346271082" />
+                        <Stop color="#53bcdab8" offset="0.700848404795773" />
+                        <Stop color="#3794dbba" offset="0.9966216216216216" />
+                        <Stop color="#3692ddba" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
                <Label fx:id="titleLabel" alignment="CENTER" layoutX="76.0" layoutY="25.0" prefHeight="44.0" prefWidth="599.0">
                   <font>
                      <Font size="36.0" />
@@ -24,7 +39,7 @@
                      <Font size="36.0" />
                   </font>
                </Button>
-            <Label layoutX="84.0" layoutY="115.0" text="Remélem, hasznos volt az Ön számára a kiválasztott téma.">
+            <Label layoutX="84.0" layoutY="132.0" text="Remélem, hasznos volt az Ön számára a kiválasztott téma.">
                <font>
                   <Font size="24.0" />
                </font>
@@ -48,7 +63,7 @@
        </Pane>
        <Pane fx:id="firstPane" layoutX="35.0" layoutY="90.0" prefHeight="510.0" prefWidth="680.0" visible="false">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fce3b8" height="510.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="680.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fce3b8" height="510.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" width="680.0" />
             <Label layoutX="167.0" layoutY="58.0" text="Melyik a hiányzó szó?">
                <font>
                   <Font size="36.0" />
@@ -64,17 +79,17 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <Button fx:id="answer1" layoutX="137.0" layoutY="236.0" mnemonicParsing="false" onAction="#answerButtonAction" prefHeight="47.0" prefWidth="193.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;">
+            <Button fx:id="answer1" layoutX="147.0" layoutY="235.0" mnemonicParsing="false" onAction="#answerButtonAction" prefHeight="47.0" prefWidth="193.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="answer2" layoutX="137.0" layoutY="304.0" mnemonicParsing="false" onAction="#answerButtonAction" prefHeight="47.0" prefWidth="193.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;">
+            <Button fx:id="answer2" layoutX="147.0" layoutY="303.0" mnemonicParsing="false" onAction="#answerButtonAction" prefHeight="47.0" prefWidth="193.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="answer3" layoutX="137.0" layoutY="373.0" mnemonicParsing="false" onAction="#answerButtonAction" prefHeight="47.0" prefWidth="193.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;">
+            <Button fx:id="answer3" layoutX="147.0" layoutY="372.0" mnemonicParsing="false" onAction="#answerButtonAction" prefHeight="47.0" prefWidth="193.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;">
                <font>
                   <Font size="24.0" />
                </font>
@@ -89,32 +104,287 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="checkButton1" layoutX="430.0" layoutY="304.0" mnemonicParsing="false" onAction="#checkButtonAction1" prefHeight="47.0" prefWidth="138.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="ellenőrzés">
+            <Button fx:id="checkButton1" layoutX="467.0" layoutY="303.0" mnemonicParsing="false" onAction="#checkButtonAction1" prefHeight="47.0" prefWidth="144.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Ellenőrzés">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="nextButton" layoutX="430.0" layoutY="450.0" mnemonicParsing="false" onAction="#nextButtonAction" prefHeight="47.0" prefWidth="138.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="következő">
+            <Button fx:id="nextButton" layoutX="467.0" layoutY="449.0" mnemonicParsing="false" onAction="#nextButtonAction" prefHeight="47.0" prefWidth="144.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Következő">
                <font>
                   <Font size="24.0" />
                </font>
+            </Button>
+            <ImageView fx:id="right1" fitHeight="60.0" fitWidth="57.0" layoutX="347.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@right.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="false1" fitHeight="50.0" fitWidth="65.0" layoutX="349.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@false.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="right2" fitHeight="57.0" fitWidth="59.0" layoutX="347.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@right.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="false2" fitHeight="50.0" fitWidth="60.0" layoutX="349.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@false.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="right3" fitHeight="57.0" fitWidth="59.0" layoutX="347.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@right.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="false3" fitHeight="50.0" fitWidth="60.0" layoutX="349.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@false.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="answerHun1" alignment="CENTER" layoutX="2.0" layoutY="244.0" prefHeight="29.0" prefWidth="144.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="answerHun2" alignment="CENTER" layoutX="2.0" layoutY="313.0" prefHeight="29.0" prefWidth="144.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="answerHun3" alignment="CENTER" layoutX="2.0" layoutY="381.0" prefHeight="29.0" prefWidth="144.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="resultPane" layoutX="35.0" layoutY="90.0" prefHeight="510.0" prefWidth="680.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fce3b8" height="510.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="680.0" />
+            <Label layoutX="127.0" layoutY="58.0" text="A tesztben elért eredménye:">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label fx:id="resultLabel" alignment="CENTER" layoutX="272.0" layoutY="114.0" prefHeight="44.0" prefWidth="132.0">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Button fx:id="nextButton1" layoutX="444.0" layoutY="416.0" mnemonicParsing="false" onAction="#loadResult" prefHeight="47.0" prefWidth="173.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Eredményeim">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="Megtekintheti az eddigi eredményeit a gombra kattintva.">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Tooltip>
+               </tooltip>
+            </Button>
+            <Label fx:id="victoryLabel" alignment="CENTER" layoutX="26.0" layoutY="165.0" prefHeight="44.0" prefWidth="606.0">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="victoryPicture" fitHeight="200.0" fitWidth="187.0" layoutX="236.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="victorySlice" fitHeight="165.0" fitWidth="163.0" layoutX="248.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="victoryBonbon" fitHeight="88.0" fitWidth="87.0" layoutX="285.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="practiceBegin" layoutX="250.0" layoutY="416.0" mnemonicParsing="false" onAction="#practiceBegin" prefHeight="47.0" prefWidth="181.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Gyakorló teszt">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="A teszt során elrontott szavakat gyakorollhatja a gombra kattintva.">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Tooltip>
+               </tooltip>
+            </Button>
+            <Button fx:id="repetationButton" layoutX="63.0" layoutY="416.0" mnemonicParsing="false" onAction="#repetationBegin" prefHeight="47.0" prefWidth="173.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Ismétlés">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="A teszt során elrontott szavakat ismételheti át a gombra kattintva.">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Tooltip>
+               </tooltip>
             </Button>
          </children>
       </Pane>
-      <Pane fx:id="resultPane" layoutX="32.0" layoutY="90.0" prefHeight="510.0" prefWidth="680.0" visible="false">
+      <Pane fx:id="firstPane1" layoutX="35.0" layoutY="90.0" prefHeight="510.0" prefWidth="680.0" visible="false">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fce3b8" height="510.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="680.0" />
-            <Label layoutX="159.0" layoutY="71.0" text="A tesztben elért eredménye:">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fce3b8" height="510.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="680.0" />
+            <Label fx:id="titleLabelWord" alignment="CENTER" contentDisplay="CENTER" layoutX="84.0" layoutY="20.0" prefHeight="44.0" prefWidth="513.0">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label fx:id="resultLabel" layoutX="231.0" layoutY="147.0" prefHeight="44.0" prefWidth="132.0">
+            <ImageView fx:id="picture" fitHeight="177.0" fitWidth="177.0" layoutX="157.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="firstSentence" alignment="CENTER" layoutX="12.0" layoutY="255.0" prefHeight="31.0" prefWidth="519.0">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label fx:id="secondSentence" alignment="CENTER" layoutX="52.0" layoutY="303.0" prefHeight="31.0" prefWidth="484.0">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label fx:id="thirdSentence" alignment="CENTER" layoutX="14.0" layoutY="354.0" prefHeight="31.0" prefWidth="519.0">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label fx:id="fourthSentence" alignment="CENTER" layoutX="49.0" layoutY="400.0" prefHeight="31.0" prefWidth="484.0">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="voicePicture" fitHeight="54.0" fitWidth="63.0" layoutX="385.0" layoutY="125.0" onMouseClicked="#voiceClick" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@voice3.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="repetationEndButton" layoutX="266.0" layoutY="319.0" mnemonicParsing="false" onAction="#repetationEnd" prefHeight="47.0" prefWidth="144.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Befejezés" visible="false">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="nextButtonRepeat" layoutX="510.0" layoutY="440.0" mnemonicParsing="false" onAction="#nextButtonRepeatAction" prefHeight="47.0" prefWidth="144.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Következő">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Label fx:id="endRep1" layoutX="178.0" layoutY="166.0" text="Az ismétlés véget ért." visible="false">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <Button fx:id="nextButton1" layoutX="370.0" layoutY="417.0" mnemonicParsing="false" onAction="#loadResult" prefHeight="47.0" prefWidth="173.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Eredményeim">
+            <Label fx:id="endRep2" layoutX="116.0" layoutY="233.0" text="Kattintson a befejezés gombra!" visible="false">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="slowVoice" fitHeight="37.0" fitWidth="37.0" layoutX="462.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@voice3.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="practicePane" layoutX="35.0" layoutY="90.0" prefHeight="510.0" prefWidth="680.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fce3b8" height="510.0" stroke="BLACK" strokeType="INSIDE" width="680.0" />
+            <Label fx:id="question" alignment="CENTER" contentDisplay="CENTER" layoutX="71.0" layoutY="14.0" prefHeight="44.0" prefWidth="556.0">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="leftPicture" fitHeight="177.0" fitWidth="177.0" layoutX="36.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="middlePicture" fitHeight="177.0" fitWidth="177.0" layoutX="248.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="rightPicture" fitHeight="177.0" fitWidth="177.0" layoutX="462.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="repetationEndButton1" layoutX="266.0" layoutY="319.0" mnemonicParsing="false" onAction="#repetationEnd" prefHeight="47.0" prefWidth="144.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Befejezés" visible="false">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="falsePic1" fitHeight="60.0" fitWidth="67.0" layoutX="99.0" layoutY="319.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@false.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="rightPic1" fitHeight="60.0" fitWidth="74.0" layoutX="100.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@right.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="falsePic2" fitHeight="60.0" fitWidth="67.0" layoutX="304.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@false.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="rightPic2" fitHeight="57.0" fitWidth="57.0" layoutX="305.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@right.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="falsePic3" fitHeight="60.0" fitWidth="67.0" layoutX="520.0" layoutY="314.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@false.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="rightPic3" fitHeight="57.0" fitWidth="57.0" layoutX="522.0" layoutY="314.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@right.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="nextButtonPractice" layoutX="457.0" layoutY="443.0" mnemonicParsing="false" onAction="#nextButtonPracticeAction" prefHeight="47.0" prefWidth="181.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Következő">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Label fx:id="endRep11" layoutX="178.0" layoutY="166.0" text="Az ismétlés véget ért." visible="false">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label fx:id="endRep21" layoutX="116.0" layoutY="233.0" text="Kattintson a befejezés gombra!" visible="false">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Button fx:id="rightButton" layoutX="457.0" layoutY="257.0" mnemonicParsing="false" onAction="#answerButtonAct" prefHeight="47.0" prefWidth="181.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="fa">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="middleButton" layoutX="246.0" layoutY="257.0" mnemonicParsing="false" onAction="#answerButtonAct" prefHeight="47.0" prefWidth="181.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="barack">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="leftButton" layoutX="34.0" layoutY="257.0" mnemonicParsing="false" onAction="#answerButtonAct" prefHeight="47.0" prefWidth="181.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="transportation">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="practiceCheck" layoutX="246.0" layoutY="443.0" mnemonicParsing="false" onAction="#practiceCheckAction" prefHeight="47.0" prefWidth="181.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Ellenőrzés">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Label fx:id="hunAnswer1" alignment="CENTER" layoutX="57.0" layoutY="382.0" prefHeight="29.0" prefWidth="144.0" visible="false">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="hunAnswer2" alignment="CENTER" layoutX="255.0" layoutY="382.0" prefHeight="29.0" prefWidth="163.0" visible="false">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="hunAnswer3" alignment="CENTER" layoutX="461.0" layoutY="382.0" prefHeight="29.0" prefWidth="173.0" visible="false">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="endTest1" alignment="CENTER" layoutX="192.0" layoutY="166.0" prefHeight="44.0" prefWidth="294.0" text="Az teszt véget ért." visible="false">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label fx:id="endTest2" layoutX="116.0" layoutY="233.0" text="Kattintson a befejezés gombra!" visible="false">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Button fx:id="testEndButton" layoutX="266.0" layoutY="319.0" mnemonicParsing="false" onAction="#pictureTestEnd" prefHeight="47.0" prefWidth="144.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Befejezés" visible="false">
                <font>
                   <Font size="24.0" />
                </font>
@@ -123,7 +393,7 @@
       </Pane>
       <Pane fx:id="errorPane" layoutX="130.0" layoutY="253.0" prefHeight="199.0" prefWidth="485.0" visible="false">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e6b4e2" height="200.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" width="484.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fce3b8" height="200.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" width="484.0" />
             <Label fx:id="firstErrorLabel" alignment="CENTER" layoutX="28.0" layoutY="42.0" prefHeight="29.0" prefWidth="392.0">
                <font>
                   <Font size="24.0" />

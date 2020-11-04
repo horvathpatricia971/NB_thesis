@@ -26,6 +26,7 @@ public class LearnDAO {
     private PreparedStatement update;
     private PreparedStatement findAll;
     private PreparedStatement findById;
+    private PreparedStatement saveWords;
     
     public LearnDAO(Connection conn) throws SQLException {
         this.conn = conn;
@@ -34,6 +35,7 @@ public class LearnDAO {
         this.update = conn.prepareStatement("UPDATE learn SET startLearnTime =?, endLearnTime = ?, userID = ?, topicID = ? WHERE learnID = ?");
         this.findAll = conn.prepareStatement("SELECT * FROM learn");
         this.findById = conn.prepareStatement("SELECT * FROM learn WHERE learnID = ?");
+        this.saveWords = conn.prepareStatement("INSERT INTO learnWord (learnID, wordID) VALUES (?,?)");
     }
     
     public void addLearn(Learn learn) throws SQLException {
@@ -94,5 +96,13 @@ public class LearnDAO {
         int topicID = rs.getInt("topicID");
         Learn learn = new Learn(learnID, startLearnTime, endLearnTime, userID, topicID); 
         return learn;
+    }
+
+    public void saveWords(int learnId, List<Word> words) throws SQLException {
+        for (Word word : words) {
+            this.saveWords.setInt(1, learnId);
+            this.saveWords.setInt(2, word.getWordID());
+            this.saveWords.executeUpdate();
+        }
     }
 }

@@ -94,12 +94,12 @@ public class ResultController implements Initializable {
         topic.setCellValueFactory(new PropertyValueFactory<>("topic"));
         topic.setMinWidth(120);
         
-        TableColumn difficulty = new TableColumn("Nehézség");
-        difficulty.setMinWidth(104);
+        TableColumn difficulty = new TableColumn("Szint");
+        difficulty.setMinWidth(73);
         difficulty.setCellValueFactory(new PropertyValueFactory<>("difficulty"));
         
-        TableColumn result = new TableColumn("Eredmény");
-        result.setMinWidth(109);
+        TableColumn result = new TableColumn("Eredmény (%)");
+        result.setMinWidth(139);
         result.setCellValueFactory(new PropertyValueFactory<>("result"));
         
         TableColumn time = new TableColumn("Idő");

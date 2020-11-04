@@ -17,12 +17,17 @@ public class TestQuestion {
     private String answer2;
     private String answer3;
     private String rightAnswer;
-    private int questionNum;
+    private String answer1hun;
+    private String answer2hun;
+    private String answer3hun;
+    private String picture1;
+    private String picture2;
+    private String picture3;
     private int testID;
     
     
     
-    public TestQuestion(int TestQuestionID, String QuestionInHungarian, String QuestionInEnglish, String Answer1, String Answer2, String Answer3, String RightAnswer, int QuestionNum, int TestID){
+    public TestQuestion(int TestQuestionID, String QuestionInHungarian, String QuestionInEnglish, String Answer1, String Answer2, String Answer3, String RightAnswer, String Answer1hun, String Answer2hun, String Answer3hun, String Picture1, String Picture2, String Picture3, int TestID){
         this.testQuestionID = TestQuestionID;
         this.questionInHungarian = QuestionInHungarian;
         this.questionInEnglish = QuestionInEnglish;
@@ -30,7 +35,12 @@ public class TestQuestion {
         this.answer2 = Answer2;
         this.answer3 = Answer3;
         this.rightAnswer = RightAnswer;
-        this.questionNum = QuestionNum;
+        this.answer1hun = Answer1hun;
+        this.answer2hun = Answer2hun;
+        this.answer3hun = Answer3hun;
+        this.picture1 = Picture1;
+        this.picture2 = Picture2;
+        this.picture3 = Picture3;
         this.testID = TestID;
     }
     
@@ -102,12 +112,53 @@ public class TestQuestion {
         this.rightAnswer = RightAnswer;
     }
     
-    public int getQuestionNum() {
-        return questionNum;
+    public String getAnswer1hun() {
+        return answer1hun;
     }
 
-    public void setQuestionNum(int questionNum) {
-        this.questionNum = questionNum;
+    public void setAnswer1hun(String answer1hun) {
+        this.answer1hun = answer1hun;
+    }
+
+    public String getAnswer2hun() {
+        return answer2hun;
+    }
+
+    public void setAnswer2hun(String answer2hun) {
+        this.answer2hun = answer2hun;
+    }
+
+    public String getAnswer3hun() {
+        return answer3hun;
+    }
+
+    public void setAnswer3hun(String answer3hun) {
+        this.answer3hun = answer3hun;
+    }
+
+    
+    public String getPicture1() {
+        return picture1;
+    }
+
+    public void setPicture1(String picture1) {
+        this.picture1 = picture1;
+    }
+
+    public String getPicture2() {
+        return picture2;
+    }
+
+    public void setPicture2(String picture2) {
+        this.picture2 = picture2;
+    }
+
+    public String getPicture3() {
+        return picture3;
+    }
+
+    public void setPicture3(String picture3) {
+        this.picture3 = picture3;
     }
     
     public int getTestID(){

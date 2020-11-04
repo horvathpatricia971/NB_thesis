@@ -5,6 +5,8 @@
  */
 package thesis;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -18,8 +20,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 
 /**
  * FXML Controller class
@@ -43,23 +49,9 @@ public class TopicsController implements Initializable {
     @FXML
     private Button buttonNoQuit;
     @FXML
-    private Button topLeft;
-    @FXML
-    private Button topRight;
-    @FXML
-    private Button middleLeft;
-    @FXML
-    private Button middleRight;
-    @FXML
-    private Button bottomLeft;
-    @FXML
-    private Button bottomRight;
-    @FXML
     private Button logOutButton;
     @FXML
     private Label firstErrorLabel;
-    @FXML
-    private Tooltip tool1;
     Connection conn;
 
     DBConnection dbconnection;
@@ -73,6 +65,30 @@ public class TopicsController implements Initializable {
     private Label secondErrorLabel;
     @FXML
     private Button buttonRight;
+    @FXML
+    private ImageView topLeftIma;
+    @FXML
+    private ImageView middleLeftIma;
+    @FXML
+    private ImageView bottomLeftIma;
+    @FXML
+    private ImageView topRightIma;
+    @FXML
+    private ImageView middleRightIma;
+    @FXML
+    private ImageView bottomRightIma;
+    @FXML
+    private Label topLeftLabel;
+    @FXML
+    private Label middleLeftLabel;
+    @FXML
+    private Label bottomLeftLabel;
+    @FXML
+    private Label topRightLabel;
+    @FXML
+    private Label middleRightLabel;
+    @FXML
+    private Label bottomRightLabel;
 
     /**
      * Initializes the controller class.
@@ -86,26 +102,85 @@ public class TopicsController implements Initializable {
             worddao = new WordDAO(conn);
             learndao = new LearnDAO(conn);
             topicdao = new TopicDAO(conn);
-            List<Topic> t = topicdao.findAllTopic();
+            List<Topic> topic = topicdao.findAllTopic();
+//            tool1.setText("A gomb megnyomásával a(z) " + t.get(0).getTopic() + " témakörben tanulhat.");
             //topLeft.setStyle(topLeft.getStyle() + ";-fx-background-color:" + t.get(0).getColour());
-            topLeft.getStyleClass().add(t.get(0).getColour());
-            topLeft.setText(t.get(0).getTopic());
-            tool1.setText("A gomb megnyomásával a(z) " + t.get(0).getTopic() + " témakörben tanulhat.");
-            //topRight.setStyle(topRight.getStyle() + ";-fx-background-color:" + t.get(1).getColour());
-            topRight.getStyleClass().add(t.get(1).getColour());
-            topRight.setText(t.get(1).getTopic());
+        //    topLeft.getStyleClass().add(t.get(0).getColour());
+            //topLeftLabel.setText(t.get(0).getTopic());
+            
+            Tooltip tooltip0 = new Tooltip(topic.get(0).getTopic());
+            tooltip0.setStyle("-fx-font-size: 24px; fx-position: absolute; top: 100%; left: 50%;");
+            Tooltip tooltip1 = new Tooltip(topic.get(1).getTopic());
+            tooltip1.setStyle("-fx-font-size: 24px; fx-position: absolute;");
+            Tooltip tooltip2 = new Tooltip(topic.get(2).getTopic());
+            tooltip2.setStyle("-fx-font-size: 24px; fx-position: absolute;");
+            Tooltip tooltip3 = new Tooltip(topic.get(3).getTopic());
+            tooltip3.setStyle("-fx-font-size: 24px; fx-position: absolute;");
+            Tooltip tooltip4 = new Tooltip(topic.get(4).getTopic());
+            tooltip4.setStyle("-fx-font-size: 24px; fx-position: absolute;");
+            Tooltip tooltip5 = new Tooltip(topic.get(5).getTopic());
+            tooltip5.setStyle("-fx-font-size: 24px; fx-position: absolute;");
+            
+            try {
+                FileInputStream fis = new FileInputStream("topics_images/" + topic.get(0).getImageName());
+                topLeftIma.setImage(new Image(fis));
+            } catch (FileNotFoundException ex) {
+                // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+                
+            }
+            Tooltip.install(topLeftIma, tooltip0);
+            //topRightLabel.setText(t.get(1).getTopic());
+            try {
+                FileInputStream fis = new FileInputStream("topics_images/" + topic.get(1).getImageName());
+                topRightIma.setImage(new Image(fis));
+            } catch (FileNotFoundException ex) {
+                // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+            }
+            Tooltip.install(topRightIma, tooltip1);
+                //topRight.setStyle(topRight.getStyle() + ";-fx-background-color:" + t.get(1).getColour());
+            //    topRight.getStyleClass().add(t.get(1).getColour());
+
+            
            // middleLeft.setStyle(middleLeft.getStyle() + ";-fx-background-color:" + t.get(2).getColour());
-            middleLeft.getStyleClass().add(t.get(2).getColour());
-            middleLeft.setText(t.get(2).getTopic());
+        //    middleLeft.getStyleClass().add(t.get(2).getColour());
+            //middleLeftLabel.setText(t.get(2).getTopic());
+            try {
+                FileInputStream fis = new FileInputStream("topics_images/" + topic.get(2).getImageName());
+                middleLeftIma.setImage(new Image(fis));
+            } catch (FileNotFoundException ex) {
+                // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+            }
+            Tooltip.install(middleLeftIma, tooltip2);
             //middleRight.setStyle(middleRight.getStyle() + ";-fx-background-color:" + t.get(3).getColour());
-            middleRight.getStyleClass().add(t.get(3).getColour());
-            middleRight.setText(t.get(3).getTopic());
+        //    middleRight.getStyleClass().add(t.get(3).getColour());
+            //middleRightLabel.setText(t.get(3).getTopic());
+            try {
+                FileInputStream fis = new FileInputStream("topics_images/" + topic.get(3).getImageName());
+                middleRightIma.setImage(new Image(fis));
+            } catch (FileNotFoundException ex) {
+                // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+            }
+            Tooltip.install(middleRightIma, tooltip3);
             //bottomLeft.setStyle(bottomLeft.getStyle() + ";-fx-background-color:" + t.get(4).getColour());
-            bottomLeft.getStyleClass().add(t.get(4).getColour());
-            bottomLeft.setText(t.get(4).getTopic());
+        //    bottomLeft.getStyleClass().add(t.get(4).getColour());
+            //bottomLeftLabel.setText(t.get(4).getTopic());
+             try {
+                FileInputStream fis = new FileInputStream("topics_images/" + topic.get(4).getImageName());
+                bottomLeftIma.setImage(new Image(fis));
+            } catch (FileNotFoundException ex) {
+                // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+            }
+            Tooltip.install(bottomLeftIma, tooltip4);
             //bottomRight.setStyle(bottomRight.getStyle() + ";-fx-background-color:" + t.get(5).getColour());
-            bottomRight.getStyleClass().add(t.get(5).getColour());
-            bottomRight.setText(t.get(5).getTopic());
+        //    bottomRight.getStyleClass().add(t.get(5).getColour());
+            //bottomRightLabel.setText(t.get(5).getTopic());
+             try {
+                FileInputStream fis = new FileInputStream("topics_images/" + topic.get(5).getImageName());
+                bottomRightIma.setImage(new Image(fis));
+            } catch (FileNotFoundException ex) {
+                // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+            }
+            Tooltip.install(bottomRightIma, tooltip5);
         } catch (SQLException ex) {
             errorPane.setVisible(true);
             beginPane.setDisable(true);
@@ -148,9 +223,15 @@ public class TopicsController implements Initializable {
         beginPane.setDisable(false);
         beginPane.setOpacity(1);
     }
+    
+    @FXML
+    private void loadRight(ActionEvent event) {
+        errorPane.setVisible(false);
+        beginPane.setDisable(false);
+    }
 
     @FXML
-    private void loadTopLeft(ActionEvent event) throws IOException {
+    private void topLeftClick(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Learn.fxml"));
         AnchorPane pane = loader.load();
         LearnController controller = loader.<LearnController>getController();
@@ -160,17 +241,7 @@ public class TopicsController implements Initializable {
     }
 
     @FXML
-    private void loadTopRight(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Learn.fxml"));
-        AnchorPane pane = loader.load();
-        LearnController controller = loader.<LearnController>getController();
-        controller.setUserId(this.userId);
-        controller.setTopicId(2);
-        topicAnchorPane.getChildren().setAll(pane);
-    }
-
-    @FXML
-    private void loadMiddleLeft(ActionEvent event) throws IOException {
+    private void middleLeftClick(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Learn.fxml"));
         AnchorPane pane = loader.load();
         LearnController controller = loader.<LearnController>getController();
@@ -180,17 +251,7 @@ public class TopicsController implements Initializable {
     }
 
     @FXML
-    private void loadMiddleRight(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Learn.fxml"));
-        AnchorPane pane = loader.load();
-        LearnController controller = loader.<LearnController>getController();
-        controller.setUserId(this.userId);
-        controller.setTopicId(4);
-        topicAnchorPane.getChildren().setAll(pane);
-    }
-
-    @FXML
-    private void loadBottomLeft(ActionEvent event) throws IOException {
+    private void bottomLeftClick(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Learn.fxml"));
         AnchorPane pane = loader.load();
         LearnController controller = loader.<LearnController>getController();        
@@ -200,7 +261,27 @@ public class TopicsController implements Initializable {
     }
 
     @FXML
-    private void loadBottomRight(ActionEvent event) throws IOException {
+    private void topRightClick(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Learn.fxml"));
+        AnchorPane pane = loader.load();
+        LearnController controller = loader.<LearnController>getController();
+        controller.setUserId(this.userId);
+        controller.setTopicId(2);
+        topicAnchorPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void middleRightClick(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Learn.fxml"));
+        AnchorPane pane = loader.load();
+        LearnController controller = loader.<LearnController>getController();
+        controller.setUserId(this.userId);
+        controller.setTopicId(4);
+        topicAnchorPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void bottomRightClick(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Learn.fxml"));
         AnchorPane pane = loader.load();
         LearnController controller = loader.<LearnController>getController();
@@ -208,12 +289,4 @@ public class TopicsController implements Initializable {
         controller.setTopicId(6);
         topicAnchorPane.getChildren().setAll(pane);
     }
-    
-    @FXML
-    private void loadRight(ActionEvent event) {
-        errorPane.setVisible(false);
-        beginPane.setDisable(false);
-    }
-    
-
 }

@@ -25,6 +25,8 @@ public class WordDAO {
     private PreparedStatement findAll;
     private PreparedStatement findById;
     private PreparedStatement findByTopicID;
+    private PreparedStatement findRandom10WordsByTopicID;
+    private PreparedStatement findWrongWordByTestAttempt;
     
     public WordDAO(Connection conn) throws SQLException {
         this.conn = conn;
@@ -35,6 +37,13 @@ public class WordDAO {
         this.findAll = conn.prepareStatement("SELECT * FROM word");
         this.findById = conn.prepareStatement("SELECT * FROM word WHERE wordID = ?");
         this.findByTopicID = conn.prepareStatement("SELECT * FROM word WHERE topicID = ?");
+        this.findRandom10WordsByTopicID = conn.prepareStatement("SELECT * FROM word WHERE topicID = ? ORDER BY rand() LIMIT 10");
+        this.findWrongWordByTestAttempt = conn.prepareStatement(
+                "SELECT * FROM language_db.word " +
+                    "JOIN wordTestQuestion ON wordTestQuestion.wordID = word.wordID " +
+                    "JOIN testQuestion ON testQuestion.testQuestionID = wordTestQuestion.testQuestionID " +
+                    "JOIN testAnswer ON testAnswer.testQuestionID = testQuestion.testQuestionID " +
+                    "WHERE testAnswer.isRight = 0 AND testAnswer.testAttemptID = ?");
     }
     
     public void addWord(Word newWord) throws SQLException {
@@ -117,6 +126,29 @@ public class WordDAO {
         while (rs.next()) {
             Word word = makeOneWord(rs);
             ret.add(word);
+        }
+        rs.close();
+        return ret;
+    }
+
+    public List<Word> findRandom10WordsByTopicId(int topicId) throws SQLException {
+        List<Word> ret = new ArrayList<>();
+        this.findRandom10WordsByTopicID.setInt(1, topicId);
+        ResultSet rs = this.findRandom10WordsByTopicID.executeQuery();
+        while (rs.next()) {
+            Word word = makeOneWord(rs);
+            ret.add(word);
+        }
+        rs.close();
+        return ret;
+    }
+    
+    public List<Word> findWrongWordByTestAttempt(int testAttemptId)throws SQLException {
+        List<Word> ret = new ArrayList<>();
+        this.findWrongWordByTestAttempt.setInt(1, testAttemptId);
+        ResultSet rs = this.findWrongWordByTestAttempt.executeQuery();
+        while (rs.next()) {
+            ret.add(makeOneWord(rs));
         }
         rs.close();
         return ret;

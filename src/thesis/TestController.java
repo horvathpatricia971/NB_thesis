@@ -5,10 +5,16 @@
  */
 package thesis;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -19,8 +25,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 /**
  * FXML Controller class
@@ -37,6 +48,8 @@ public class TestController implements Initializable {
     private Pane firstPane;
     @FXML
     private Pane resultPane;
+    @FXML
+    private Pane practicePane;
     @FXML
     private Label firstLabel;
     @FXML
@@ -66,7 +79,11 @@ public class TestController implements Initializable {
     
     private Topic topic;
     private List <TestQuestion> testQuestion;
+    private List<TestQuestion> wrongQuestions;
     private TestQuestion currentTestQuestion;
+    private TestQuestion wrongQuestionData;
+    private List<Word> wrongWord;
+    private Word wrongOneWord;
     private TestAttempt testAttempt;
     private Test test; // test.getTestID()
     
@@ -75,23 +92,134 @@ public class TestController implements Initializable {
     private TestAttemptDAO testattemptdao;
     private TestDAO testdao;
     private TestAnswerDAO testanswerdao;
+    private WordDAO worddao;
     
     private int topicId;
     private int testQuestionId;
-    private int testAttemptId;
     private int userId;
 
     private int selectedAnswer;
     private int questionIndex;
+    private int questionIndex2;
+    private int questionIndex3;
     private int score;
+    private int score2;
     @FXML
     private AnchorPane mainPane;
     @FXML
     private Button nextButton1;
     @FXML
+    private Label answerHun1;
+    @FXML
+    private Label answerHun2;
+    @FXML
+    private Label answerHun3;
+    @FXML
     private Label secondErrorLabel;
     @FXML
     private Button buttonRight;
+    @FXML
+    private ImageView right1;
+    @FXML
+    private ImageView false1;
+    @FXML
+    private ImageView right2;
+    @FXML
+    private ImageView false2;
+    @FXML
+    private ImageView right3;
+    @FXML
+    private ImageView false3;
+    @FXML
+    private Label victoryLabel;
+    @FXML
+    private ImageView victoryPicture;
+    @FXML
+    private ImageView victorySlice;
+    @FXML
+    private ImageView victoryBonbon;
+    @FXML
+    private Button practiceBegin;
+    
+    @FXML
+    private Button practiceCheck;
+    @FXML
+    private Button nextButtonPractice;
+    @FXML
+    private Pane firstPane1;
+    @FXML
+    private ImageView picture;
+    @FXML
+    private Label titleLabelWord;
+    @FXML
+    private Label firstSentence;
+    @FXML
+    private Label secondSentence;
+    @FXML
+    private Label thirdSentence;
+    @FXML
+    private Label fourthSentence;
+    int serialNum = 0;
+    int practiceIndex;
+    @FXML
+    private Label question;
+    @FXML
+    private ImageView leftPicture;
+    @FXML
+    private ImageView middlePicture;
+    @FXML
+    private ImageView rightPicture;
+    @FXML
+    private Button leftButton;
+    @FXML
+    private Button middleButton;
+    @FXML
+    private Button rightButton;
+    @FXML
+    private ImageView rightPic1;
+    @FXML
+    private ImageView rightPic2;
+    @FXML
+    private ImageView falsePic1;
+    @FXML
+    private ImageView falsePic2;
+    @FXML
+    private ImageView rightPic3;
+    @FXML
+    private ImageView falsePic3;
+    private Button sourceButton;
+    @FXML
+    private Button nextButtonRepeat;
+    @FXML
+    private Button repetationEndButton;
+    @FXML
+    private Label endRep1;
+    @FXML
+    private Label endRep2;
+    @FXML
+    private ImageView voicePicture;
+    @FXML
+    private ImageView slowVoice;
+    @FXML
+    private Button repetationEndButton1;
+    @FXML
+    private Label endRep11;
+    @FXML
+    private Label endRep21;
+    @FXML
+    private Button repetationButton;
+    @FXML
+    private Label hunAnswer1;
+    @FXML
+    private Label hunAnswer2;
+    @FXML
+    private Label hunAnswer3;
+    @FXML
+    private Label endTest1;
+    @FXML
+    private Label endTest2;
+    @FXML
+    private Button testEndButton;
 
     /**
      * Initializes the controller class.
@@ -107,6 +235,7 @@ public class TestController implements Initializable {
             testquestiondao = new TestQuestionDAO(conn);
             testattemptdao = new TestAttemptDAO(conn);
             testanswerdao = new TestAnswerDAO(conn);
+            worddao = new WordDAO(conn);
             
         } catch (SQLException ex) {
             Logger.getLogger(TestController.class.getName()).log(Level.SEVERE, null, ex);
@@ -120,16 +249,13 @@ public class TestController implements Initializable {
 
     public void setTopicId(int topicId) {
         this.topicId = topicId;
+        serialNum = 1;
         fillFrame();
         fillTestData(0);
     }
 
     public void setUserId(int userId) {
         this.userId = userId;
-    }
-
-    public void setTestAttemptId(int testAttemptId) {
-        this.testAttemptId = testAttemptId;
     }
 
     public void setTestQuestionId(int testQuestionId) {
@@ -141,7 +267,7 @@ public class TestController implements Initializable {
     private void fillFrame(){
         try {
             test = testdao.findTestByTopicId(this.topicId).get(0);
-            testQuestion = testquestiondao.findQuestionByTestId(test.getTestID());
+            testQuestion = testquestiondao.findQuestionByLastLearn(this.userId, this.topicId);
             topic = topicdao.findTopicById(this.topicId);
             titleLabel.setText("Teszt a(z) "+ topic.getTopic() + " témakörben");
         } catch (SQLException ex) {
@@ -155,7 +281,7 @@ public class TestController implements Initializable {
     
     @FXML
     private void beginAction(ActionEvent event) { 
-        testAttempt = new TestAttempt(0, this.userId, this.test.getTestID(), 0, new java.sql.Timestamp(new java.util.Date().getTime()), null);
+        testAttempt = new TestAttempt(0, this.userId, this.test.getTestID(), 0, 0, 0, new java.sql.Timestamp(new java.util.Date().getTime()), null, 0);
         try {
             testattemptdao.addTestAttempt(testAttempt);
         } catch (SQLException ex) {
@@ -175,8 +301,8 @@ public class TestController implements Initializable {
         currentTestQuestion = testq;
         firstLabel.setText(testq.getQuestionInHungarian());
         secondLabel.setText(testq.getQuestionInEnglish());
-        questionLabel.setText(testq.getQuestionNum() + ". kérdés");
-        numberLabel.setText(testq.getQuestionNum() + "/10"); //ahány kérdés van topic NumberOfWords
+        questionLabel.setText(serialNum + ". kérdés");
+        numberLabel.setText(serialNum + "/10"); //ahány kérdés van topic NumberOfWords
         answer1.setText(testq.getAnswer1());
         answer2.setText(testq.getAnswer2());
         answer3.setText(testq.getAnswer3());
@@ -189,6 +315,12 @@ public class TestController implements Initializable {
         answer2.setDisable(false);
         answer3.setDisable(false);
         
+        answerHun1.setVisible(false);
+        answerHun1.setText(testq.getAnswer1hun() +" - ");
+        answerHun2.setVisible(false);
+        answerHun2.setText(testq.getAnswer2hun() + " - ");
+        answerHun3.setVisible(false);
+        answerHun3.setText(testq.getAnswer3hun() + " - ");
     }
     
     
@@ -208,11 +340,11 @@ public class TestController implements Initializable {
             selectedAnswer = 3;
         }
         answer1.setDisable(true);
-        answer1.setOpacity(0.8);
+        answer1.setOpacity(0.9);
         answer2.setDisable(true);
-        answer2.setOpacity(0.8);
+        answer2.setOpacity(0.9);
         answer3.setDisable(true);
-        answer3.setOpacity(0.8);
+        answer3.setOpacity(0.9);
         checkButton1.setDisable(false);
     }
     
@@ -221,31 +353,67 @@ public class TestController implements Initializable {
         int isRight = 0;
         if (currentTestQuestion.getRightAnswer().equals(currentTestQuestion.getAnswer1())) {
         answer1.setStyle("-fx-background-color: #ACFBD5;");
-        answer2.setStyle("-fx-background-color: #D44334;");
-        answer3.setStyle("-fx-background-color: #D44334;");
-            if (selectedAnswer == 1) {
-                score++;
-                isRight = 1;
+        answer2.setStyle("-fx-background-color: #FF7370;");
+        answer3.setStyle("-fx-background-color: #FF7370;");
+            switch (selectedAnswer) {
+                case 1:
+                    score++;
+                    isRight = 1;
+                    right1.setVisible(true);
+                    break;
+                case 2:
+                    false2.setVisible(true);
+                    break;
+                case 3:
+                    false3.setVisible(true);
+                    break;
+                default:
+                    break;
             }
         } else if(currentTestQuestion.getRightAnswer().equals(currentTestQuestion.getAnswer2())){
-            answer1.setStyle("-fx-background-color: #D44334;");
+            answer1.setStyle("-fx-background-color: #FF7370;");
             answer2.setStyle("-fx-background-color: #ACFBD5;");
-            answer3.setStyle("-fx-background-color: #D44334;");
-            if (selectedAnswer == 2) {
-                score++;
-                isRight = 1;
+            answer3.setStyle("-fx-background-color: #FF7370;");
+            switch (selectedAnswer) {
+                case 2:
+                    score++;
+                    isRight = 1;
+                    right2.setVisible(true);
+                    break;
+                case 1:
+                    false1.setVisible(true);
+                    break;
+                case 3:
+                    false3.setVisible(true);
+                    break;
+                default:
+                    break;
             }
         } else if(currentTestQuestion.getRightAnswer().equals(currentTestQuestion.getAnswer3())){
-            answer1.setStyle("-fx-background-color: #D44334;");
-            answer2.setStyle("-fx-background-color: #D44334;");
+            answer1.setStyle("-fx-background-color: #FF7370;");
+            answer2.setStyle("-fx-background-color: #FF7370;");
             answer3.setStyle("-fx-background-color: #ACFBD5;");
-            if (selectedAnswer == 3) {
-                score++;
-                isRight = 1;
+            switch (selectedAnswer) {
+                case 3:
+                    score++;
+                    isRight = 1;
+                    right3.setVisible(true);
+                    break;
+                case 1:
+                    false1.setVisible(true);
+                    break;
+                case 2:
+                    false2.setVisible(true);
+                    break;
+                default:
+                    break;
             }
         }
         checkButton1.setDisable(true);
         nextButton.setDisable(false);
+        answerHun1.setVisible(true);
+        answerHun2.setVisible(true);
+        answerHun3.setVisible(true);
         
         TestAnswer testAnswer = new TestAnswer(0, currentTestQuestion.getAnswer(selectedAnswer), isRight, this.testAttempt.getTestAttemptID(), this.currentTestQuestion.getTestQuestionID());
         try {
@@ -262,7 +430,8 @@ public class TestController implements Initializable {
 
     @FXML
     private void nextButtonAction(ActionEvent event) {
-       questionIndex++;
+        serialNum ++;
+        questionIndex++;
         switch (questionIndex) {
             case 9:
                 fillTestData(questionIndex);
@@ -270,13 +439,22 @@ public class TestController implements Initializable {
                 answer2.setOpacity(1);
                 answer3.setOpacity(1);
                 nextButton.setDisable(true);
+                right1.setVisible(false);
+                right2.setVisible(false);
+                right3.setVisible(false);
+                false1.setVisible(false);
+                false2.setVisible(false);
+                false3.setVisible(false);
                 nextButton.setText("Befejezés");
                 break;
             case 10:
                 // TODO: vége a tesztnek
                 
                 testAttempt.setEndTime(new java.sql.Timestamp(new java.util.Date().getTime()));
-                testAttempt.setResult(score);
+                testAttempt.setRightAnswerNum(score);
+                testAttempt.setQuestionNum(questionIndex);
+                int result = (int) (((float)score / (float)questionIndex) * 100);
+                testAttempt.setResult(result);
                 try {
                     testattemptdao.updateTestAttempt(testAttempt);
                 } catch (SQLException ex) {
@@ -284,14 +462,55 @@ public class TestController implements Initializable {
                     basePane.setDisable(true);
                     firstErrorLabel.setText("Probléma a befejezési idő tárolásánál.");
                     Logger.getLogger(TestController.class.getName()).log(Level.SEVERE, null, ex);
-                }    resultPane.setVisible(true);
+                }
+                firstPane.setVisible(false);
+                resultPane.setVisible(true);
+                if(result == 100){
+                    repetationButton.setDisable(true);
+                    practiceBegin.setDisable(true);
+                }
                 resultLabel.setText("10/" + score);
+                if (result < 40){
+                    victoryLabel.setText("Virtuális nyereménye egy csoki bonbon.");
+                    repetationButton.setDisable(false);
+                    practiceBegin.setDisable(false);
+                    try {
+                        FileInputStream fis = new FileInputStream("images/bonbon.png");
+                        victoryBonbon.setImage(new Image(fis));
+                    } catch (FileNotFoundException ex) {
+                        // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+                    }
+                } else if (result > 60) {
+                    victoryLabel.setText("Virtuális nyereménye egy tábla csoki.");
+                    try {
+                        FileInputStream fis = new FileInputStream("images/chocolate.png");
+                        victoryPicture.setImage(new Image(fis));
+                    } catch (FileNotFoundException ex) {
+                        // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+                    }
+                } else {
+                    victoryLabel.setText("Virtuális nyereménye egy szelet csoki.");
+                    repetationButton.setDisable(false);
+                    practiceBegin.setDisable(false);
+                    try {
+                        FileInputStream fis = new FileInputStream("images/slice2.png");
+                        victorySlice.setImage(new Image(fis));
+                    } catch (FileNotFoundException ex) {
+                        // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+                    }
+                }
                 break;
             default:
                 fillTestData(questionIndex);
                 answer1.setOpacity(1);
                 answer2.setOpacity(1);
                 answer3.setOpacity(1);
+                right1.setVisible(false);
+                right2.setVisible(false);
+                right3.setVisible(false);
+                false1.setVisible(false);
+                false2.setVisible(false);
+                false3.setVisible(false);
                 nextButton.setDisable(true);
                 break;
         }
@@ -303,8 +522,324 @@ public class TestController implements Initializable {
         errorPane.setVisible(false);
         basePane.setDisable(false);
     }
+    
+    @FXML
+    private void repetationBegin(ActionEvent event) throws SQLException {
+        firstPane1.setVisible(true);
+        practicePane.setVisible(false);
+        firstPane.setVisible(false);
+        resultPane.setVisible(false);
+        wrongWord = worddao.findWrongWordByTestAttempt(this.testAttempt.getTestAttemptID());
+        titleLabelWord.setVisible(true);
+        firstSentence.setVisible(true);
+        secondSentence.setVisible(true);
+        thirdSentence.setVisible(true);
+        fourthSentence.setVisible(true);
+        nextButtonRepeat.setVisible(true);
+        picture.setVisible(true);
+        voicePicture.setVisible(true);
+        slowVoice.setVisible(true);
+        repetationEndButton.setVisible(false);
+        endRep1.setVisible(false);
+        endRep2.setVisible(false);
+        fillWords(0);
+    }
+    
+    @FXML
+    private void nextButtonRepeatAction(ActionEvent event) {
+        questionIndex3++;
+        if (questionIndex3 < wrongWord.size()){
+            fillWords(questionIndex3);
+        } else {
+            titleLabelWord.setVisible(false);
+            firstSentence.setVisible(false);
+            secondSentence.setVisible(false);
+            thirdSentence.setVisible(false);
+            fourthSentence.setVisible(false);
+            nextButtonRepeat.setVisible(false);
+            picture.setVisible(false);
+            voicePicture.setVisible(false);
+            slowVoice.setVisible(false);
+            repetationEndButton.setVisible(true);
+            endRep1.setVisible(true);
+            endRep2.setVisible(true);
+        }
+    }
 
     @FXML
+    private void voiceClick(MouseEvent event) {
+        String mp3 = "mp3/" + wrongOneWord.getAudio(); //fájl 
+        Media sound = new Media(new File(mp3).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }
+    
+    private void fillWords(int index){
+        wrongOneWord = wrongWord.get(index);
+        titleLabelWord.setText(wrongOneWord.getWord() + " - " + wrongOneWord.getWordInEng());
+        firstSentence.setText(wrongOneWord.getSentenceHun1());
+        secondSentence.setText(wrongOneWord.getSentenceEng1());
+        thirdSentence.setText(wrongOneWord.getSentenceHun2());
+        fourthSentence.setText(wrongOneWord.getSentenceEng2());
+        try {
+            FileInputStream fis = new FileInputStream("images/" + wrongOneWord.getImage());
+            picture.setImage(new Image(fis));
+        } catch (FileNotFoundException ex) {
+            // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+            ex.printStackTrace();
+        }
+    }
+    
+    @FXML
+    private void repetationEnd(ActionEvent event) throws SQLException {
+        resultPane.setVisible(true);
+        firstPane1.setVisible(false);
+    }
+
+    @FXML
+    private void practiceBegin(ActionEvent event) {
+        try {
+            wrongWord = worddao.findWrongWordByTestAttempt(this.testAttempt.getTestAttemptID());
+            wrongQuestions = testquestiondao.findWrongByTestAttempt(this.testAttempt.getTestAttemptID());
+            testAttempt = new TestAttempt(0, this.userId, this.test.getTestID(), 0, 0, 0, new java.sql.Timestamp(new java.util.Date().getTime()), null, 1);
+            testattemptdao.addTestAttempt(testAttempt);
+            victorySlice.setVisible(false);
+            fillWrongQuestionsData(0);
+            practicePane.setVisible(true);
+            resultPane.setVisible(false);
+        } catch (SQLException ex) {
+            errorPane.setVisible(true);
+            resultPane.setDisable(true);
+            basePane.setDisable(true);
+            firstErrorLabel.setText("Probléma a hibásan kitöltött kérdések beolvasásakor.");
+            System.out.println(""+ex);
+        }
+        
+    }
+    
+    private void fillWrongQuestionsData(int index) {
+        wrongOneWord = wrongWord.get(index);
+        // TODO question kitöltése DB alapján
+        question.setText("Melyik a(z) " + wrongOneWord.getWord() + "?");
+        wrongQuestionData = wrongQuestions.get(index);
+        try {
+            FileInputStream fis = new FileInputStream("images/" + wrongQuestionData.getPicture1());
+            leftPicture.setImage(new Image(fis));
+        } catch (FileNotFoundException ex) {
+            // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+            ex.printStackTrace();
+        }
+        try {
+            FileInputStream fis = new FileInputStream("images/" + wrongQuestionData.getPicture2());
+            middlePicture.setImage(new Image(fis));
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+            // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+        }
+        try {
+            FileInputStream fis = new FileInputStream("images/" + wrongQuestionData.getPicture3());
+            rightPicture.setImage(new Image(fis));
+        } catch (FileNotFoundException ex) {
+            // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+            ex.printStackTrace();
+        }
+        leftButton.setText(wrongQuestionData.getAnswer1());
+        middleButton.setText(wrongQuestionData.getAnswer2());
+        rightButton.setText(wrongQuestionData.getAnswer3());
+    }
+    
+    @FXML
+    private void answerButtonAct(ActionEvent event) {
+        if (event.getSource() == leftButton){
+            leftButton.setStyle("-fx-background-color: #34CBD4;");
+            sourceButton = leftButton;
+        }else if(event.getSource() == middleButton){
+            middleButton.setStyle("-fx-background-color: #34CBD4;");
+            sourceButton = middleButton;
+        } else if (event.getSource() == rightButton) {
+            rightButton.setStyle("-fx-background-color: #34CBD4;");
+            sourceButton = rightButton;
+        }
+        leftButton.setDisable(true);
+        leftButton.setOpacity(0.9);
+        middleButton.setDisable(true);
+        middleButton.setOpacity(0.9);
+        rightButton.setDisable(true);
+        rightButton.setOpacity(0.9);
+        practiceCheck.setDisable(false);
+    }
+    
+    @FXML
+    private void practiceCheckAction(ActionEvent event) {
+        List<Button> allButtons = Arrays.asList(leftButton, middleButton, rightButton);
+        //Button sourceButton = (Button)event.getSource();
+        List<Button> nonClickedButtons = new ArrayList<>(allButtons);
+        nonClickedButtons.remove(sourceButton);
+        List<Button> incorrectButtons = new ArrayList<>(allButtons);
+        Button correctButton = null;
+        Iterator<Button> iter = incorrectButtons.iterator();
+        while (iter.hasNext()) {
+            Button b = iter.next();
+            if (b.getText().equals(wrongQuestionData.getRightAnswer())) {
+                correctButton = b;
+                iter.remove();
+            }
+        }
+        
+        correctButton.setStyle("-fx-background-color: #ACFBD5;");
+        for (Button other : incorrectButtons) {
+            other.setStyle("-fx-background-color: #FF7370;");
+        }
+        int isRight = 0;
+        if (correctButton == sourceButton) {
+            score2++;
+            isRight = 1;
+            if (correctButton == allButtons.get(0)){
+                rightPic1.setVisible(true);
+            } else if (correctButton == allButtons.get(1)){
+                rightPic2.setVisible(true);
+            } else {
+                rightPic3.setVisible(true);
+            }
+        } else {
+            if (sourceButton == leftButton){
+                falsePic1.setVisible(true);
+            } else if (sourceButton == middleButton){
+                falsePic2.setVisible(true);
+            } else{
+                falsePic3.setVisible(true);
+            }
+        }
+        nextButtonPractice.setDisable(false);
+        hunAnswer1.setVisible(true);
+        hunAnswer2.setVisible(true);
+        hunAnswer3.setVisible(true);
+        hunAnswer1.setText(wrongQuestionData.getAnswer1hun());
+        hunAnswer2.setText(wrongQuestionData.getAnswer2hun());
+        hunAnswer3.setText(wrongQuestionData.getAnswer3hun());
+        TestAnswer testAnswer = new TestAnswer(0, 
+                wrongQuestionData.getAnswer(allButtons.indexOf(sourceButton)+1), 
+                isRight, this.testAttempt.getTestAttemptID(), 
+                this.wrongQuestionData.getTestQuestionID());
+        try {
+            testanswerdao.addAnswer(testAnswer);
+        } catch (SQLException ex) {
+            errorPane.setVisible(true);
+            basePane.setDisable(true);
+            firstErrorLabel.setText("Probléma a válasz hozzáadásakor.");
+            System.out.println(""+ex);
+            Logger.getLogger(TestController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    private void nextButtonPracticeAction(ActionEvent event) {
+        
+        leftButton.setStyle("-fx-background-color: #8AD1FA;");
+        middleButton.setStyle("-fx-background-color: #8AD1FA;");
+        rightButton.setStyle("-fx-background-color: #8AD1FA;");
+        rightPic1.setVisible(false);
+        rightPic2.setVisible(false);
+        rightPic3.setVisible(false);
+        falsePic1.setVisible(false);
+        falsePic2.setVisible(false);
+        falsePic3.setVisible(false);
+        hunAnswer1.setVisible(false);
+        hunAnswer2.setVisible(false);
+        hunAnswer3.setVisible(false);
+        leftButton.setDisable(false);
+        middleButton.setDisable(false);
+        rightButton.setDisable(false);
+        practiceCheck.setDisable(true);
+        
+        questionIndex2++;
+        if (questionIndex2 < wrongQuestions.size()){
+            fillWrongQuestionsData(questionIndex2);
+            nextButtonPractice.setDisable(true);
+        }else {
+            rightPic1.setVisible(false);
+            rightPic2.setVisible(false);
+            rightPic3.setVisible(false);
+            falsePic1.setVisible(false);
+            falsePic2.setVisible(false);
+            falsePic3.setVisible(false);
+            leftPicture.setVisible(false);
+            middlePicture.setVisible(false);
+            rightPicture.setVisible(false);
+            hunAnswer1.setVisible(false);
+            hunAnswer2.setVisible(false);
+            hunAnswer3.setVisible(false);
+            leftButton.setVisible(false);
+            middleButton.setVisible(false);
+            rightButton.setVisible(false);
+            question.setVisible(false);
+            hunAnswer1.setVisible(false);
+            hunAnswer2.setVisible(false);
+            hunAnswer3.setVisible(false);
+            practiceCheck.setVisible(false);
+            nextButtonPractice.setVisible(false);
+            endTest1.setVisible(true);
+            endTest2.setVisible(true);
+            testEndButton.setVisible(true);
+        }
+        
+    }
+
+    @FXML
+    private void pictureTestEnd(ActionEvent event) {
+        testAttempt.setEndTime(new java.sql.Timestamp(new java.util.Date().getTime()));
+        testAttempt.setRightAnswerNum(score2);
+        testAttempt.setQuestionNum(questionIndex2);
+        int result2 = (int) (((float)score2 / (float)questionIndex2) * 100);
+        testAttempt.setResult(result2);
+        try {
+            testattemptdao.updateTestAttempt(testAttempt);
+        } catch (SQLException ex) {
+            errorPane.setVisible(true);
+            basePane.setDisable(true);
+            firstErrorLabel.setText("Probléma a befejezési idő tárolásánál.");
+            Logger.getLogger(TestController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        resultLabel.setText(questionIndex2 + "/" + score2);  
+        practicePane.setVisible(false);
+        resultPane.setVisible(true);
+        if (result2 < 40){
+            victoryLabel.setText("Virtuális nyereménye egy csoki bonbon.");
+            repetationButton.setDisable(false);
+            practiceBegin.setDisable(false);
+            try {
+                FileInputStream fis = new FileInputStream("images/bonbon.png");
+                victoryBonbon.setImage(new Image(fis));
+            } catch (FileNotFoundException ex) {
+                // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+            }
+         } else if (result2 > 60) {
+            victoryLabel.setText("Virtuális nyereménye egy tábla csoki.");
+            repetationButton.setDisable(true);
+            practiceBegin.setDisable(true);
+            try {
+                FileInputStream fis = new FileInputStream("images/chocolate.png");
+                victoryPicture.setImage(new Image(fis));
+            } catch (FileNotFoundException ex) {
+                // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+            }
+        } else {
+            victoryLabel.setText("Virtuális nyereménye egy szelet csoki.");
+            repetationButton.setDisable(false);
+            practiceBegin.setDisable(false);
+            try {
+                FileInputStream fis = new FileInputStream("images/slice2.png");
+                victorySlice.setImage(new Image(fis));
+             } catch (FileNotFoundException ex) {
+                // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+            }
+        }
+        firstPane1.setVisible(false);
+        firstPane.setVisible(false);
+        questionIndex2 = 0;
+    }
+    
+   @FXML
     private void loadResult(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Results.fxml"));
         AnchorPane pane = loader.load();
@@ -312,6 +847,7 @@ public class TestController implements Initializable {
         controller.setUserId(this.userId);
         mainPane.getChildren().setAll(pane);
         
-    }
+    } 
+
     
 }

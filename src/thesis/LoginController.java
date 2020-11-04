@@ -20,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
@@ -51,19 +52,19 @@ public class LoginController implements Initializable {
     private Label secondErrorLabel;
     
     @FXML
-    private ChoiceBox<String> genericBox1;
+    private ChoiceBox<String> genderBox;
     
     @FXML
-    private ChoiceBox<String> genericBox2;
+    private ChoiceBox<String> educationBox;
      
     @FXML
-    private ChoiceBox<String> genericBox3;
+    private ChoiceBox<String> deseaseBox;
     
     @FXML
-    private ChoiceBox<String> genericBox4;
+    private ChoiceBox<String> hearingBox;
     
     @FXML
-    private ChoiceBox<String> genericBox5;
+    private ChoiceBox<String> seeingBox;
 
     public final ObservableList<User> data = FXCollections.observableArrayList();
 
@@ -72,6 +73,8 @@ public class LoginController implements Initializable {
     UserDAO userDAO;
     
     DBConnection dbconnection;
+    
+    Tooltip tool;
     
 @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -89,26 +92,26 @@ public class LoginController implements Initializable {
         inputUsername.getStyleClass().add("textfield-choicebox");
         inputAge.getStyleClass().add("textfield-choicebox");
 
-        genericBox1.getItems().add("nő");
-        genericBox1.getItems().add("férfi");
-        genericBox1.getStyleClass().add("textfield-choicebox");
+        genderBox.getItems().add("nő");
+        genderBox.getItems().add("férfi");
+        genderBox.getStyleClass().add("textfield-choicebox");
       
-        genericBox2.getItems().add("általános iskola");
-        genericBox2.getItems().add("középfokú");
-        genericBox2.getItems().add("felsőfokú");
-        genericBox2.getStyleClass().add("textfield-choicebox");
+        educationBox.getItems().add("általános iskola");
+        educationBox.getItems().add("középfokú");
+        educationBox.getItems().add("felsőfokú");
+        educationBox.getStyleClass().add("textfield-choicebox");
       
-        genericBox3.getItems().add("igen");
-        genericBox3.getItems().add("nem");
-        genericBox3.getStyleClass().add("textfield-choicebox");
+        deseaseBox.getItems().add("igen");
+        deseaseBox.getItems().add("nem");
+        deseaseBox.getStyleClass().add("textfield-choicebox");
       
-        genericBox4.getItems().add("igen");
-        genericBox4.getItems().add("nem");
-        genericBox4.getStyleClass().add("textfield-choicebox");
+        hearingBox.getItems().add("igen");
+        hearingBox.getItems().add("nem");
+        hearingBox.getStyleClass().add("textfield-choicebox");
       
-        genericBox5.getItems().add("igen");
-        genericBox5.getItems().add("nem");
-        genericBox5.getStyleClass().add("textfield-choicebox");
+        seeingBox.getItems().add("igen");
+        seeingBox.getItems().add("nem");
+        seeingBox.getStyleClass().add("textfield-choicebox");
     }
     
     @FXML
@@ -116,12 +119,12 @@ public class LoginController implements Initializable {
        
        try {
         String username = inputUsername.getText();
-        String gender = genericBox1.getValue();
+        String gender = genderBox.getValue();
         String ageText = inputAge.getText();
-        String education = genericBox2.getValue();
-        String desease = genericBox3.getValue();
-        String hearing = genericBox4.getValue();
-        String seeing = genericBox5.getValue();
+        String education = educationBox.getValue();
+        String desease = deseaseBox.getValue();
+        String hearing = hearingBox.getValue();
+        String seeing = seeingBox.getValue();
         
         if(username == null || gender == null || ageText == null || education == null || desease == null || hearing ==null || seeing == null){
             

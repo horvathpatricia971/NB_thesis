@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
@@ -35,12 +36,12 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label layoutX="97.0" layoutY="174.0" text="Ezen a felületen tudja kiválasztani a tanulni kívánt témát.">
+            <Label layoutX="79.0" layoutY="136.0" text="A képekre kattintva tudja kiválasztani a tanulni kívánt témát.">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="logOutButton" layoutX="124.0" layoutY="580.0" mnemonicParsing="false" onAction="#logOut" prefHeight="47.0" prefWidth="117.0" style=": ;" text="Kilépés">
+            <Button fx:id="logOutButton" layoutX="74.0" layoutY="580.0" mnemonicParsing="false" onAction="#logOut" prefHeight="47.0" prefWidth="117.0" style=": ;" text="Kilépés">
                <font>
                   <Font size="24.0" />
                </font>
@@ -48,55 +49,7 @@
                   <Tooltip text="A gomb megnyomásával kilép a programból." />
                </tooltip>
             </Button>
-            <Button fx:id="topLeft" layoutX="102.0" layoutY="261.0" mnemonicParsing="false" onAction="#loadTopLeft" prefHeight="47.0" prefWidth="159.0" style="-fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="x">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <tooltip>
-                  <Tooltip fx:id="tool1" />
-               </tooltip>
-            </Button>
-            <Button fx:id="topRight" layoutX="490.0" layoutY="261.0" mnemonicParsing="false" onAction="#loadTopRight" prefHeight="47.0" prefWidth="159.0" style="-fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="x">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <tooltip>
-                  <Tooltip text="A gomb megnyomásával a temészet témakörben tanulhat." />
-               </tooltip>
-            </Button>
-            <Button fx:id="middleLeft" layoutX="102.0" layoutY="343.0" mnemonicParsing="false" onAction="#loadMiddleLeft" prefHeight="47.0" prefWidth="159.0" style="-fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="x">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <tooltip>
-                  <Tooltip text="A gomb megnyomásával az étkezés témakörben tanulhat." />
-               </tooltip>
-            </Button>
-            <Button fx:id="middleRight" layoutX="490.0" layoutY="343.0" mnemonicParsing="false" onAction="#loadMiddleRight" prefHeight="47.0" prefWidth="159.0" style="-fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="x">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <tooltip>
-                  <Tooltip text="A gomb megnyomásával a közlekedés témakörben tanulhat." />
-               </tooltip>
-            </Button>
-            <Button fx:id="bottomLeft" layoutX="103.0" layoutY="432.0" mnemonicParsing="false" onAction="#loadBottomLeft" prefHeight="47.0" prefWidth="159.0" style="-fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="x">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <tooltip>
-                  <Tooltip text="A gomb megnyomásával a család témakörben tanulhat." />
-               </tooltip>
-            </Button>
-            <Button fx:id="bottomRight" layoutX="490.0" layoutY="432.0" mnemonicParsing="false" onAction="#loadBottomRight" prefHeight="47.0" prefWidth="159.0" style="-fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="x">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <tooltip>
-                  <Tooltip text="A gomb megnyomásával az utazás témakörben tanulhat." />
-               </tooltip>
-            </Button>
-            <Button fx:id="dataOut" layoutX="483.0" layoutY="580.0" mnemonicParsing="false" onAction="#dataOutAction" text="Eredményeim">
+            <Button fx:id="dataOut" layoutX="502.0" layoutY="580.0" mnemonicParsing="false" onAction="#dataOutAction" text="Eredményeim">
                <font>
                   <Font size="24.0" />
                </font>
@@ -104,17 +57,53 @@
                   <Tooltip text="A gombra kattintva megtekintheti eddigi eredményeit." />
                </tooltip>
             </Button>
-            <Label layoutX="341.0" layoutY="270.0" text="1. szint">
+            <Label layoutX="335.0" layoutY="222.0" text="1. szint">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="340.0" layoutY="352.0" text="2. szint">
+            <Label layoutX="333.0" layoutY="340.0" text="2. szint">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="339.0" layoutY="441.0" text="3. szint">
+            <Label layoutX="333.0" layoutY="473.0" text="3. szint">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="topLeftIma" fitHeight="95.0" fitWidth="97.0" layoutX="183.0" layoutY="189.0" onMouseClicked="#topLeftClick" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="middleLeftIma" fitHeight="95.0" fitWidth="97.0" layoutX="183.0" layoutY="318.0" onMouseClicked="#middleLeftClick" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="bottomLeftIma" fitHeight="95.0" fitWidth="97.0" layoutX="176.0" layoutY="440.0" onMouseClicked="#bottomLeftClick" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="topRightIma" fitHeight="95.0" fitWidth="97.0" layoutX="466.0" layoutY="189.0" onMouseClicked="#topRightClick" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="middleRightIma" fitHeight="95.0" fitWidth="97.0" layoutX="466.0" layoutY="318.0" onMouseClicked="#middleRightClick" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="bottomRightIma" fitHeight="102.0" fitWidth="106.0" layoutX="462.0" layoutY="437.0" onMouseClicked="#bottomRightClick" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="topLeftLabel" alignment="CENTER_RIGHT" layoutX="46.0" layoutY="222.0" prefHeight="29.0" prefWidth="120.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="middleLeftLabel" alignment="CENTER_RIGHT" layoutX="45.0" layoutY="351.0" prefHeight="29.0" prefWidth="120.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="bottomLeftLabel" alignment="CENTER_RIGHT" layoutX="45.0" layoutY="474.0" prefHeight="29.0" prefWidth="120.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="topRightLabel" layoutX="578.0" layoutY="227.0" prefHeight="29.0" prefWidth="120.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="middleRightLabel" layoutX="578.0" layoutY="351.0" prefHeight="29.0" prefWidth="120.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="bottomRightLabel" layoutX="579.0" layoutY="473.0" prefHeight="29.0" prefWidth="120.0">
                <font>
                   <Font size="24.0" />
                </font>
@@ -122,7 +111,7 @@
          </children></Pane>
       <Pane fx:id="quitPane" layoutX="215.0" layoutY="270.0" prefHeight="200.0" prefWidth="319.0" visible="false">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e6b4e2" height="200.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="320.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fce3b8" height="200.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="320.0" />
             <Label layoutX="84.0" layoutY="48.0" text="Biztosan kilép?">
                <font>
                   <Font size="24.0" />
@@ -148,7 +137,7 @@
       </Pane>
       <Pane fx:id="errorPane" layoutX="132.0" layoutY="270.0" prefHeight="199.0" prefWidth="485.0" visible="false">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e6b4e2" height="200.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" width="484.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fce3b8" height="200.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" width="484.0" />
             <Label fx:id="firstErrorLabel" alignment="CENTER" layoutX="28.0" layoutY="42.0" prefHeight="29.0" prefWidth="431.0">
                <font>
                   <Font size="24.0" />

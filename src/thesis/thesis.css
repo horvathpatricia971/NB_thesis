@@ -108,7 +108,7 @@
 }
 
 .table-view{
-    -fx-background-color: #FFAE21;
+    -fx-background-color: #FBC565;
     -fx-font-size: 14pt;
     -fx-border-color: #000000;
 }
@@ -120,6 +120,17 @@
 }
 
 .column-header{
-    -fx-background-color:#FBC058;
+    -fx-background-color:#FBC565;
     -fx-border-color: #000000;
+}
+
+.tools::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%;  /* At the top of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
 }

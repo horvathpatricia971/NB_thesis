@@ -5,8 +5,6 @@
  */
 package thesis;
 
-import java.sql.Timestamp;
-
 /**
  *
  * @author horvathpatricia

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
@@ -19,6 +20,19 @@
       <Pane fx:id="mainPane" prefHeight="650.0" prefWidth="750.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffaa2133" height="650.0" stroke="#00000033" strokeType="INSIDE" width="750.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="50.0" layoutX="194.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" width="367.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="0.5192307692307692" startY="0.5288461538461539">
+                     <stops>
+                        <Stop color="#3794dbbb" />
+                        <Stop color="#53bcdab8" offset="0.3188376346271082" />
+                        <Stop color="#53bcdab8" offset="0.700848404795773" />
+                        <Stop color="#3794dbba" offset="0.9966216216216216" />
+                        <Stop color="#3692ddba" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
             <Button layoutX="100.0" layoutY="594.0" mnemonicParsing="false" onAction="#logOut" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #8AD1FA;" text="Vissza">
                <font>
                   <Font size="20.0" />
@@ -35,7 +49,7 @@
                   <Tooltip text="A gombra kattintva  a témakörhöz tartozó tesztet indíthatja el." />
                </tooltip>
             </Button>
-            <Label fx:id="topicLabel" alignment="CENTER" layoutX="189.0" layoutY="14.0" prefHeight="37.0" prefWidth="373.0">
+            <Label fx:id="topicLabel" alignment="CENTER" layoutX="195.0" layoutY="13.0" prefHeight="37.0" prefWidth="367.0">
                <font>
                   <Font size="30.0" />
                </font>
@@ -57,7 +71,7 @@
             </Label>
          </children>
       </Pane>
-      <VBox fx:id="vbox" alignment="TOP_CENTER" layoutY="50.0" prefHeight="515.0" prefWidth="193.0">
+      <VBox fx:id="vbox" alignment="TOP_CENTER" layoutY="60.0" prefHeight="515.0" prefWidth="193.0">
          <children>
             <Button fx:id="firstButton" onAction="#firstWordAction" prefHeight="42.0" prefWidth="165.0">
                <VBox.margin>
@@ -141,20 +155,15 @@
             </Button>
          </children>
       </VBox>
-      <Pane fx:id="firstPane" layoutX="194.0" layoutY="56.0" prefHeight="508.0" prefWidth="543.0" visible="false">
+      <Pane fx:id="firstPane" layoutX="194.0" layoutY="65.0" prefHeight="508.0" prefWidth="543.0" visible="false">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c7eedb" height="510.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="543.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bbe6fe" height="510.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="543.0" />
             <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="32.0" prefHeight="44.0" prefWidth="513.0">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <ImageView fx:id="picture" fitHeight="150.0" fitWidth="200.0" layoutX="46.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true" />
-         <Button fx:id="soundButton" layoutX="307.0" layoutY="156.0" mnemonicParsing="false" onAction="#soundAction" style="-fx-background-color: #87BAD7; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="hang lejátszása">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
+            <ImageView fx:id="picture" fitHeight="190.0" fitWidth="200.0" layoutX="46.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="firstLabel" layoutX="12.0" layoutY="274.0" prefHeight="31.0" prefWidth="519.0">
          <font>
             <Font size="26.0" />
@@ -175,11 +184,21 @@
             <Font size="26.0" />
          </font>
       </Label>
+            <ImageView fx:id="soundImage" fitHeight="54.0" fitWidth="63.0" layoutX="294.0" layoutY="142.0" onMouseClicked="#voiceClick" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@voice3.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="slowSoundImage" fitHeight="37.0" fitWidth="37.0" layoutX="374.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@voice3.jpg" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Pane fx:id="errorPane" layoutX="140.0" layoutY="253.0" prefHeight="199.0" prefWidth="485.0" visible="false">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e6b4e2" height="200.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" width="484.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fce3b8" height="200.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" width="484.0" />
             <Label fx:id="firstErrorLabel" alignment="CENTER" layoutX="28.0" layoutY="42.0" prefHeight="29.0" prefWidth="433.0">
                <font>
                   <Font size="24.0" />
@@ -202,7 +221,7 @@
       </Pane>
       <Pane fx:id="quitPane" layoutX="225.0" layoutY="225.0" prefHeight="200.0" prefWidth="319.0" visible="false">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e6b4e2" height="200.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="320.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fce3b8" height="200.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="320.0" />
             <Label layoutX="84.0" layoutY="48.0" text="Biztosan kilép?">
                <font>
                   <Font size="24.0" />
