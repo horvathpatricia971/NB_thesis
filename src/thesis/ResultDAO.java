@@ -22,7 +22,7 @@ public class ResultDAO {
     
     public ResultDAO(Connection conn) throws SQLException{
         this.conn = conn;
-        this.findByUserId = conn.prepareStatement("SELECT user.userName, topic.topic, topic.difficulty, testAttempt.result, TIMESTAMPDIFF(second, testAttempt.startTime, testAttempt.endTime) as time FROM user JOIN testAttempt ON user.userID = testAttempt.userID JOIN test ON test.testID = testAttempt.testID JOIN topic ON topic.topicID = test.topicID WHERE user.userID = ?");
+        this.findByUserId = conn.prepareStatement("SELECT user.userName, topic.topic, topic.difficulty, testAttempt.result, TIMESTAMPDIFF(second, testAttempt.startTime, testAttempt.endTime) as time, testAttempt.prize FROM user JOIN testAttempt ON user.userID = testAttempt.userID JOIN test ON test.testID = testAttempt.testID JOIN topic ON topic.topicID = test.topicID WHERE user.userID = ?");
     }
     
     public List<Result> findResultByUserId(int userID) throws SQLException {
@@ -43,8 +43,9 @@ public class ResultDAO {
         int difficulty = rs.getInt("difficulty");
         int result = rs.getInt("result");
         int time = rs.getInt("time");
+        String prize = rs.getString("prize");
         
-        Result result1 = new Result(userName, topic, difficulty, result, time); 
+        Result result1 = new Result(userName, topic, difficulty, result, time, prize); 
         return result1;
     }
 }

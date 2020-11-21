@@ -15,13 +15,15 @@ public class Result {
     private int difficulty;
     private int result;
     private int time;
+    private String prize;
     
-    public Result(String userName, String topic, int difficulty, int result, int time){
+    public Result(String userName, String topic, int difficulty, int result, int time, String prize){
         this.userName = userName;
         this.topic = topic;
         this.difficulty = difficulty;
         this.result = result;
         this.time = time;
+        this.prize = prize;
     }
 
     public String getUserName() {
@@ -66,5 +68,13 @@ public class Result {
     
     public String getTimeStr(){
         return String.format("%02d:%02d", time/60,time%60);
+    }
+
+    public String getPrize() {
+        return prize;
+    }
+
+    public void setPrize(String victory) {
+        this.prize = victory;
     }
 }

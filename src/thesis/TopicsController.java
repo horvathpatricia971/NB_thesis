@@ -77,18 +77,6 @@ public class TopicsController implements Initializable {
     private ImageView middleRightIma;
     @FXML
     private ImageView bottomRightIma;
-    @FXML
-    private Label topLeftLabel;
-    @FXML
-    private Label middleLeftLabel;
-    @FXML
-    private Label bottomLeftLabel;
-    @FXML
-    private Label topRightLabel;
-    @FXML
-    private Label middleRightLabel;
-    @FXML
-    private Label bottomRightLabel;
 
     /**
      * Initializes the controller class.
@@ -195,7 +183,7 @@ public class TopicsController implements Initializable {
             
 
     @FXML
-    private void dataOutAction(ActionEvent event) throws IOException {
+    private void dataOutAction(ActionEvent event) throws IOException, SQLException {
        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Results.fxml"));
         AnchorPane pane = loader.load();
         ResultController controller = loader.<ResultController>getController();
@@ -231,7 +219,7 @@ public class TopicsController implements Initializable {
     }
 
     @FXML
-    private void topLeftClick(MouseEvent event) throws IOException {
+    private void topLeftClick(MouseEvent event) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Learn.fxml"));
         AnchorPane pane = loader.load();
         LearnController controller = loader.<LearnController>getController();
@@ -241,7 +229,7 @@ public class TopicsController implements Initializable {
     }
 
     @FXML
-    private void middleLeftClick(MouseEvent event) throws IOException {
+    private void middleLeftClick(MouseEvent event) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Learn.fxml"));
         AnchorPane pane = loader.load();
         LearnController controller = loader.<LearnController>getController();
@@ -251,7 +239,7 @@ public class TopicsController implements Initializable {
     }
 
     @FXML
-    private void bottomLeftClick(MouseEvent event) throws IOException {
+    private void bottomLeftClick(MouseEvent event) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Learn.fxml"));
         AnchorPane pane = loader.load();
         LearnController controller = loader.<LearnController>getController();        
@@ -261,7 +249,7 @@ public class TopicsController implements Initializable {
     }
 
     @FXML
-    private void topRightClick(MouseEvent event) throws IOException {
+    private void topRightClick(MouseEvent event) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Learn.fxml"));
         AnchorPane pane = loader.load();
         LearnController controller = loader.<LearnController>getController();
@@ -271,7 +259,7 @@ public class TopicsController implements Initializable {
     }
 
     @FXML
-    private void middleRightClick(MouseEvent event) throws IOException {
+    private void middleRightClick(MouseEvent event) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Learn.fxml"));
         AnchorPane pane = loader.load();
         LearnController controller = loader.<LearnController>getController();
@@ -281,7 +269,7 @@ public class TopicsController implements Initializable {
     }
 
     @FXML
-    private void bottomRightClick(MouseEvent event) throws IOException {
+    private void bottomRightClick(MouseEvent event) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Learn.fxml"));
         AnchorPane pane = loader.load();
         LearnController controller = loader.<LearnController>getController();

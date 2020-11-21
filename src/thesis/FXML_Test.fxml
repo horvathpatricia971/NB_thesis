@@ -29,17 +29,17 @@
                   </LinearGradient>
                </fill>
             </Rectangle>
-               <Label fx:id="titleLabel" alignment="CENTER" layoutX="76.0" layoutY="25.0" prefHeight="44.0" prefWidth="599.0">
+               <Label fx:id="titleLabel" alignment="CENTER" layoutX="84.0" layoutY="24.0" prefHeight="44.0" prefWidth="599.0">
                   <font>
                      <Font size="36.0" />
                   </font>
                </Label>
-               <Button layoutX="294.0" layoutY="426.0" mnemonicParsing="false" onAction="#beginAction" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Kezdés">
+               <Button layoutX="294.0" layoutY="426.0" mnemonicParsing="false" onAction="#beginTestAction" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Kezdés">
                   <font>
                      <Font size="36.0" />
                   </font>
                </Button>
-            <Label layoutX="84.0" layoutY="132.0" text="Remélem, hasznos volt az Ön számára a kiválasztott téma.">
+            <Label layoutX="84.0" layoutY="157.0" text="Remélem, hasznos volt az Ön számára a kiválasztott téma.">
                <font>
                   <Font size="24.0" />
                </font>
@@ -59,9 +59,14 @@
                   <Font size="24.0" />
                </font>
             </Label>
+            <Label fx:id="nameLabel1" alignment="CENTER" layoutX="197.0" layoutY="103.0" prefHeight="29.0" prefWidth="357.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
             </children>
        </Pane>
-       <Pane fx:id="firstPane" layoutX="35.0" layoutY="90.0" prefHeight="510.0" prefWidth="680.0" visible="false">
+       <Pane fx:id="testPane" layoutX="35.0" layoutY="90.0" prefHeight="510.0" prefWidth="680.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fce3b8" height="510.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" width="680.0" />
             <Label layoutX="167.0" layoutY="58.0" text="Melyik a hiányzó szó?">
@@ -79,17 +84,17 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <Button fx:id="answer1" layoutX="147.0" layoutY="235.0" mnemonicParsing="false" onAction="#answerButtonAction" prefHeight="47.0" prefWidth="193.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;">
+            <Button fx:id="answer1" layoutX="167.0" layoutY="236.0" mnemonicParsing="false" onAction="#answerButtonAction" prefHeight="47.0" prefWidth="193.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="answer2" layoutX="147.0" layoutY="303.0" mnemonicParsing="false" onAction="#answerButtonAction" prefHeight="47.0" prefWidth="193.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;">
+            <Button fx:id="answer2" layoutX="167.0" layoutY="304.0" mnemonicParsing="false" onAction="#answerButtonAction" prefHeight="47.0" prefWidth="193.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="answer3" layoutX="147.0" layoutY="372.0" mnemonicParsing="false" onAction="#answerButtonAction" prefHeight="47.0" prefWidth="193.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;">
+            <Button fx:id="answer3" layoutX="167.0" layoutY="373.0" mnemonicParsing="false" onAction="#answerButtonAction" prefHeight="47.0" prefWidth="193.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;">
                <font>
                   <Font size="24.0" />
                </font>
@@ -104,7 +109,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="checkButton1" layoutX="467.0" layoutY="303.0" mnemonicParsing="false" onAction="#checkButtonAction1" prefHeight="47.0" prefWidth="144.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Ellenőrzés">
+            <Button fx:id="checkButton" layoutX="467.0" layoutY="303.0" mnemonicParsing="false" onAction="#checkButtonAction" prefHeight="47.0" prefWidth="144.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-border-width: 1 1 1 1; -fx-background-insets: 0; -fx-border-radius: 4;" text="Ellenőrzés">
                <font>
                   <Font size="24.0" />
                </font>
@@ -114,47 +119,47 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <ImageView fx:id="right1" fitHeight="60.0" fitWidth="57.0" layoutX="347.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="right1" fitHeight="60.0" fitWidth="57.0" layoutX="373.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@right.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="false1" fitHeight="50.0" fitWidth="65.0" layoutX="349.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="false1" fitHeight="50.0" fitWidth="65.0" layoutX="375.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@false.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="right2" fitHeight="57.0" fitWidth="59.0" layoutX="347.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="right2" fitHeight="57.0" fitWidth="59.0" layoutX="373.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@right.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="false2" fitHeight="50.0" fitWidth="60.0" layoutX="349.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="false2" fitHeight="50.0" fitWidth="60.0" layoutX="375.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@false.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="right3" fitHeight="57.0" fitWidth="59.0" layoutX="347.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="right3" fitHeight="57.0" fitWidth="59.0" layoutX="373.0" layoutY="369.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@right.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="false3" fitHeight="50.0" fitWidth="60.0" layoutX="349.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="false3" fitHeight="50.0" fitWidth="60.0" layoutX="375.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@false.png" />
                </image>
             </ImageView>
-            <Label fx:id="answerHun1" alignment="CENTER" layoutX="2.0" layoutY="244.0" prefHeight="29.0" prefWidth="144.0">
+            <Label fx:id="answerHun1" alignment="CENTER" layoutX="2.0" layoutY="244.0" prefHeight="29.0" prefWidth="163.0">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label fx:id="answerHun2" alignment="CENTER" layoutX="2.0" layoutY="313.0" prefHeight="29.0" prefWidth="144.0">
+            <Label fx:id="answerHun2" alignment="CENTER" layoutX="2.0" layoutY="313.0" prefHeight="29.0" prefWidth="163.0">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label fx:id="answerHun3" alignment="CENTER" layoutX="2.0" layoutY="381.0" prefHeight="29.0" prefWidth="144.0">
+            <Label fx:id="answerHun3" alignment="CENTER" layoutX="2.0" layoutY="381.0" prefHeight="29.0" prefWidth="163.0">
                <font>
                   <Font size="24.0" />
                </font>
@@ -215,6 +220,14 @@
                      </font></Tooltip>
                </tooltip>
             </Button>
+            <Label fx:id="nameLabel" alignment="CENTER" layoutX="130.0" layoutY="14.0" prefHeight="44.0" prefWidth="421.0">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="victoryBonbon1" fitHeight="88.0" fitWidth="87.0" layoutX="295.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="victorySlice1" fitHeight="165.0" fitWidth="163.0" layoutX="258.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="victoryPicture1" fitHeight="200.0" fitWidth="187.0" layoutX="244.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
       <Pane fx:id="firstPane1" layoutX="35.0" layoutY="90.0" prefHeight="510.0" prefWidth="680.0" visible="false">

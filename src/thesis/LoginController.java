@@ -140,7 +140,7 @@ public class LoginController implements Initializable {
           
             this.isFailedValidation();
             firstErrorLabel.setText("Helytelenül adta meg az életkorát!");
-            secondErrorLabel.setText("Életkor 6 és 116 közötti érték lehet.");
+            secondErrorLabel.setText("Az életkor 6 és 116 közötti érték lehet.");
             
         }else{
             
@@ -160,8 +160,8 @@ public class LoginController implements Initializable {
         }
         }catch(Exception e){
           this.isFailedValidation();
-          firstErrorLabel.setText("Valamely adatot helytelenül adott meg!");
-           e.printStackTrace();
+          firstErrorLabel.setText("A felhasználónév foglalt.");
+          secondErrorLabel.setText("Adjon meg másik felhasználónevet!");
         }
     }
     

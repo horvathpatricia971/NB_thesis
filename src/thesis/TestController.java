@@ -45,7 +45,7 @@ public class TestController implements Initializable {
     @FXML
     private Pane errorPane;
     @FXML
-    private Pane firstPane;
+    private Pane testPane;
     @FXML
     private Pane resultPane;
     @FXML
@@ -71,7 +71,7 @@ public class TestController implements Initializable {
     @FXML
     private Button answer3;
     @FXML
-    private Button checkButton1;
+    private Button checkButton;
     @FXML
     private Button nextButton;
     
@@ -85,7 +85,8 @@ public class TestController implements Initializable {
     private List<Word> wrongWord;
     private Word wrongOneWord;
     private TestAttempt testAttempt;
-    private Test test; // test.getTestID()
+    private Test test;// test.getTestID()
+    private User user;
     
     private TopicDAO topicdao;
     private TestQuestionDAO testquestiondao;
@@ -93,6 +94,7 @@ public class TestController implements Initializable {
     private TestDAO testdao;
     private TestAnswerDAO testanswerdao;
     private WordDAO worddao;
+    private UserDAO userdao;
     
     private int topicId;
     private int testQuestionId;
@@ -220,6 +222,10 @@ public class TestController implements Initializable {
     private Label endTest2;
     @FXML
     private Button testEndButton;
+    @FXML
+    private Label nameLabel1;
+    @FXML
+    private Label nameLabel;
 
     /**
      * Initializes the controller class.
@@ -236,7 +242,7 @@ public class TestController implements Initializable {
             testattemptdao = new TestAttemptDAO(conn);
             testanswerdao = new TestAnswerDAO(conn);
             worddao = new WordDAO(conn);
-            
+            userdao = new UserDAO(conn);
         } catch (SQLException ex) {
             Logger.getLogger(TestController.class.getName()).log(Level.SEVERE, null, ex);
             errorPane.setVisible(true);
@@ -254,8 +260,10 @@ public class TestController implements Initializable {
         fillTestData(0);
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(int userId) throws SQLException {
         this.userId = userId;
+        user = userdao.findByIdUser(userId);
+        nameLabel1.setText("Kedves " + user.getUsername() + "!");
     }
 
     public void setTestQuestionId(int testQuestionId) {
@@ -269,7 +277,7 @@ public class TestController implements Initializable {
             test = testdao.findTestByTopicId(this.topicId).get(0);
             testQuestion = testquestiondao.findQuestionByLastLearn(this.userId, this.topicId);
             topic = topicdao.findTopicById(this.topicId);
-            titleLabel.setText("Teszt a(z) "+ topic.getTopic() + " témakörben");
+            titleLabel.setText("Teszt a(z) " + topic.getTopic() + " témakörben");
         } catch (SQLException ex) {
             errorPane.setVisible(true);
             basePane.setDisable(true);
@@ -280,8 +288,8 @@ public class TestController implements Initializable {
     }
     
     @FXML
-    private void beginAction(ActionEvent event) { 
-        testAttempt = new TestAttempt(0, this.userId, this.test.getTestID(), 0, 0, 0, new java.sql.Timestamp(new java.util.Date().getTime()), null, 0);
+    private void beginTestAction(ActionEvent event) { 
+        testAttempt = new TestAttempt(0, this.userId, this.test.getTestID(), 0, 0, 0, new java.sql.Timestamp(new java.util.Date().getTime()), null, " ", 0);
         try {
             testattemptdao.addTestAttempt(testAttempt);
         } catch (SQLException ex) {
@@ -291,8 +299,8 @@ public class TestController implements Initializable {
             System.out.println(""+ex);
             Logger.getLogger(TestController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        firstPane.setVisible(true);
-        checkButton1.setDisable(true);
+        testPane.setVisible(true);
+        checkButton.setDisable(true);
         nextButton.setDisable(true);
     }
     
@@ -345,11 +353,11 @@ public class TestController implements Initializable {
         answer2.setOpacity(0.9);
         answer3.setDisable(true);
         answer3.setOpacity(0.9);
-        checkButton1.setDisable(false);
+        checkButton.setDisable(false);
     }
     
     @FXML
-    private void checkButtonAction1(ActionEvent event) {
+    private void checkButtonAction(ActionEvent event) {
         int isRight = 0;
         if (currentTestQuestion.getRightAnswer().equals(currentTestQuestion.getAnswer1())) {
         answer1.setStyle("-fx-background-color: #ACFBD5;");
@@ -409,7 +417,7 @@ public class TestController implements Initializable {
                     break;
             }
         }
-        checkButton1.setDisable(true);
+        checkButton.setDisable(true);
         nextButton.setDisable(false);
         answerHun1.setVisible(true);
         answerHun2.setVisible(true);
@@ -429,7 +437,7 @@ public class TestController implements Initializable {
 
 
     @FXML
-    private void nextButtonAction(ActionEvent event) {
+    private void nextButtonAction(ActionEvent event) throws SQLException {
         serialNum ++;
         questionIndex++;
         switch (questionIndex) {
@@ -453,18 +461,23 @@ public class TestController implements Initializable {
                 testAttempt.setEndTime(new java.sql.Timestamp(new java.util.Date().getTime()));
                 testAttempt.setRightAnswerNum(score);
                 testAttempt.setQuestionNum(questionIndex);
+                int avgresult = testattemptdao.findTestAvg(userId);
+                user.setUserResult(avgresult);
                 int result = (int) (((float)score / (float)questionIndex) * 100);
                 testAttempt.setResult(result);
                 try {
                     testattemptdao.updateTestAttempt(testAttempt);
+                    userdao.updateUser(user);
                 } catch (SQLException ex) {
                     errorPane.setVisible(true);
                     basePane.setDisable(true);
                     firstErrorLabel.setText("Probléma a befejezési idő tárolásánál.");
                     Logger.getLogger(TestController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                firstPane.setVisible(false);
+                testPane.setVisible(false);
                 resultPane.setVisible(true);
+                titleLabel.setText("A teszt eredménye");
+                nameLabel.setText("Kedves " + user.getUsername() + "!");
                 if(result == 100){
                     repetationButton.setDisable(true);
                     practiceBegin.setDisable(true);
@@ -474,17 +487,22 @@ public class TestController implements Initializable {
                     victoryLabel.setText("Virtuális nyereménye egy csoki bonbon.");
                     repetationButton.setDisable(false);
                     practiceBegin.setDisable(false);
+                    testAttempt.setPrize("bonbon");
+                    testattemptdao.updateTestAttempt(testAttempt);
                     try {
                         FileInputStream fis = new FileInputStream("images/bonbon.png");
                         victoryBonbon.setImage(new Image(fis));
                     } catch (FileNotFoundException ex) {
                         // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
                     }
-                } else if (result > 60) {
+                } else if (result >= 70) {
                     victoryLabel.setText("Virtuális nyereménye egy tábla csoki.");
+                    testAttempt.setPrize("tábla csoki");
+                    testattemptdao.updateTestAttempt(testAttempt);
                     try {
                         FileInputStream fis = new FileInputStream("images/chocolate.png");
                         victoryPicture.setImage(new Image(fis));
+                        
                     } catch (FileNotFoundException ex) {
                         // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
                     }
@@ -492,6 +510,8 @@ public class TestController implements Initializable {
                     victoryLabel.setText("Virtuális nyereménye egy szelet csoki.");
                     repetationButton.setDisable(false);
                     practiceBegin.setDisable(false);
+                    testAttempt.setPrize("szelet csoki");
+                    testattemptdao.updateTestAttempt(testAttempt);
                     try {
                         FileInputStream fis = new FileInputStream("images/slice2.png");
                         victorySlice.setImage(new Image(fis));
@@ -525,9 +545,10 @@ public class TestController implements Initializable {
     
     @FXML
     private void repetationBegin(ActionEvent event) throws SQLException {
+        titleLabel.setText("Ismétlés a(z) " + topic.getTopic() + " témakörben");
         firstPane1.setVisible(true);
         practicePane.setVisible(false);
-        firstPane.setVisible(false);
+        testPane.setVisible(false);
         resultPane.setVisible(false);
         wrongWord = worddao.findWrongWordByTestAttempt(this.testAttempt.getTestAttemptID());
         titleLabelWord.setVisible(true);
@@ -594,19 +615,37 @@ public class TestController implements Initializable {
     private void repetationEnd(ActionEvent event) throws SQLException {
         resultPane.setVisible(true);
         firstPane1.setVisible(false);
+        questionIndex3 = 0;
     }
 
     @FXML
     private void practiceBegin(ActionEvent event) {
         try {
+            titleLabel.setText("Gyakorló teszt");
             wrongWord = worddao.findWrongWordByTestAttempt(this.testAttempt.getTestAttemptID());
             wrongQuestions = testquestiondao.findWrongByTestAttempt(this.testAttempt.getTestAttemptID());
-            testAttempt = new TestAttempt(0, this.userId, this.test.getTestID(), 0, 0, 0, new java.sql.Timestamp(new java.util.Date().getTime()), null, 1);
+            testAttempt = new TestAttempt(0, this.userId, this.test.getTestID(), 0, 0, 0, new java.sql.Timestamp(new java.util.Date().getTime()), null, " ", 1);
             testattemptdao.addTestAttempt(testAttempt);
             victorySlice.setVisible(false);
             fillWrongQuestionsData(0);
             practicePane.setVisible(true);
             resultPane.setVisible(false);
+            nextButtonPractice.setDisable(true);
+            practiceCheck.setDisable(true);
+            
+            leftPicture.setVisible(true);
+            middlePicture.setVisible(true);
+            rightPicture.setVisible(true);
+            leftButton.setVisible(true);
+            middleButton.setVisible(true);
+            rightButton.setVisible(true);
+            question.setVisible(true);
+            practiceCheck.setVisible(true);
+            nextButtonPractice.setVisible(true);
+            endTest1.setVisible(false);
+            endTest2.setVisible(false);
+            testEndButton.setVisible(false);
+            score2 = 0;
         } catch (SQLException ex) {
             errorPane.setVisible(true);
             resultPane.setDisable(true);
@@ -671,6 +710,8 @@ public class TestController implements Initializable {
     
     @FXML
     private void practiceCheckAction(ActionEvent event) {
+        practiceCheck.setDisable(true);
+        nextButtonPractice.setDisable(false);
         List<Button> allButtons = Arrays.asList(leftButton, middleButton, rightButton);
         //Button sourceButton = (Button)event.getSource();
         List<Button> nonClickedButtons = new ArrayList<>(allButtons);
@@ -773,9 +814,6 @@ public class TestController implements Initializable {
             middleButton.setVisible(false);
             rightButton.setVisible(false);
             question.setVisible(false);
-            hunAnswer1.setVisible(false);
-            hunAnswer2.setVisible(false);
-            hunAnswer3.setVisible(false);
             practiceCheck.setVisible(false);
             nextButtonPractice.setVisible(false);
             endTest1.setVisible(true);
@@ -786,7 +824,7 @@ public class TestController implements Initializable {
     }
 
     @FXML
-    private void pictureTestEnd(ActionEvent event) {
+    private void pictureTestEnd(ActionEvent event) throws SQLException {
         testAttempt.setEndTime(new java.sql.Timestamp(new java.util.Date().getTime()));
         testAttempt.setRightAnswerNum(score2);
         testAttempt.setQuestionNum(questionIndex2);
@@ -803,21 +841,32 @@ public class TestController implements Initializable {
         resultLabel.setText(questionIndex2 + "/" + score2);  
         practicePane.setVisible(false);
         resultPane.setVisible(true);
+        victoryBonbon.setVisible(false);
+        victoryPicture.setVisible(false);
+        victorySlice.setVisible(false);
+        if(result2 == 100){
+            repetationButton.setDisable(true);
+            practiceBegin.setDisable(true);
+                }
         if (result2 < 40){
             victoryLabel.setText("Virtuális nyereménye egy csoki bonbon.");
             repetationButton.setDisable(false);
             practiceBegin.setDisable(false);
+            testAttempt.setPrize("bonbon");
+            testattemptdao.updateTestAttempt(testAttempt);
             try {
+                victoryBonbon.setVisible(true);
                 FileInputStream fis = new FileInputStream("images/bonbon.png");
                 victoryBonbon.setImage(new Image(fis));
             } catch (FileNotFoundException ex) {
                 // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
             }
-         } else if (result2 > 60) {
+         } else if (result2 >= 70) {
             victoryLabel.setText("Virtuális nyereménye egy tábla csoki.");
-            repetationButton.setDisable(true);
-            practiceBegin.setDisable(true);
+            testAttempt.setPrize("tábla csoki");
+            testattemptdao.updateTestAttempt(testAttempt);
             try {
+                victoryPicture.setVisible(true);
                 FileInputStream fis = new FileInputStream("images/chocolate.png");
                 victoryPicture.setImage(new Image(fis));
             } catch (FileNotFoundException ex) {
@@ -827,7 +876,10 @@ public class TestController implements Initializable {
             victoryLabel.setText("Virtuális nyereménye egy szelet csoki.");
             repetationButton.setDisable(false);
             practiceBegin.setDisable(false);
+            testAttempt.setPrize("szelet csoki");
+            testattemptdao.updateTestAttempt(testAttempt);
             try {
+                victorySlice.setVisible(true);
                 FileInputStream fis = new FileInputStream("images/slice2.png");
                 victorySlice.setImage(new Image(fis));
              } catch (FileNotFoundException ex) {
@@ -835,12 +887,12 @@ public class TestController implements Initializable {
             }
         }
         firstPane1.setVisible(false);
-        firstPane.setVisible(false);
+        testPane.setVisible(false);
         questionIndex2 = 0;
     }
     
    @FXML
-    private void loadResult(ActionEvent event) throws IOException {
+    private void loadResult(ActionEvent event) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Results.fxml"));
         AnchorPane pane = loader.load();
         ResultController controller = loader.<ResultController>getController();

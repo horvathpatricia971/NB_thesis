@@ -41,17 +41,17 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="87.0" layoutY="170.0" text="Az alábbi adatok megadásával és a program segítségével ">
+            <Label layoutX="94.0" layoutY="172.0" text="Az alábbi adatok megadásával és a program segítségével ">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="93.0" layoutY="208.0" text="tesztelheti memóriáját angol szavak elsajátítán keresztül.">
+            <Label layoutX="89.0" layoutY="208.0" text="tesztelheti memóriáját angol szavak elsajátításán keresztül.">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-              <Label fx:id="label" layoutX="60.0" layoutY="259.0" minHeight="16" minWidth="69" text="Adja meg a felhasználónevét:">
+              <Label fx:id="label" layoutX="60.0" layoutY="259.0" minHeight="16" minWidth="69" text="Adja meg a felhasználó nevét:">
                <font>
                   <Font size="24.0" />
                </font>
@@ -87,12 +87,12 @@
                </font>
             </Label>
             <TextField fx:id="inputUsername" layoutX="488.0" layoutY="260.0" prefHeight="27.0" prefWidth="161.0" style="-fx-background-radius: 5; -fx-border-color: #000000; -fx-border-radius: 4;" />
-            <ChoiceBox fx:id="genderBox" layoutX="488.0" layoutY="305.0" prefHeight="21.0" prefWidth="161.0" style="-fx-border-color: #000000; -fx-border-radius: 4; -fx-background-radius: 5;" value="nő" />
-            <TextField fx:id="inputAge" layoutX="488.0" layoutY="355.0" style="-fx-border-color: #000000; -fx-border-radius: 4; -fx-background-radius: 5;" text="70" />
-            <ChoiceBox fx:id="educationBox" layoutX="488.0" layoutY="398.0" prefHeight="21.0" prefWidth="161.0" style="-fx-border-color: #000000; -fx-border-radius: 4; -fx-background-radius: 5;" value="középfokú" />
-            <ChoiceBox fx:id="deseaseBox" layoutX="488.0" layoutY="443.0" prefHeight="21.0" prefWidth="161.0" style="-fx-border-color: #000000; -fx-border-radius: 4; -fx-background-radius: 5;" value="nem" />
-            <ChoiceBox fx:id="hearingBox" layoutX="488.0" layoutY="488.0" prefHeight="21.0" prefWidth="161.0" style="-fx-border-color: #000000; -fx-border-radius: 4; -fx-background-radius: 5;" value="nem" />
-            <ChoiceBox fx:id="seeingBox" layoutX="488.0" layoutY="538.0" prefHeight="21.0" prefWidth="161.0" style="-fx-border-color: #000000; -fx-border-radius: 4; -fx-background-radius: 5;" value="igen" />
+            <ChoiceBox fx:id="genderBox" layoutX="488.0" layoutY="305.0" prefHeight="21.0" prefWidth="161.0" style="-fx-border-color: #000000; -fx-border-radius: 4; -fx-background-radius: 5;"/>
+            <TextField fx:id="inputAge" layoutX="488.0" layoutY="355.0" style="-fx-border-color: #000000; -fx-border-radius: 4; -fx-background-radius: 5;" />
+            <ChoiceBox fx:id="educationBox" layoutX="488.0" layoutY="398.0" prefHeight="21.0" prefWidth="161.0" style="-fx-border-color: #000000; -fx-border-radius: 4; -fx-background-radius: 5;"/>
+            <ChoiceBox fx:id="deseaseBox" layoutX="488.0" layoutY="443.0" prefHeight="21.0" prefWidth="161.0" style="-fx-border-color: #000000; -fx-border-radius: 4; -fx-background-radius: 5;"/>
+            <ChoiceBox fx:id="hearingBox" layoutX="488.0" layoutY="488.0" prefHeight="21.0" prefWidth="161.0" style="-fx-border-color: #000000; -fx-border-radius: 4; -fx-background-radius: 5;"/>
+            <ChoiceBox fx:id="seeingBox" layoutX="488.0" layoutY="538.0" prefHeight="21.0" prefWidth="161.0" style="-fx-border-color: #000000; -fx-border-radius: 4; -fx-background-radius: 5;"/>
               <Button fx:id="button" layoutX="488.0" layoutY="588.0" onAction="#loadTopics" prefHeight="37.0" prefWidth="161.0" text="Tovább">
                <font>
                   <Font size="18.0" />

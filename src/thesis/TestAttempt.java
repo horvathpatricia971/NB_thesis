@@ -20,10 +20,11 @@ public class TestAttempt {
     private int result;
     private Timestamp startTime;
     private Timestamp endTime;
+    private String prize;
     private int testType;
     
     
-    public TestAttempt(int TestAttemptID, int UserID, int TestID, int result, int QuestionNum, int RightAnswerNum, Timestamp StartTime, Timestamp EndTime, int TestType){
+    public TestAttempt(int TestAttemptID, int UserID, int TestID, int result, int QuestionNum, int RightAnswerNum, Timestamp StartTime, Timestamp EndTime, String Prize, int TestType){
         this.testAttemptID = TestAttemptID;
         this.userID = UserID;
         this.testID = TestID;
@@ -32,6 +33,7 @@ public class TestAttempt {
         this.result = result;
         this.startTime = StartTime;
         this.endTime = EndTime;
+        this.prize = Prize;
         this.testType = TestType;
     }
     
@@ -75,8 +77,6 @@ public class TestAttempt {
         this.rightAnswerNum = rightAnswerNum;
     }
     
-    
-    
     public int getResult(){
         return result;
     }
@@ -99,6 +99,14 @@ public class TestAttempt {
     
     public void setEndTime(Timestamp EndTime){
         this.endTime = EndTime;
+    }
+
+    public String getPrize() {
+        return prize;
+    }
+
+    public void setPrize(String prize) {
+        this.prize = prize;
     }
 
     public int getTestType() {

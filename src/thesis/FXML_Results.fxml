@@ -37,11 +37,11 @@
               <columns>
               </columns>
             </TableView>
-            <Label layoutX="235.0" layoutY="62.0" text="Eddigi eredményei">
+            <Label fx:id="name" alignment="CENTER" layoutX="106.0" layoutY="62.0" prefHeight="44.0" prefWidth="539.0">
                <font>
                   <Font size="36.0" />
                </font></Label>
-            <Button layoutX="50.0" layoutY="547.0" mnemonicParsing="false" onAction="#logOut" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-background-insets: 0; -fx-border-radius: 4;" text="Vissza">
+            <Button layoutX="50.0" layoutY="547.0" mnemonicParsing="false" onAction="#logOut" prefHeight="47.0" prefWidth="137.0" style="-fx-background-color: #8AD1FA; -fx-background-radius: 5; -fx-border-color: #000000; -fx-background-insets: 0; -fx-border-radius: 4;" text="Témák">
                <font>
                   <Font size="24.0" />
                </font>

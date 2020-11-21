@@ -26,14 +26,16 @@ public class TestAttemptDAO {
     private PreparedStatement update;
     private PreparedStatement findAll;
     private PreparedStatement findById;
+    private PreparedStatement avgResult;
     
     public TestAttemptDAO(Connection conn) throws SQLException{
         this.conn = conn;
-        this.insert = conn.prepareStatement("insert into testAttempt (userID, testID, questionNum, rightAnswerNum, result, startTime, endTime, testType) values (?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+        this.insert = conn.prepareStatement("insert into testAttempt (userID, testID, questionNum, rightAnswerNum, result, startTime, endTime, prize, testType) values (?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
         this.delete = conn.prepareStatement("DELETE FROM testAttempt WHERE testAttemptID = ?");
-        this.update = conn.prepareStatement("UPDATE testAttempt SET userID = ?, testID = ?, questionNum = ?, rightAnswerNum = ?, result = ?, startTime = ?, endTime = ?, testType = ? WHERE testAttemptID = ?");
+        this.update = conn.prepareStatement("UPDATE testAttempt SET userID = ?, testID = ?, questionNum = ?, rightAnswerNum = ?, result = ?, startTime = ?, endTime = ?, prize = ?, testType = ? WHERE testAttemptID = ?");
         this.findAll = conn.prepareStatement("SELECT * FROM testAttempt");
         this.findById = conn.prepareStatement("SELECT * FROM testAttempt WHERE testAttemptID = ?");
+        this.avgResult = conn.prepareStatement("SELECT CAST(avg(result) AS signed) FROM testAttempt WHERE userID = ?");
     }
     
     public void addTestAttempt(TestAttempt attempt) throws SQLException {
@@ -44,7 +46,8 @@ public class TestAttemptDAO {
         this.insert.setInt(5, attempt.getResult());
         this.insert.setTimestamp(6, attempt.getStartTime());
         this.insert.setTimestamp(7, attempt.getEndTime());
-        this.insert.setInt(8, attempt.getTestType());
+        this.insert.setString(8, attempt.getPrize());
+        this.insert.setInt(9, attempt.getTestType());
         this.insert.executeUpdate();
         try (ResultSet keys = this.insert.getGeneratedKeys()) {
             if (keys.next())
@@ -67,8 +70,9 @@ public class TestAttemptDAO {
         this.update.setInt(5, attempt.getResult());
         this.update.setTimestamp(6, attempt.getStartTime());
         this.update.setTimestamp(7, attempt.getEndTime());
-        this.update.setInt(8, attempt.getTestType());
-        this.update.setInt(9, attempt.getTestAttemptID());
+        this.update.setString(8, attempt.getPrize());
+        this.update.setInt(9, attempt.getTestType());
+        this.update.setInt(10, attempt.getTestAttemptID());
         this.update.executeUpdate();
     }
     
@@ -103,9 +107,19 @@ public class TestAttemptDAO {
         int result = rs.getInt("result");
         Timestamp startTime = rs.getTimestamp("startTime");
         Timestamp endTime = rs.getTimestamp("endTime");
+        String prize = rs.getString("prize");
         int testType = rs.getInt("testType");
         
-        TestAttempt attempt = new TestAttempt(testAttemptID, userID, testID, questionNum, rightAnswerNum, result, startTime, endTime, testType); 
+        TestAttempt attempt = new TestAttempt(testAttemptID, userID, testID, questionNum, rightAnswerNum, result, startTime, endTime, prize, testType); 
         return attempt;
+    }
+
+    public int findTestAvg(int userID) throws SQLException {
+        this.avgResult.setInt(1, userID);
+        int ret;
+        try (ResultSet rs = this.avgResult.executeQuery()) {
+            ret = 0;
+        }
+        return ret;
     }
 }

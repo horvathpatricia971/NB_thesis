@@ -135,9 +135,13 @@ public class LearnController implements Initializable {
     
     private LearnDAO learndao;
     
+    private UserDAO userdao;
+    
     private Topic topic;
     
     private List<Word> words;
+    
+    private User user;
     
     private List<Boolean> testReady;
 
@@ -151,6 +155,8 @@ public class LearnController implements Initializable {
     private Button buttonQuit;
     @FXML
     private Button buttonNoQuit;
+    @FXML
+    private Label nameLabel;
     
     private void fillLearnData(int number){
         Word w = words.get(number);
@@ -200,7 +206,6 @@ public class LearnController implements Initializable {
     private void fillFrame(){
         try {
             topic = topicdao.findTopicById(topicId);
-            //words = worddao.findWordsByTopicID(topicId);
             words = worddao.findRandom10WordsByTopicId(topicId);
             topicLabel.setText(topic.getTopic() + " témakör");
             firstButton.setText(words.get(0).getWord());
@@ -225,8 +230,10 @@ public class LearnController implements Initializable {
     
 
     // eyt kell előbb meghívni, utána a setTopicId-t
-    public void setUserId(int userId) {
+    public void setUserId(int userId) throws SQLException {
         this.userId = userId;
+        user = userdao.findByIdUser(userId);
+        nameLabel.setText("Kedves " + user.getUsername() +"!");
     }
     
          
@@ -312,6 +319,8 @@ public class LearnController implements Initializable {
         ninthButton.getStyleClass().add("button-words");
         tenthButton.getStyleClass().add("button-words");
         
+        
+        
         this.testReady = new ArrayList<Boolean>();
         for (int i = 0; i < 10; i++){
             this.testReady.add(Boolean.FALSE);
@@ -323,6 +332,7 @@ public class LearnController implements Initializable {
             worddao = new WordDAO(conn);
             topicdao = new TopicDAO(conn);
             learndao = new LearnDAO(conn);
+            userdao = new UserDAO(conn);
             
         } catch (SQLException ex) {
             errorPane.setVisible(true);
@@ -342,7 +352,7 @@ public class LearnController implements Initializable {
         Tooltip.install(slowSoundImage, tooltip2);
     }
     @FXML
-    private void testClickAction(ActionEvent event) throws IOException {
+    private void testClickAction(ActionEvent event) throws IOException, SQLException {
         learn.setEndLearnTime(new java.sql.Timestamp(new java.util.Date().getTime()));
         try {
             learndao.updateLearn(learn);
