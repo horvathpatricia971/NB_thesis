@@ -26,9 +26,9 @@ public class UserDAO {
     
     public UserDAO(Connection conn) throws SQLException {
         this.conn = conn;
-        this.insert = conn.prepareStatement("insert into user (userName, gender, age, education, disease, hearing, seeing, testNumber, userResult) values (?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+        this.insert = conn.prepareStatement("insert into user (userName, gender, age, education, disease, hearing, seeing) values (?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
         this.delete = conn.prepareStatement("DELETE FROM user WHERE userID = ?");
-        this.update = conn.prepareStatement("UPDATE user SET userName = ?, gender = ?, age = ?, education = ?, disease = ?, hearing = ?, seeing = ?, testNumber = ?, userResult = ? WHERE userID = ?");
+        this.update = conn.prepareStatement("UPDATE user SET userName = ?, gender = ?, age = ?, education = ?, disease = ?, hearing = ?, seeing = ? WHERE userID = ?");
         this.findAll = conn.prepareStatement("SELECT * FROM user");
         this.findById = conn.prepareStatement("SELECT * FROM user WHERE userID = ?");
     }
@@ -41,8 +41,6 @@ public class UserDAO {
         this.insert.setString(5, newUser.getDesease());
         this.insert.setString(6, newUser.getHearing());
         this.insert.setString(7, newUser.getSeeing());
-        this.insert.setInt(8, newUser.getTestNumber());
-        this.insert.setInt(9, newUser.getUserResult());
         this.insert.executeUpdate();
         
         try (ResultSet generatedKeys = this.insert.getGeneratedKeys()) {
@@ -66,9 +64,7 @@ public class UserDAO {
         this.update.setString(5, user.getDesease());
         this.update.setString(6, user.getHearing());
         this.update.setString(7, user.getSeeing());
-        this.update.setInt(8, user.getTestNumber());
-        this.update.setInt(9, user.getUserResult());
-        this.update.setInt(10, user.getUserID());
+        this.update.setInt(8, user.getUserID());
         this.update.executeUpdate();
     }
     
@@ -103,9 +99,7 @@ public class UserDAO {
         String disease = rs.getString("disease");
         String hearing = rs.getString("hearing");
         String seeing = rs.getString("seeing");
-        int testNumber = rs.getInt("testNumber");
-        int userResult = rs.getInt("userResult");
-        User user = new User(id, userName, gender, age, education, disease, hearing, seeing, testNumber, userResult); 
+        User user = new User(id, userName, gender, age, education, disease, hearing, seeing); 
         return user;
     }
 }

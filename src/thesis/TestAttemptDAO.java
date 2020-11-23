@@ -26,7 +26,6 @@ public class TestAttemptDAO {
     private PreparedStatement update;
     private PreparedStatement findAll;
     private PreparedStatement findById;
-    private PreparedStatement avgResult;
     
     public TestAttemptDAO(Connection conn) throws SQLException{
         this.conn = conn;
@@ -35,7 +34,6 @@ public class TestAttemptDAO {
         this.update = conn.prepareStatement("UPDATE testAttempt SET userID = ?, testID = ?, questionNum = ?, rightAnswerNum = ?, result = ?, startTime = ?, endTime = ?, prize = ?, testType = ? WHERE testAttemptID = ?");
         this.findAll = conn.prepareStatement("SELECT * FROM testAttempt");
         this.findById = conn.prepareStatement("SELECT * FROM testAttempt WHERE testAttemptID = ?");
-        this.avgResult = conn.prepareStatement("SELECT CAST(avg(result) AS signed) FROM testAttempt WHERE userID = ?");
     }
     
     public void addTestAttempt(TestAttempt attempt) throws SQLException {
@@ -112,14 +110,5 @@ public class TestAttemptDAO {
         
         TestAttempt attempt = new TestAttempt(testAttemptID, userID, testID, questionNum, rightAnswerNum, result, startTime, endTime, prize, testType); 
         return attempt;
-    }
-
-    public int findTestAvg(int userID) throws SQLException {
-        this.avgResult.setInt(1, userID);
-        int ret;
-        try (ResultSet rs = this.avgResult.executeQuery()) {
-            ret = 0;
-        }
-        return ret;
     }
 }

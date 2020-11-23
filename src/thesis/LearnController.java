@@ -419,5 +419,13 @@ public class LearnController implements Initializable {
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
     }
+
+    @FXML
+    private void slowVoiceClick(MouseEvent event) {
+        String mp3 = "mp3/" + currentWord.getSlowAudio(); //fájl 
+        Media sound = new Media(new File(mp3).toURI().toString());
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }
         
 }

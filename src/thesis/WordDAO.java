@@ -31,9 +31,9 @@ public class WordDAO {
     public WordDAO(Connection conn) throws SQLException {
         this.conn = conn;
         // TODO: adatbázis és program legyen azonos:
-        this.insert = conn.prepareStatement("insert into word (wordInHun, wordInEng, wordClass, image, audio, sentenceHun1, sentenceEng1, sentenceHun2, sentenceEng2, topicID) values (?,?,?,?,?,?,?,?,?,?)");
+        this.insert = conn.prepareStatement("insert into word (wordInHun, wordInEng, wordClass, image, audio, slowAudio, sentenceHun1, sentenceEng1, sentenceHun2, sentenceEng2, topicID) values (?,?,?,?,?,?,?,?,?,?)");
         this.delete = conn.prepareStatement("DELETE FROM word WHERE wordID = ?");
-        this.update = conn.prepareStatement("UPDATE word SET wordInHun = ?, wordInEng = ?, wordClass = ?, image = ?, audio = ?, sentenceHun1 = ?, sentenceEng1 = ?, sentenceHun2 = ?, sentenceEng2 = ?, topicID = ? WHERE wordID = ?");
+        this.update = conn.prepareStatement("UPDATE word SET wordInHun = ?, wordInEng = ?, wordClass = ?, image = ?, audio = ?, slowAudio = ?, sentenceHun1 = ?, sentenceEng1 = ?, sentenceHun2 = ?, sentenceEng2 = ?, topicID = ? WHERE wordID = ?");
         this.findAll = conn.prepareStatement("SELECT * FROM word");
         this.findById = conn.prepareStatement("SELECT * FROM word WHERE wordID = ?");
         this.findByTopicID = conn.prepareStatement("SELECT * FROM word WHERE topicID = ?");
@@ -52,11 +52,12 @@ public class WordDAO {
         this.insert.setString(3, newWord.getWordClass());
         this.insert.setString(4, newWord.getImage());
         this.insert.setString(5, newWord.getAudio());
-        this.insert.setString(6, newWord.getSentenceHun1());
-        this.insert.setString(7, newWord.getSentenceEng1());
-        this.insert.setString(8, newWord.getSentenceHun2());
-        this.insert.setString(9, newWord.getSentenceEng2());
-        this.insert.setInt(10, newWord.getTopicID());
+        this.insert.setString(6, newWord.getSlowAudio());
+        this.insert.setString(7, newWord.getSentenceHun1());
+        this.insert.setString(8, newWord.getSentenceEng1());
+        this.insert.setString(9, newWord.getSentenceHun2());
+        this.insert.setString(10, newWord.getSentenceEng2());
+        this.insert.setInt(11, newWord.getTopicID());
         this.insert.executeUpdate();
         
     }
@@ -72,12 +73,13 @@ public class WordDAO {
         this.update.setString(3, word.getWordClass());
         this.update.setString(4, word.getImage());
         this.update.setString(5, word.getAudio());
-        this.update.setString(6, word.getSentenceHun1());
-        this.update.setString(7, word.getSentenceEng1());
-        this.update.setString(8, word.getSentenceHun2());
-        this.update.setString(9, word.getSentenceEng2());
-        this.update.setInt(10, word.getTopicID());
-        this.update.setInt(11, word.getWordID());
+        this.update.setString(6, word.getSlowAudio());
+        this.update.setString(7, word.getSentenceHun1());
+        this.update.setString(8, word.getSentenceEng1());
+        this.update.setString(9, word.getSentenceHun2());
+        this.update.setString(10, word.getSentenceEng2());
+        this.update.setInt(11, word.getTopicID());
+        this.update.setInt(12, word.getWordID());
     }
     
     public List<Word> findAllWord() throws SQLException {
@@ -109,13 +111,14 @@ public class WordDAO {
         String wordClass = rs.getString("wordClass");
         String image = rs.getString("image");
         String audio = rs.getString("audio");
+        String slowAudio = rs.getString("slowAudio");
         String sentenceHun1 = rs.getString("sentenceHun1");
         String sentenceEng1 = rs.getString("sentenceEng1");
         String sentenceHun2 = rs.getString("sentenceHun2");
         String sentenceEng2 = rs.getString("sentenceEng2");
         int topicID = rs.getInt("topicID");
         
-        Word word1 = new Word(wordID, word, wordInEng, wordClass, image, audio, sentenceHun1, sentenceEng1, sentenceHun2, sentenceEng2, topicID); 
+        Word word1 = new Word(wordID, word, wordInEng, wordClass, image, audio, slowAudio, sentenceHun1, sentenceEng1, sentenceHun2, sentenceEng2, topicID); 
         return word1;
     }
     

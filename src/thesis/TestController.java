@@ -226,6 +226,13 @@ public class TestController implements Initializable {
     private Label nameLabel1;
     @FXML
     private Label nameLabel;
+    @FXML
+    private ImageView victoryBonbon1;
+    @FXML
+    private ImageView victorySlice1;
+    @FXML
+    private ImageView victoryPicture1;
+    private MediaPlayer mediaPlayer;
 
     /**
      * Initializes the controller class.
@@ -461,13 +468,10 @@ public class TestController implements Initializable {
                 testAttempt.setEndTime(new java.sql.Timestamp(new java.util.Date().getTime()));
                 testAttempt.setRightAnswerNum(score);
                 testAttempt.setQuestionNum(questionIndex);
-                int avgresult = testattemptdao.findTestAvg(userId);
-                user.setUserResult(avgresult);
                 int result = (int) (((float)score / (float)questionIndex) * 100);
                 testAttempt.setResult(result);
                 try {
                     testattemptdao.updateTestAttempt(testAttempt);
-                    userdao.updateUser(user);
                 } catch (SQLException ex) {
                     errorPane.setVisible(true);
                     basePane.setDisable(true);
@@ -591,7 +595,7 @@ public class TestController implements Initializable {
     private void voiceClick(MouseEvent event) {
         String mp3 = "mp3/" + wrongOneWord.getAudio(); //fájl 
         Media sound = new Media(new File(mp3).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
     }
     
@@ -901,5 +905,11 @@ public class TestController implements Initializable {
         
     } 
 
-    
+    @FXML
+    private void slowVoiceClick(MouseEvent event) {
+        String mp3 = "mp3/" + wrongOneWord.getSlowAudio();
+        Media sound = new Media(new File(mp3).toURI().toString());
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }
 }

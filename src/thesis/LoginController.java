@@ -146,7 +146,7 @@ public class LoginController implements Initializable {
             
             int age = Integer.parseInt(ageText);
         
-        User newUser = new User(0, username, gender , age, education, desease, hearing, seeing, 0, 0);
+        User newUser = new User(0, username, gender , age, education, desease, hearing, seeing);
         data.add(newUser);
         userDAO.addUser(newUser);
         inputUsername.clear();

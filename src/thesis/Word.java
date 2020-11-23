@@ -16,19 +16,21 @@ public class Word {
     private String wordClass;
     private String image;
     private String audio;
+    private String slowAudio;
     private String sentenceHun1;
     private String sentenceEng1;
     private String sentenceHun2;
     private String sentenceEng2;
     private int topicID;
 
-    public Word(int WordID, String WordInHun, String WordInEng, String WordClass, String Image, String Audio, String SentenceHun1, String SentenceEng1, String SentenceHun2, String SentenceEng2, int TopicID){
+    public Word(int WordID, String WordInHun, String WordInEng, String WordClass, String Image, String Audio, String SlowAudio, String SentenceHun1, String SentenceEng1, String SentenceHun2, String SentenceEng2, int TopicID){
         this.wordID = WordID;
         this.wordInHun = WordInHun;
         this.wordInEng = WordInEng;
         this.wordClass = WordClass;
         this.image = Image;
         this.audio = Audio;
+        this.slowAudio = SlowAudio;
         this.sentenceHun1 = SentenceHun1;
         this.sentenceEng1 = SentenceEng1;
         this.sentenceHun2 = SentenceHun2;
@@ -82,6 +84,14 @@ public class Word {
     
     public void setAudio(String Audio){
         this.audio = Audio;
+    }
+
+    public String getSlowAudio() {
+        return slowAudio;
+    }
+
+    public void setSlowAudio(String slowAudio) {
+        this.slowAudio = slowAudio;
     }
     
     public String getSentenceHun1(){

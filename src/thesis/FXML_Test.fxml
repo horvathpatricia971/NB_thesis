@@ -16,7 +16,7 @@
        <Pane fx:id="basePane" prefHeight="650.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffae2133" height="650.0" stroke="BLACK" strokeType="INSIDE" width="750.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" height="60.0" layoutX="110.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" width="547.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="60.0" layoutX="99.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" width="569.0">
                <fill>
                   <LinearGradient endX="1.0" endY="0.5192307692307692" startY="0.5288461538461539">
                      <stops>
@@ -284,7 +284,7 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <ImageView fx:id="slowVoice" fitHeight="37.0" fitWidth="37.0" layoutX="462.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="slowVoice" fitHeight="37.0" fitWidth="37.0" layoutX="462.0" layoutY="134.0" onMouseClicked="#slowVoiceClick" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@voice3.jpg" />
                </image>
