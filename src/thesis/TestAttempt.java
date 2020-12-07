@@ -23,7 +23,6 @@ public class TestAttempt {
     private String prize;
     private int testType;
     
-    
     public TestAttempt(int TestAttemptID, int UserID, int TestID, int result, int QuestionNum, int RightAnswerNum, Timestamp StartTime, Timestamp EndTime, String Prize, int TestType){
         this.testAttemptID = TestAttemptID;
         this.userID = UserID;

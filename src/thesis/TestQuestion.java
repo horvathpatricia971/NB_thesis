@@ -25,8 +25,6 @@ public class TestQuestion {
     private String picture3;
     private int testID;
     
-    
-    
     public TestQuestion(int TestQuestionID, String QuestionInHungarian, String QuestionInEnglish, String Answer1, String Answer2, String Answer3, String RightAnswer, String Answer1hun, String Answer2hun, String Answer3hun, String Picture1, String Picture2, String Picture3, int TestID){
         this.testQuestionID = TestQuestionID;
         this.questionInHungarian = QuestionInHungarian;
@@ -101,8 +99,7 @@ public class TestQuestion {
             case 3: return answer3;
             default: return "";
         }
-    }
-            
+    }      
     
     public String getRightAnswer(){
         return rightAnswer;
@@ -168,5 +165,4 @@ public class TestQuestion {
     public void setTestID(int TestID){
         this.testID = TestID;
     }
-    
 }

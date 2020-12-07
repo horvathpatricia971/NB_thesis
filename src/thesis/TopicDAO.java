@@ -24,7 +24,6 @@ public class TopicDAO {
     private PreparedStatement findAll;
     private PreparedStatement findById;
     
-    
     public TopicDAO(Connection conn) throws SQLException {
         this.conn = conn;
         // TODO: adatbázis és program legyen azonos:

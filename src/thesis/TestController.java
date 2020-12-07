@@ -39,7 +39,6 @@ import javafx.scene.media.MediaPlayer;
  * @author horvathpatricia
  */
 public class TestController implements Initializable {
-
     @FXML
     private Pane basePane;
     @FXML
@@ -74,38 +73,6 @@ public class TestController implements Initializable {
     private Button checkButton;
     @FXML
     private Button nextButton;
-    
-   
-    
-    private Topic topic;
-    private List <TestQuestion> testQuestion;
-    private List<TestQuestion> wrongQuestions;
-    private TestQuestion currentTestQuestion;
-    private TestQuestion wrongQuestionData;
-    private List<Word> wrongWord;
-    private Word wrongOneWord;
-    private TestAttempt testAttempt;
-    private Test test;// test.getTestID()
-    private User user;
-    
-    private TopicDAO topicdao;
-    private TestQuestionDAO testquestiondao;
-    private TestAttemptDAO testattemptdao;
-    private TestDAO testdao;
-    private TestAnswerDAO testanswerdao;
-    private WordDAO worddao;
-    private UserDAO userdao;
-    
-    private int topicId;
-    private int testQuestionId;
-    private int userId;
-
-    private int selectedAnswer;
-    private int questionIndex;
-    private int questionIndex2;
-    private int questionIndex3;
-    private int score;
-    private int score2;
     @FXML
     private AnchorPane mainPane;
     @FXML
@@ -142,7 +109,6 @@ public class TestController implements Initializable {
     private ImageView victoryBonbon;
     @FXML
     private Button practiceBegin;
-    
     @FXML
     private Button practiceCheck;
     @FXML
@@ -161,8 +127,6 @@ public class TestController implements Initializable {
     private Label thirdSentence;
     @FXML
     private Label fourthSentence;
-    int serialNum = 0;
-    int practiceIndex;
     @FXML
     private Label question;
     @FXML
@@ -232,6 +196,35 @@ public class TestController implements Initializable {
     private ImageView victorySlice1;
     @FXML
     private ImageView victoryPicture1;
+    
+    private Topic topic;
+    private List <TestQuestion> testQuestion;
+    private List<TestQuestion> wrongQuestions;
+    private TestQuestion currentTestQuestion;
+    private TestQuestion wrongQuestionData;
+    private List<Word> wrongWord;
+    private Word wrongOneWord;
+    private TestAttempt testAttempt;
+    private Test test;
+    private User user;
+    private TopicDAO topicdao;
+    private TestQuestionDAO testquestiondao;
+    private TestAttemptDAO testattemptdao;
+    private TestDAO testdao;
+    private TestAnswerDAO testanswerdao;
+    private WordDAO worddao;
+    private UserDAO userdao;
+    private int topicId;
+    private int testQuestionId;
+    private int userId;
+    private int selectedAnswer;
+    private int questionIndex;
+    private int questionIndex2;
+    private int questionIndex3;
+    private int score;
+    private int score2;
+    int serialNum = 0;
+    int practiceIndex;
     private MediaPlayer mediaPlayer;
 
     /**
@@ -337,8 +330,6 @@ public class TestController implements Initializable {
         answerHun3.setVisible(false);
         answerHun3.setText(testq.getAnswer3hun() + " - ");
     }
-    
-    
     
     @FXML
     private void answerButtonAction(ActionEvent event){
@@ -463,8 +454,6 @@ public class TestController implements Initializable {
                 nextButton.setText("Befejezés");
                 break;
             case 10:
-                // TODO: vége a tesztnek
-                
                 testAttempt.setEndTime(new java.sql.Timestamp(new java.util.Date().getTime()));
                 testAttempt.setRightAnswerNum(score);
                 testAttempt.setQuestionNum(questionIndex);
@@ -497,7 +486,7 @@ public class TestController implements Initializable {
                         FileInputStream fis = new FileInputStream("images/bonbon.png");
                         victoryBonbon.setImage(new Image(fis));
                     } catch (FileNotFoundException ex) {
-                        // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+                        System.out.println(""+ex);
                     }
                 } else if (result >= 70) {
                     victoryLabel.setText("Virtuális nyereménye egy tábla csoki.");
@@ -508,7 +497,7 @@ public class TestController implements Initializable {
                         victoryPicture.setImage(new Image(fis));
                         
                     } catch (FileNotFoundException ex) {
-                        // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+                        System.out.println(""+ex);
                     }
                 } else {
                     victoryLabel.setText("Virtuális nyereménye egy szelet csoki.");
@@ -520,7 +509,7 @@ public class TestController implements Initializable {
                         FileInputStream fis = new FileInputStream("images/slice2.png");
                         victorySlice.setImage(new Image(fis));
                     } catch (FileNotFoundException ex) {
-                        // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+                        System.out.println(""+ex);
                     }
                 }
                 break;
@@ -669,7 +658,7 @@ public class TestController implements Initializable {
             FileInputStream fis = new FileInputStream("images/" + wrongQuestionData.getPicture1());
             leftPicture.setImage(new Image(fis));
         } catch (FileNotFoundException ex) {
-            // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+            System.out.println(""+ex);
             ex.printStackTrace();
         }
         try {
@@ -677,13 +666,13 @@ public class TestController implements Initializable {
             middlePicture.setImage(new Image(fis));
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
-            // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+            System.out.println(""+ex);
         }
         try {
             FileInputStream fis = new FileInputStream("images/" + wrongQuestionData.getPicture3());
             rightPicture.setImage(new Image(fis));
         } catch (FileNotFoundException ex) {
-            // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+            System.out.println(""+ex);
             ex.printStackTrace();
         }
         leftButton.setText(wrongQuestionData.getAnswer1());
@@ -717,7 +706,6 @@ public class TestController implements Initializable {
         practiceCheck.setDisable(true);
         nextButtonPractice.setDisable(false);
         List<Button> allButtons = Arrays.asList(leftButton, middleButton, rightButton);
-        //Button sourceButton = (Button)event.getSource();
         List<Button> nonClickedButtons = new ArrayList<>(allButtons);
         nonClickedButtons.remove(sourceButton);
         List<Button> incorrectButtons = new ArrayList<>(allButtons);
@@ -730,7 +718,6 @@ public class TestController implements Initializable {
                 iter.remove();
             }
         }
-        
         correctButton.setStyle("-fx-background-color: #ACFBD5;");
         for (Button other : incorrectButtons) {
             other.setStyle("-fx-background-color: #FF7370;");
@@ -763,9 +750,9 @@ public class TestController implements Initializable {
         hunAnswer2.setText(wrongQuestionData.getAnswer2hun());
         hunAnswer3.setText(wrongQuestionData.getAnswer3hun());
         TestAnswer testAnswer = new TestAnswer(0, 
-                wrongQuestionData.getAnswer(allButtons.indexOf(sourceButton)+1), 
-                isRight, this.testAttempt.getTestAttemptID(), 
-                this.wrongQuestionData.getTestQuestionID());
+        wrongQuestionData.getAnswer(allButtons.indexOf(sourceButton)+1), 
+        isRight, this.testAttempt.getTestAttemptID(), 
+        this.wrongQuestionData.getTestQuestionID());
         try {
             testanswerdao.addAnswer(testAnswer);
         } catch (SQLException ex) {
@@ -779,7 +766,6 @@ public class TestController implements Initializable {
     
     @FXML
     private void nextButtonPracticeAction(ActionEvent event) {
-        
         leftButton.setStyle("-fx-background-color: #8AD1FA;");
         middleButton.setStyle("-fx-background-color: #8AD1FA;");
         rightButton.setStyle("-fx-background-color: #8AD1FA;");
@@ -796,7 +782,6 @@ public class TestController implements Initializable {
         middleButton.setDisable(false);
         rightButton.setDisable(false);
         practiceCheck.setDisable(true);
-        
         questionIndex2++;
         if (questionIndex2 < wrongQuestions.size()){
             fillWrongQuestionsData(questionIndex2);
@@ -824,7 +809,6 @@ public class TestController implements Initializable {
             endTest2.setVisible(true);
             testEndButton.setVisible(true);
         }
-        
     }
 
     @FXML
@@ -845,13 +829,14 @@ public class TestController implements Initializable {
         resultLabel.setText(questionIndex2 + "/" + score2);  
         practicePane.setVisible(false);
         resultPane.setVisible(true);
+        titleLabel.setText("A teszt eredménye");
         victoryBonbon.setVisible(false);
         victoryPicture.setVisible(false);
         victorySlice.setVisible(false);
         if(result2 == 100){
             repetationButton.setDisable(true);
             practiceBegin.setDisable(true);
-                }
+        }
         if (result2 < 40){
             victoryLabel.setText("Virtuális nyereménye egy csoki bonbon.");
             repetationButton.setDisable(false);
@@ -865,7 +850,7 @@ public class TestController implements Initializable {
             } catch (FileNotFoundException ex) {
                 // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
             }
-         } else if (result2 >= 70) {
+        } else if (result2 >= 70) {
             victoryLabel.setText("Virtuális nyereménye egy tábla csoki.");
             testAttempt.setPrize("tábla csoki");
             testattemptdao.updateTestAttempt(testAttempt);

@@ -5,8 +5,6 @@
  */
 package thesis;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -26,8 +24,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
@@ -44,45 +40,29 @@ public class ResultController implements Initializable {
     private Pane errorPane;
     @FXML
     private TableView table;
-    
-    public final ObservableList<User> data = FXCollections.observableArrayList();
     @FXML
     private Label firstErrorLabel;
     @FXML
     private Label secondErrorLabel;
     @FXML
     private Button buttonRight;
-
-    private ResultDAO resultdao;
-    private UserDAO userdao;
-    
-    private int userId;
-    List<Result> results;
-    Result result;
-    private User user;
     @FXML
     private Label name;
-
-    public void setUserId(int userId) throws SQLException {
-        this.userId = userId;
-        user = userdao.findByIdUser(userId);
-        name.setText(user.getUsername() + " összes eredménye");
-        try {
-            results = resultdao.findResultByUserId(userId);
-            ObservableList<Result> obsList = FXCollections.observableArrayList(results);
-            table.setItems(obsList);
-        } catch (SQLException ex) {
-            Logger.getLogger(ResultController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
     
+    public final ObservableList<User> data = FXCollections.observableArrayList();
+    private ResultDAO resultdao;
+    private UserDAO userdao;
+    private int userId;
+    private User user;
+    List<Result> results;
+    Result result;
     
     /**
      * Initializes the controller class.
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
         try {
             Connection conn = DBConnection.getInstance();
             System.out.println("Adatbáziskapcsolat létrehozva.");
@@ -92,14 +72,6 @@ public class ResultController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(ResultController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        //ImageView picture = new ImageView(new Image(this.getClass().getResourceAsStream("topics_images/" + result.getVictory())));
-                // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepe
-        
-        /*TableColumn userName = new TableColumn("Felhasználónév");
-        userName.setCellValueFactory(new PropertyValueFactory<>("userName"));
-        userName.setMinWidth(140);
-        */
         
         TableColumn topic = new TableColumn("Téma");
         topic.setCellValueFactory(new PropertyValueFactory<>("topic"));
@@ -122,6 +94,19 @@ public class ResultController implements Initializable {
         prize.setMinWidth(140);
         
         table.getColumns().addAll(topic, difficulty, result, time, prize);
+    }
+    
+    public void setUserId(int userId) throws SQLException {
+        this.userId = userId;
+        user = userdao.findByIdUser(userId);
+        name.setText(user.getUsername() + " összes eredménye");
+        try {
+            results = resultdao.findResultByUserId(userId);
+            ObservableList<Result> obsList = FXCollections.observableArrayList(results);
+            table.setItems(obsList);
+        } catch (SQLException ex) {
+            Logger.getLogger(ResultController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     @FXML

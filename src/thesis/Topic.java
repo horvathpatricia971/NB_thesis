@@ -28,7 +28,6 @@ public class Topic {
         this.imageName = ImageName;
     }
     
-    
     public int getTopicID(){
 	return topicID;
     }
@@ -84,5 +83,4 @@ public class Topic {
     public void setImageName(String imageName) {
         this.imageName = imageName;
     }
-    
 }

@@ -9,7 +9,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +35,6 @@ public class TestDAO {
         this.findByTopicId = testConn.prepareStatement("SELECT * FROM test WHERE topicID = ?");
     }
     
-    //test DAO
     public void addTest(Test newTest) throws SQLException {
         this.insert.setInt(1, newTest.getTopicID());
         this.insert.executeUpdate();

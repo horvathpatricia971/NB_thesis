@@ -13,14 +13,12 @@ import java.sql.SQLException;
  *
  * @author horvathpatricia
  */
-
     
 public class DBConnection {
     private static Connection conn;
     private static final String URL = "jdbc:mysql://localhost:3306/language_db?serverTimezone=UTC";
     private static final String Username = "root";
     private static final String Password = "Database";
-    
     
     public static Connection getInstance() throws SQLException {
         if (conn == null) {

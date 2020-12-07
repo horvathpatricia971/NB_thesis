@@ -16,7 +16,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -78,7 +77,6 @@ public class LoginController implements Initializable {
     
 @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
         try {
             conn = DBConnection.getInstance();
             System.out.println("Adatbáziskapcsolat létrehozva.");
@@ -116,7 +114,7 @@ public class LoginController implements Initializable {
     
     @FXML
     private void loadTopics(ActionEvent event) throws IOException {
-       
+        
        try {
         String username = inputUsername.getText();
         String gender = genderBox.getValue();
@@ -143,8 +141,7 @@ public class LoginController implements Initializable {
             secondErrorLabel.setText("Az életkor 6 és 116 közötti érték lehet.");
             
         }else{
-            
-            int age = Integer.parseInt(ageText);
+        int age = Integer.parseInt(ageText);
         
         User newUser = new User(0, username, gender , age, education, desease, hearing, seeing);
         data.add(newUser);
@@ -159,9 +156,9 @@ public class LoginController implements Initializable {
         rootPane.getChildren().setAll(pane);
         }
         }catch(Exception e){
-          this.isFailedValidation();
-          firstErrorLabel.setText("A felhasználónév foglalt.");
-          secondErrorLabel.setText("Adjon meg másik felhasználónevet!");
+            this.isFailedValidation();
+            firstErrorLabel.setText("A felhasználónév foglalt.");
+            secondErrorLabel.setText("Adjon meg másik felhasználónevet!");
         }
     }
     
@@ -185,5 +182,4 @@ public class LoginController implements Initializable {
         firstErrorLabel.setText("");
         secondErrorLabel.setText("");
     }
-
 }

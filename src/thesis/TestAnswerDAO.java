@@ -40,7 +40,6 @@ public class TestAnswerDAO {
         this.insert.setInt(4, newAnswer.getTestQuestionID());
         this.insert.executeUpdate();
     }
-    
         
     public void deleteAnswer(int testAnswerID) throws SQLException {
         this.delete.setInt(1, testAnswerID);

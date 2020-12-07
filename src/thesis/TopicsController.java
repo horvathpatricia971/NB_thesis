@@ -25,7 +25,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Font;
 
 /**
  * FXML Controller class
@@ -33,7 +32,6 @@ import javafx.scene.text.Font;
  * @author horvathpatricia
  */
 public class TopicsController implements Initializable {
-
     @FXML
     private AnchorPane topicAnchorPane;
     @FXML
@@ -52,15 +50,6 @@ public class TopicsController implements Initializable {
     private Button logOutButton;
     @FXML
     private Label firstErrorLabel;
-    Connection conn;
-
-    DBConnection dbconnection;
-    
-    WordDAO worddao;
-    LearnDAO learndao;
-    TopicDAO topicdao;
-    
-    private int userId;
     @FXML
     private Label secondErrorLabel;
     @FXML
@@ -77,13 +66,19 @@ public class TopicsController implements Initializable {
     private ImageView middleRightIma;
     @FXML
     private ImageView bottomRightIma;
+    
+    Connection conn;
+    DBConnection dbconnection;
+    WordDAO worddao;
+    LearnDAO learndao;
+    TopicDAO topicdao;
+    private int userId;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         try {
             conn = DBConnection.getInstance();
             System.out.println("Adatbáziskapcsolat létrehozva.");
@@ -91,10 +86,6 @@ public class TopicsController implements Initializable {
             learndao = new LearnDAO(conn);
             topicdao = new TopicDAO(conn);
             List<Topic> topic = topicdao.findAllTopic();
-//            tool1.setText("A gomb megnyomásával a(z) " + t.get(0).getTopic() + " témakörben tanulhat.");
-            //topLeft.setStyle(topLeft.getStyle() + ";-fx-background-color:" + t.get(0).getColour());
-        //    topLeft.getStyleClass().add(t.get(0).getColour());
-            //topLeftLabel.setText(t.get(0).getTopic());
             
             Tooltip tooltip0 = new Tooltip(topic.get(0).getTopic());
             tooltip0.setStyle("-fx-font-size: 24px; fx-position: absolute; top: 100%; left: 50%;");
@@ -113,60 +104,43 @@ public class TopicsController implements Initializable {
                 FileInputStream fis = new FileInputStream("topics_images/" + topic.get(0).getImageName());
                 topLeftIma.setImage(new Image(fis));
             } catch (FileNotFoundException ex) {
-                // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+                System.out.println(""+ex);
                 
             }
             Tooltip.install(topLeftIma, tooltip0);
-            //topRightLabel.setText(t.get(1).getTopic());
             try {
                 FileInputStream fis = new FileInputStream("topics_images/" + topic.get(1).getImageName());
                 topRightIma.setImage(new Image(fis));
             } catch (FileNotFoundException ex) {
-                // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+                System.out.println(""+ex);
             }
             Tooltip.install(topRightIma, tooltip1);
-                //topRight.setStyle(topRight.getStyle() + ";-fx-background-color:" + t.get(1).getColour());
-            //    topRight.getStyleClass().add(t.get(1).getColour());
-
-            
-           // middleLeft.setStyle(middleLeft.getStyle() + ";-fx-background-color:" + t.get(2).getColour());
-        //    middleLeft.getStyleClass().add(t.get(2).getColour());
-            //middleLeftLabel.setText(t.get(2).getTopic());
             try {
                 FileInputStream fis = new FileInputStream("topics_images/" + topic.get(2).getImageName());
                 middleLeftIma.setImage(new Image(fis));
             } catch (FileNotFoundException ex) {
-                // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+                System.out.println(""+ex);
             }
             Tooltip.install(middleLeftIma, tooltip2);
-            //middleRight.setStyle(middleRight.getStyle() + ";-fx-background-color:" + t.get(3).getColour());
-        //    middleRight.getStyleClass().add(t.get(3).getColour());
-            //middleRightLabel.setText(t.get(3).getTopic());
             try {
                 FileInputStream fis = new FileInputStream("topics_images/" + topic.get(3).getImageName());
                 middleRightIma.setImage(new Image(fis));
             } catch (FileNotFoundException ex) {
-                // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+                System.out.println(""+ex);
             }
             Tooltip.install(middleRightIma, tooltip3);
-            //bottomLeft.setStyle(bottomLeft.getStyle() + ";-fx-background-color:" + t.get(4).getColour());
-        //    bottomLeft.getStyleClass().add(t.get(4).getColour());
-            //bottomLeftLabel.setText(t.get(4).getTopic());
              try {
                 FileInputStream fis = new FileInputStream("topics_images/" + topic.get(4).getImageName());
                 bottomLeftIma.setImage(new Image(fis));
             } catch (FileNotFoundException ex) {
-                // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+                System.out.println(""+ex);
             }
             Tooltip.install(bottomLeftIma, tooltip4);
-            //bottomRight.setStyle(bottomRight.getStyle() + ";-fx-background-color:" + t.get(5).getColour());
-        //    bottomRight.getStyleClass().add(t.get(5).getColour());
-            //bottomRightLabel.setText(t.get(5).getTopic());
              try {
                 FileInputStream fis = new FileInputStream("topics_images/" + topic.get(5).getImageName());
                 bottomRightIma.setImage(new Image(fis));
             } catch (FileNotFoundException ex) {
-                // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+                System.out.println(""+ex);
             }
             Tooltip.install(bottomRightIma, tooltip5);
         } catch (SQLException ex) {
@@ -179,8 +153,7 @@ public class TopicsController implements Initializable {
     
     public void setUserId(int userId) {
         this.userId = userId;
-    }
-            
+    }        
 
     @FXML
     private void dataOutAction(ActionEvent event) throws IOException, SQLException {
@@ -188,8 +161,7 @@ public class TopicsController implements Initializable {
         AnchorPane pane = loader.load();
         ResultController controller = loader.<ResultController>getController();
         controller.setUserId(this.userId);
-        topicAnchorPane.getChildren().setAll(pane);
-        
+        topicAnchorPane.getChildren().setAll(pane);  
     }
 
     @FXML

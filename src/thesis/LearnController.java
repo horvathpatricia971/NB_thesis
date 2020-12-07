@@ -39,8 +39,6 @@ import javafx.scene.media.MediaPlayer;
  * @author horvathpatricia
  */
 
-
-    
 public class LearnController implements Initializable {
     @FXML
     private Pane mainPane;
@@ -171,7 +169,7 @@ public class LearnController implements Initializable {
             FileInputStream fis = new FileInputStream("images/" + w.getImage());
             picture.setImage(new Image(fis));
         } catch (FileNotFoundException ex) {
-            // TODO dobjon fel egy figyelmeztetest vagy toltson be egy alapertelmezett kepet
+            System.out.println(""+ex);
         }
         
         firstPane.setVisible(true);
@@ -181,8 +179,6 @@ public class LearnController implements Initializable {
             this.checkTestReady();
         }
     }
-    
-    
     
     public void setTopicId(int topicId) {
         this.topicId = topicId;
@@ -198,8 +194,6 @@ public class LearnController implements Initializable {
             vbox.setVisible(true);
             firstErrorLabel.setText("Probléma a tanulási fázis hozzáadásakor.");
             System.out.println(""+ex);
-            // TODO Alert ablak, hogz lássuk, mi történt
-            // DBConnection.exceptionHanlder(ex)
         }
     }
     
@@ -226,18 +220,13 @@ public class LearnController implements Initializable {
             Logger.getLogger(LearnController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
 
-    // eyt kell előbb meghívni, utána a setTopicId-t
     public void setUserId(int userId) throws SQLException {
         this.userId = userId;
         user = userdao.findByIdUser(userId);
         nameLabel.setText("Kedves " + user.getUsername() +"!");
     }
-    
-         
-    
+
     private void checkTestReady() {
         boolean ready = true;
         for (Boolean b : this.testReady){
@@ -307,7 +296,6 @@ public class LearnController implements Initializable {
     }
 
     public void initialize(URL url, ResourceBundle rb) {
-        
         firstButton.getStyleClass().add("button-words");
         secondButton.getStyleClass().add("button-words");
         thirdButton.getStyleClass().add("button-words");
@@ -318,8 +306,6 @@ public class LearnController implements Initializable {
         eighthButton.getStyleClass().add("button-words");
         ninthButton.getStyleClass().add("button-words");
         tenthButton.getStyleClass().add("button-words");
-        
-        
         
         this.testReady = new ArrayList<Boolean>();
         for (int i = 0; i < 10; i++){
@@ -332,8 +318,7 @@ public class LearnController implements Initializable {
             worddao = new WordDAO(conn);
             topicdao = new TopicDAO(conn);
             learndao = new LearnDAO(conn);
-            userdao = new UserDAO(conn);
-            
+            userdao = new UserDAO(conn);  
         } catch (SQLException ex) {
             errorPane.setVisible(true);
             firstPane.setDisable(true);
@@ -351,6 +336,7 @@ public class LearnController implements Initializable {
         tooltip2.setStyle("-fx-font-size: 24px; fx-position: absolute;");
         Tooltip.install(slowSoundImage, tooltip2);
     }
+    
     @FXML
     private void testClickAction(ActionEvent event) throws IOException, SQLException {
         learn.setEndLearnTime(new java.sql.Timestamp(new java.util.Date().getTime()));
@@ -426,6 +412,5 @@ public class LearnController implements Initializable {
         Media sound = new Media(new File(mp3).toURI().toString());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
-    }
-        
+    }   
 }

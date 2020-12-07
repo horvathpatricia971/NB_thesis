@@ -43,5 +43,4 @@ public class WordConnection {
     public void setUserID(int UserId){
         this.userID = UserId;
     }
-    
 }
